@@ -1,0 +1,58 @@
+{
+  "name": "force-dev-tool",
+  "description": "Command line tool supporting the Force.com development and deployment workflow",
+  "version": "0.0.0",
+  "author": "Matthias Rolke <mr.amtrack@gmail.com>",
+  "bin": {
+    "force-dev-tool": "bin/cli"
+  },
+  "dependencies": {
+    "archiver": "^0.15.1",
+    "async": "^1.4.2",
+    "chalk": "^1.1.1",
+    "docopt": "^0.6.2",
+    "dotenv": "^1.2.0",
+    "force-metadata-utils": "^0.1.0",
+    "fs-extra": "^0.24.0",
+    "jsforce": "^1.5.0",
+    "mkdirp": "^0.5.1",
+    "nconf": "^0.7.2",
+    "parse-diff": "0.3.0",
+    "tabtab": "0.0.4",
+    "tmp": "^0.0.27",
+    "underscore": "^1.8.3",
+    "vinyl-fs": "^1.0.0",
+    "walk": "^2.3.9",
+    "yauzl": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^1.3.1",
+    "istanbul": "^0.3.19",
+    "jsdoc": "^3.3.2",
+    "mocha": "^2.3.2"
+  },
+  "keywords": [
+    "cli",
+    "deployment",
+    "diff",
+    "force.com",
+    "forcedotcom",
+    "metadata",
+    "salesforce",
+    "sfdc"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amtrack/force-dev-tool.git"
+  },
+  "scripts": {
+    "doc": "jsdoc lib -r -R README.md -d doc",
+    "istanbul": "istanbul test ./node_modules/.bin/_mocha -- test/ --recursive",
+    "lint": "eslint --ignore-path .gitignore .",
+    "mocha": "mocha test/ --recursive",
+    "test": "npm run lint && npm run istanbul"
+  }
+}
