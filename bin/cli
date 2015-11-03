@@ -8,6 +8,7 @@ var chalk = require("chalk");
 var tabtab = require('tabtab');
 var path = require('path');
 var Fdt = require('../lib/index');
+var packageJson = require('../package.json');
 
 var doc = "force-dev-tool.\n" +
 "\n" +
@@ -35,7 +36,7 @@ var doc = "force-dev-tool.\n" +
 "\n" +
 "See 'force-dev-tool help <command>' for more information on a specific command.";
 
-var opts = docopt(doc, {version: '0.0.2', options_first: true});
+var opts = docopt(doc, {version: packageJson.version, options_first: true});
 
 var command = opts['<command>'];
 var args = opts['<args>'];
