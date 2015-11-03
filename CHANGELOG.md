@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.0
+ * implement running unit tests
+
 ## 0.1.2
  * fix deploy command
 

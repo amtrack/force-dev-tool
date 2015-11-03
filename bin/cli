@@ -27,6 +27,7 @@ var doc = "force-dev-tool.\n" +
 "	fetch           Fetch describe information from a remote\n" +
 "	package         Generate a package.xml file from local describe information\n" +
 "	retrieve        Retrieve metadata specified in package.xml\n" +
+"	test            Execute unit tests\n" +
 "	validate        Validate metadata deployment\n" +
 "	validateTest    Validate metadata deployment and run local unit tests\n" +
 "	deploy          Deploy metadata\n" +
@@ -41,7 +42,7 @@ var opts = docopt(doc, {version: packageJson.version, options_first: true});
 var command = opts['<command>'];
 var args = opts['<args>'];
 var topic = (args !== null && args.length > 0) ? args[0] : null;
-var validCommands = ['remote', 'fetch', 'package', 'retrieve', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'baseBranch', 'backup'];
+var validCommands = ['remote', 'fetch', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'baseBranch', 'backup'];
 var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join('|') + ')\\w?');
 
 var storage = new Fdt.Storage({

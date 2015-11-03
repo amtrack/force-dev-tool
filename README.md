@@ -93,6 +93,14 @@ Options:
 
 	-d=<directory>    Directory containing the metadata and package.xml [default: ./src].
 
+**Running unit tests**
+
+```console
+$ force-dev-tool test
+```
+
+Note: Runs local unit tests using an empty deployment.
+
 **Using `force-dev-tool` in a build script**
 
 The following environment variables will be available as remote environment `env`:
