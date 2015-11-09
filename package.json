@@ -14,6 +14,8 @@
     "dotenv": "^1.2.0",
     "force-metadata-utils": "^0.1.0",
     "fs-extra": "^0.24.0",
+    "hawk": "^4.0.0",
+    "is-my-json-valid": "^2.12.0",
     "jsforce": "^1.5.0",
     "mkdirp": "^0.5.1",
     "nconf": "^0.7.2",
