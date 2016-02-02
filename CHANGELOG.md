@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.0
+ * add support for windows
+
 ## 0.2.0
  * implement running unit tests
 
