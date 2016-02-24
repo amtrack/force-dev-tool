@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.3.1
+ * fix `changeset create` command with binaries
+ * include `codeCoverageWarnings` in output of `deploy` command
+
 ## 0.3.0
  * add support for windows
 
