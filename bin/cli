@@ -50,8 +50,8 @@ var storage = new Fdt.Storage({
 });
 var remotes = new Fdt.Providers.Multi({
 	providers: [
-		new Fdt.Providers.Config({path: path.join(storage.configPath, '.orgs.json')}),
-		new Fdt.Providers.Env({env: process.env})
+		new Fdt.Providers.Env({env: process.env}),
+		new Fdt.Providers.Config({path: path.join(storage.configPath, '.orgs.json')})
 	]
 });
 var project = new Fdt.Project({
