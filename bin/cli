@@ -3,7 +3,6 @@
 "use strict";
 
 var docopt = require('docopt').docopt;
-require("dotenv").config({silent: true});
 var chalk = require("chalk");
 var tabtab = require('tabtab');
 var path = require('path');
