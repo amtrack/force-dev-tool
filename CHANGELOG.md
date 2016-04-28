@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.3.2
+ * allow overwriting deployment directory if `--force` flag is provided
+ * improve stability of `remote` command
+ * make `fetch` command work with PE editions where Apex is not available
+
 ## 0.3.1
  * fix `changeset create` command with binaries
  * include `codeCoverageWarnings` in output of `deploy` command
