@@ -26,6 +26,7 @@
   "devDependencies": {
     "eslint": "^2.9.0",
     "istanbul": "^0.4.3",
+    "js-beautify": "^1.6.2",
     "jsdoc": "^3.3.2",
     "mocha": "^2.3.2"
   },
@@ -51,6 +52,7 @@
     "istanbul": "istanbul test ./node_modules/.bin/_mocha -- test/ --recursive",
     "lint": "eslint --ignore-path .gitignore .",
     "mocha": "mocha test/ --recursive",
-    "test": "npm run lint && npm run istanbul"
+    "test": "npm run lint && npm run istanbul",
+    "fmt": "find lib test -name '*.js' | xargs --no-run-if-empty js-beautify -r"
   }
 }
