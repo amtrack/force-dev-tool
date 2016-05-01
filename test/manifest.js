@@ -3,27 +3,7 @@
 var assert = require("assert");
 var Manifest = require('../lib/manifest');
 
-var packageXmlString = ['<?xml version="1.0" encoding="UTF-8"?>',
-	'<Package xmlns="http://soap.sforce.com/2006/04/metadata">',
-	'    <types>',
-	'        <members>C1</members>',
-	'        <members>Z1</members>',
-	'        <name>ApexComponent</name>',
-	'    </types>',
-	'    <types>',
-	'        <members>Test</members>',
-	'        <members>Test2</members>',
-	'        <name>ApexPage</name>',
-	'    </types>',
-	'    <types>',
-	'        <members>CustomLabels</members>',
-	'        <name>CustomLabels</name>',
-	'    </types>',
-	'    <version>33.0</version>',
-	'</Package>',
-	''
-].join("\n");
-
+var testManifests = require('./metadata-parts/manifest');
 var simpleManifestJSON = require("./data/simple-manifest.json");
 
 describe('Manifest', function() {
@@ -81,13 +61,13 @@ describe('Manifest', function() {
 				manifestJSON: simpleManifestJSON
 			});
 			manifest.apiVersion = "33.0";
-			assert.equal(manifest.toPackageXml(), packageXmlString);
+			assert.equal(manifest.toPackageXml(), testManifests.packageXml);
 		});
 	});
 	describe('#fromPackageXml(), #toPackageXml()', function() {
 		it('should parse the sample XML', function() {
-			var manifest = Manifest.fromPackageXml(packageXmlString);
-			assert.equal(manifest.toPackageXml(), packageXmlString);
+			var manifest = Manifest.fromPackageXml(testManifests.packageXml);
+			assert.equal(manifest.toPackageXml(), testManifests.packageXml);
 		});
 	});
 	describe('#getMetadataTypes()', function() {
