@@ -6,6 +6,7 @@ var docopt = require('docopt').docopt;
 var chalk = require("chalk");
 var tabtab = require('tabtab');
 var path = require('path');
+var findUp = require('find-up');
 var Fdt = require('../lib/index');
 var packageJson = require('../package.json');
 
@@ -44,8 +45,13 @@ var topic = (args !== null && args.length > 0) ? args[0] : null;
 var validCommands = ['remote', 'fetch', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset'];
 var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join('|') + ')\\w?');
 
+var storagePath = process.cwd();
+var storagePathBestGuess = findUp.sync(path.join('src', 'package.xml'));
+if (storagePathBestGuess) {
+	storagePath = storagePathBestGuess.substr(0, storagePathBestGuess.lastIndexOf(path.join('src', 'package.xml')) -1);
+}
 var storage = new Fdt.Storage({
-	path: process.cwd()
+	path: storagePath
 });
 var remotes = new Fdt.Providers.Multi({
 	providers: [
