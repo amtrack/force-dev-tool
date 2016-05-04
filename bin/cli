@@ -96,22 +96,31 @@ else if (command === 'completion') {
 else if (validCommands.indexOf(command) !== -1)
 {
 	SubCommand = require('../lib/cli/' + command);
-	new SubCommand(project).process({
-		stdin: process.stdin,
-		stdout: process.stdout,
-		stderr: process.stderr,
-		cwd: process.cwd()
-	}, function(err, message){
-		if (err) {
-			console.log(chalk.red(err));
-			process.exit(1);
+	try {
+		new SubCommand(project).process({
+			stdin: process.stdin,
+			stdout: process.stdout,
+			stderr: process.stderr,
+			cwd: process.cwd()
+		}, function(err, message){
+			if (err) {
+				console.log(chalk.red(err));
+				process.exitCode = 1;
+				return;
+			}
+			if (message) {
+				console.log(chalk.green(message));
+			}
+		});
+	} catch (processErr) {
+		if (process.env.DEBUG) {
+			throw processErr;
 		}
-		if (message) {
-			console.log(chalk.green(message));
-		}
-	});
+		console.log(chalk.red(processErr));
+		process.exitCode = 1;
+	}
 }
 else {
 	console.log(doc);
-	process.exit(1);
+	process.exitCode = 1;
 }
