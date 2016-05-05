@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.4.0
+ * add `query` command for running a SOQL query
+ * add `bulk` command for importing/exporting data
+ * add `execute` command for executing anonymous Apex
+ * remove undocumented `backup` command
+ * `force-dev-tool` can now handle being called from within a subdirectory of the project (e.g. `src/`)
+ * import force-metadata-utils package for making maintenance easier
+ * update dependencies
+
 ## 0.3.2
  * allow overwriting deployment directory if `--force` flag is provided
  * improve stability of `remote` command
