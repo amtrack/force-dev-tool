@@ -116,5 +116,54 @@ The following environment variables will be available as remote environment `env
 $ force-dev-tool validateTest env
 ```
 
+**Executing a SOQL query**
+
+```console
+$ force-dev-tool query "SELECT Id, Name FROM Account LIMIT 1"
+[
+  {
+    "attributes": {
+      "type": "Account",
+      "url": "/services/data/v34.0/sobjects/Account/001200000183ZCFAA2"
+    },
+    "Id": "001200000183ZCFAA2",
+    "Name": "GenePoint"
+  }
+]
+
+$ force-dev-tool query "SELECT COUNT(Id) c FROM Account"
+[
+  {
+    "attributes": {
+      "type": "AggregateResult"
+    },
+    "c": 15
+  }
+]
+```
+
+**Exporting/importing data using the bulk API**
+
+Exporting data
+
+```console
+$ force-dev-tool bulk export "SELECT Id, Name FROM Account LIMIT 1"
+"Id","Name"
+"001200000183ZCFAA2","GenePoint"
+$ force-dev-tool bulk export "SELECT Id, Name FROM Account" --out Accounts.csv
+```
+
+Updating data
+
+```console
+$ force-dev-tool bulk update Account --in Accounts.csv --out Accounts-update-results.csv
+```
+
+**Executing anonymous Apex**
+
+```console
+$ echo "insert new Account(Name = 'Test Account');" | force-dev-tool execute
+```
+
 ## License
 MIT © [Matthias Rolke](mailto:mr.amtrack@gmail.com)
