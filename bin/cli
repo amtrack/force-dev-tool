@@ -3,10 +3,10 @@
 "use strict";
 
 var docopt = require('docopt').docopt;
-require("dotenv").config({silent: true});
 var chalk = require("chalk");
 var tabtab = require('tabtab');
 var path = require('path');
+var findUp = require('find-up');
 var Fdt = require('../lib/index');
 var packageJson = require('../package.json');
 
@@ -33,6 +33,9 @@ var doc = "force-dev-tool.\n" +
 "	deploy          Deploy metadata\n" +
 "	deployTest      Deploy metadata and run local unit tests\n" +
 "	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
+"	query           Execute a SOQL query returing JSON\n" +
+"	bulk            Import/export data in CSV format using the bulk API\n" +
+"	execute         Execute anonymous Apex\n" +
 "	completion      Print command line completion\n" +
 "\n" +
 "See 'force-dev-tool help <command>' for more information on a specific command.";
@@ -42,16 +45,21 @@ var opts = docopt(doc, {version: packageJson.version, options_first: true});
 var command = opts['<command>'];
 var args = opts['<args>'];
 var topic = (args !== null && args.length > 0) ? args[0] : null;
-var validCommands = ['remote', 'fetch', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'baseBranch', 'backup'];
+var validCommands = ['remote', 'fetch', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'query', 'bulk', 'execute'];
 var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join('|') + ')\\w?');
 
+var storagePath = process.cwd();
+var storagePathBestGuess = findUp.sync(path.join('src', 'package.xml'));
+if (storagePathBestGuess) {
+	storagePath = storagePathBestGuess.substr(0, storagePathBestGuess.lastIndexOf(path.join('src', 'package.xml')) -1);
+}
 var storage = new Fdt.Storage({
-	path: process.cwd()
+	path: storagePath
 });
 var remotes = new Fdt.Providers.Multi({
 	providers: [
 		new Fdt.Providers.Env({env: process.env}),
-		new Fdt.Providers.Config({path: path.join(storage.configPath, '.orgs.json')})
+		new Fdt.Providers.Config({path: path.join(storage.getConfigPath(), '.orgs.json')})
 	]
 });
 var project = new Fdt.Project({
@@ -91,17 +99,31 @@ else if (command === 'completion') {
 else if (validCommands.indexOf(command) !== -1)
 {
 	SubCommand = require('../lib/cli/' + command);
-	new SubCommand(project).process(function(err, message){
-		if (err) {
-			console.log(chalk.red(err));
-			process.exit(1);
+	try {
+		new SubCommand(project).process({
+			stdin: process.stdin,
+			stdout: process.stdout,
+			stderr: process.stderr,
+			cwd: process.cwd()
+		}, function(err, message){
+			if (err) {
+				console.log(chalk.red(err));
+				process.exitCode = 1;
+				return;
+			}
+			if (message) {
+				console.log(chalk.green(message));
+			}
+		});
+	} catch (processErr) {
+		if (process.env.DEBUG) {
+			throw processErr;
 		}
-		if (message) {
-			console.log(chalk.green(message));
-		}
-	});
+		console.log(chalk.red(processErr));
+		process.exitCode = 1;
+	}
 }
 else {
 	console.log(doc);
-	process.exit(1);
+	process.exitCode = 1;
 }
