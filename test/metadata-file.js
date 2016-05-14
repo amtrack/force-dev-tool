@@ -9,7 +9,12 @@ var objectWithoutFields = [TestObject.header, TestObject.footer].join("\n");
 var objectWithTestField = [TestObject.header, TestObject.fields.textField1, TestObject.footer].join("\n");
 var objectWithModifiedTestField = [TestObject.header, TestObject.fields.textField1Modified, TestObject.footer].join("\n");
 var objectWithRenamedTestField = [TestObject.header, TestObject.fields.textField2, TestObject.footer].join("\n");
-var objectWithTestAndATestField = [TestObject.header, TestObject.fields.textField1.replace('Test__c', 'ATest__c'), TestObject.fields.textField1, TestObject.footer].join("\n");
+var objectWithTestAndATestField = [
+	TestObject.header,
+	TestObject.fields.textField1.replace('Test__c', 'ATest__c'),
+	TestObject.fields.textField1,
+	TestObject.footer
+].join("\n");
 
 describe('MetadataFile', function() {
 	describe('#MetadataFile()', function() {
@@ -74,7 +79,10 @@ describe('MetadataFile', function() {
 			}).getComponents();
 			assert.deepEqual(Object.keys(components).length, 1);
 			// remove all spaces because of indentation
-			assert.deepEqual(components['CustomField']['Test__c'].replace(/ /g, ''), TestObject.fields.textField1.replace(/ /g, ''));
+			assert.deepEqual(
+				components['CustomField']['Test__c'].replace(/ /g, ''),
+				TestObject.fields.textField1.replace(/ /g, '')
+			);
 		});
 	});
 	describe('#diff()', function() {
@@ -115,7 +123,10 @@ describe('MetadataFile', function() {
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.manifest.manifest().length, 0);
 			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 1);
-			assert.deepEqual(diffResult.destructiveManifest.manifest()[0].toString(), 'CustomField/Account.Test__c');
+			assert.deepEqual(
+				diffResult.destructiveManifest.manifest()[0].toString(),
+				'CustomField/Account.Test__c'
+			);
 		});
 		it('should return added additional custom field of custom object', function() {
 			var mf1 = new MetadataFile({

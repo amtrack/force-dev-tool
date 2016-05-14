@@ -4,16 +4,16 @@ var assert = require("assert");
 var metadataUtils = require("../lib/utils");
 var path = require('path');
 
-describe('MetadataUtils', function(){
-	describe('#getFileNameWithoutExtension()', function(){
-		it('should return the filename without extension', function(){
+describe('MetadataUtils', function() {
+	describe('#getFileNameWithoutExtension()', function() {
+		it('should return the filename without extension', function() {
 			assert.deepEqual(metadataUtils.getFileNameWithoutExtension(path.join('pages', 'Test.page')), 'Test');
 			assert.deepEqual(metadataUtils.getFileNameWithoutExtension(path.join('pages', 'Test')), 'Test');
 		});
 	});
 
-	describe('#getFileExtension()', function(){
-		it('should return the file extension without dot', function(){
+	describe('#getFileExtension()', function() {
+		it('should return the file extension without dot', function() {
 			assert.deepEqual(metadataUtils.getFileExtension(path.join('pages', 'Test.page')), 'page');
 			assert.deepEqual(metadataUtils.getFileExtension(path.join('pages', 'Test.page-meta.xml')), 'xml');
 			assert.deepEqual(metadataUtils.getFileExtension('foo'), '');
@@ -21,14 +21,14 @@ describe('MetadataUtils', function(){
 		});
 	});
 
-	describe('#getMetadataFilenameForMetaFilename()', function(){
-		it('should return the filename for a meta filename', function(){
+	describe('#getMetadataFilenameForMetaFilename()', function() {
+		it('should return the filename for a meta filename', function() {
 			assert.deepEqual(metadataUtils.getMetadataFilenameForMetaFilename(path.join('pages', 'Test.page-meta.xml')), path.join('pages', 'Test.page'));
 		});
 	});
 
-	describe('#isValidFilename()', function(){
-		it('should check if a filename is a valid metadata filename', function(){
+	describe('#isValidFilename()', function() {
+		it('should check if a filename is a valid metadata filename', function() {
 			assert(metadataUtils.isValidFilename(path.join('pages', 'Test.page')));
 			assert(metadataUtils.isValidFilename(path.join('aura', 'TestApp', 'TestApp.cmp')));
 			assert(metadataUtils.isValidFilename(path.join('documents', 'unfiled$public', 'foo.png')));
@@ -42,8 +42,8 @@ describe('MetadataUtils', function(){
 		});
 	});
 
-	describe('#isValidMetaFilename()', function(){
-		it('should check if a filename is a valid metadata meta filename', function(){
+	describe('#isValidMetaFilename()', function() {
+		it('should check if a filename is a valid metadata meta filename', function() {
 			assert(!metadataUtils.isValidMetaFilename(path.join('pages', 'Test.page')));
 			assert(metadataUtils.isValidMetaFilename(path.join('pages', 'Test.page-meta.xml')));
 			assert(!metadataUtils.isValidMetaFilename(path.join('foo', 'Foo')));

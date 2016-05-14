@@ -54,17 +54,17 @@
 // "- line1\n" +
 // "+ line2";
 
-describe('Diff', function(){
-	describe('#getDiff()', function(){
+describe('Diff', function() {
+	describe('#getDiff()', function() {
 		// it('should detect changes to a file based component', function(){
-			// assert.deepEqual(new Diff(gitDiffAddedApexPage).getDiff(), {addedOrModified: ['ApexPage/Test'], removed: []});
-			// assert.deepEqual(new Diff(gitDiffModifiedApexPage).getDiff(), {addedOrModified: ['ApexPage/Test'], removed: []});
-			// assert.deepEqual(new Diff(gitDiffDeletedApexPage).getDiff(), {addedOrModified: [], removed: ['ApexPage/Test']});
+		// assert.deepEqual(new Diff(gitDiffAddedApexPage).getDiff(), {addedOrModified: ['ApexPage/Test'], removed: []});
+		// assert.deepEqual(new Diff(gitDiffModifiedApexPage).getDiff(), {addedOrModified: ['ApexPage/Test'], removed: []});
+		// assert.deepEqual(new Diff(gitDiffDeletedApexPage).getDiff(), {addedOrModified: [], removed: ['ApexPage/Test']});
 		// });
 		// it('should detect changes to a component in a container type', function(){
-			// assert.deepEqual(new Diff(gitDiffAddedCustomField).getDiff(), {addedOrModified: [{type: 'CustomField', fileName: 'objects/Account.object', fullName: 'Account.Test__c'}], removed: []});
-			// assert.deepEqual(new Diff(gitDiffModifiedCustomField).getDiff(), {addedOrModified: [{type: 'CustomField', fileName: 'objects/Account.object', fullName: 'Account.Test__c'}], removed: []});
-			// assert.deepEqual(new Diff(gitDiffDeletedCustomField).getDiff(), {addedOrModified: [], removed: [{type: 'CustomField', fileName: 'objects/Account.object', fullName: 'Account.Test__c'}]});
+		// assert.deepEqual(new Diff(gitDiffAddedCustomField).getDiff(), {addedOrModified: [{type: 'CustomField', fileName: 'objects/Account.object', fullName: 'Account.Test__c'}], removed: []});
+		// assert.deepEqual(new Diff(gitDiffModifiedCustomField).getDiff(), {addedOrModified: [{type: 'CustomField', fileName: 'objects/Account.object', fullName: 'Account.Test__c'}], removed: []});
+		// assert.deepEqual(new Diff(gitDiffDeletedCustomField).getDiff(), {addedOrModified: [], removed: [{type: 'CustomField', fileName: 'objects/Account.object', fullName: 'Account.Test__c'}]});
 		// });
 	});
 });

@@ -15,29 +15,39 @@ var env = {
 	'SFDC_FOO_SERVER_URL': 'https://login.salesforce.com'
 };
 
-describe('MultiRemoteProvider', function(){
-	describe('#Constructor', function(){
+describe('MultiRemoteProvider', function() {
+	describe('#Constructor', function() {
 		var tmpobj = tmp.dirSync();
 		var multiProvider = new MultiRemoteProvider({
 			providers: [
-				new ConfigRemoteProvider({path: path.join(tmpobj.name, 'foo.json')}),
-				new EnvRemoteProvider({env: env})
+				new ConfigRemoteProvider({
+					path: path.join(tmpobj.name, 'foo.json')
+				}),
+				new EnvRemoteProvider({
+					env: env
+				})
 			]
 		});
-		it('should initialize a new provider', function(){
+		it('should initialize a new provider', function() {
 			assert.deepEqual(multiProvider.config.providers.length, 2);
 		});
 	});
-	describe('#add()', function(){
+	describe('#add()', function() {
 		var tmpobj = tmp.dirSync();
 		var multiProvider = new MultiRemoteProvider({
 			providers: [
-				new ConfigRemoteProvider({path: path.join(tmpobj.name, 'foo.json')}),
-				new EnvRemoteProvider({env: env})
+				new ConfigRemoteProvider({
+					path: path.join(tmpobj.name, 'foo.json')
+				}),
+				new EnvRemoteProvider({
+					env: env
+				})
 			]
 		});
-		it('multiProvider', function(done){
-			var r = {name: 'foo'};
+		it('multiProvider', function(done) {
+			var r = {
+				name: 'foo'
+			};
 			multiProvider.add(r, function(err) {
 				assert.deepEqual(err, undefined);
 				assert.deepEqual(multiProvider.list().length, 3);
@@ -45,7 +55,7 @@ describe('MultiRemoteProvider', function(){
 			});
 		});
 	});
-	describe('#setDefault()', function(){
+	describe('#setDefault()', function() {
 		var tmpobj = tmp.dirSync();
 		var envWithoutDefault = {
 			'SFDC_FOO_USERNAME': 'foo@example.com',
@@ -54,12 +64,18 @@ describe('MultiRemoteProvider', function(){
 		};
 		var multiProvider = new MultiRemoteProvider({
 			providers: [
-				new ConfigRemoteProvider({path: path.join(tmpobj.name, 'foo.json')}),
-				new EnvRemoteProvider({env: envWithoutDefault})
+				new ConfigRemoteProvider({
+					path: path.join(tmpobj.name, 'foo.json')
+				}),
+				new EnvRemoteProvider({
+					env: envWithoutDefault
+				})
 			]
 		});
-		it('should set a remote as default', function(done){
-			var r = {name: 'foo'};
+		it('should set a remote as default', function(done) {
+			var r = {
+				name: 'foo'
+			};
 			multiProvider.add(r, function(addErr) {
 				assert.deepEqual(addErr, undefined);
 				multiProvider.setDefault('foo', function(err) {
@@ -70,30 +86,40 @@ describe('MultiRemoteProvider', function(){
 			});
 		});
 	});
-	describe('#get()', function(){
+	describe('#get()', function() {
 		var tmpobj = tmp.dirSync();
 		var multiProvider = new MultiRemoteProvider({
 			providers: [
-				new ConfigRemoteProvider({path: path.join(tmpobj.name, 'foo.json')}),
-				new EnvRemoteProvider({env: env})
+				new ConfigRemoteProvider({
+					path: path.join(tmpobj.name, 'foo.json')
+				}),
+				new EnvRemoteProvider({
+					env: env
+				})
 			]
 		});
-		it('multiProvider', function(){
+		it('multiProvider', function() {
 			assert.deepEqual(multiProvider.get('FOO').username, 'foo@example.com');
 		});
 	});
-	describe('#remove()', function(){
+	describe('#remove()', function() {
 		var tmpobj = tmp.dirSync();
 		var multiProvider = new MultiRemoteProvider({
 			providers: [
-				new ConfigRemoteProvider({path: path.join(tmpobj.name, 'foo.json')}),
-				new EnvRemoteProvider({env: env})
+				new ConfigRemoteProvider({
+					path: path.join(tmpobj.name, 'foo.json')
+				}),
+				new EnvRemoteProvider({
+					env: env
+				})
 			]
 		});
-		it('multiProvider', function(done){
-			var r = {name: 'foo'};
+		it('multiProvider', function(done) {
+			var r = {
+				name: 'foo'
+			};
 			multiProvider.add(r, function(addErr) {
-			assert.deepEqual(addErr, undefined);
+				assert.deepEqual(addErr, undefined);
 				multiProvider.remove('foo', function(err) {
 					assert.deepEqual(err, undefined);
 					assert.deepEqual(multiProvider.list().length, 2);
