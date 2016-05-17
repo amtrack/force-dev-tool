@@ -30,6 +30,20 @@ describe('ConfigRemoteProvider', function() {
 				done();
 			});
 		});
+		it('should add a default remote', function(done) {
+			var tmpobj = tmp.dirSync();
+			var r = {
+				name: 'foo',
+				default: true
+			};
+			var configRemoteProvider = new ConfigRemoteProvider({
+				path: path.join(tmpobj.name, 'foo.json')
+			});
+			configRemoteProvider.add(r, function(err) {
+				assert.deepEqual(err, undefined);
+				done();
+			});
+		});
 		it('should add a remote when config does not exist yet', function(done) {
 			var tmpobj = tmp.dirSync();
 			var r = {
@@ -45,7 +59,7 @@ describe('ConfigRemoteProvider', function() {
 		});
 	});
 	describe('#setDefault()', function() {
-		it('configRemoteProvider', function(done) {
+		it('should set an existing remote as default', function(done) {
 			var tmpobj = tmp.dirSync();
 			var r = {
 				name: 'foo'
@@ -65,6 +79,24 @@ describe('ConfigRemoteProvider', function() {
 						assert.deepEqual(configRemoteProvider.getDefault().name, 'foo2');
 						done();
 					});
+				});
+			});
+		});
+		it('should fail to set an non existing remote as default', function(done) {
+			var tmpobj = tmp.dirSync();
+			var r = {
+				name: 'foo',
+				default: true
+			};
+			var configRemoteProvider = new ConfigRemoteProvider({
+				path: path.join(tmpobj.name, 'foo.json')
+			});
+			configRemoteProvider.add(r, function(addErr) {
+				assert.deepEqual(addErr, undefined);
+				configRemoteProvider.setDefault('foo2', function(setDefaultErr) {
+					assert.deepEqual(setDefaultErr, "Could not determine remote `foo2`");
+					assert.deepEqual(configRemoteProvider.getDefault().name, 'foo');
+					done();
 				});
 			});
 		});

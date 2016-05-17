@@ -16,7 +16,6 @@
     "jsforce": "^1.6.3",
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
-    "nconf": "^0.8.4",
     "parse-diff": "^0.3.2",
     "tabtab": "0.0.4",
     "tmp": "0.0.28",
