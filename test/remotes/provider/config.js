@@ -26,7 +26,7 @@ describe('ConfigRemoteProvider', function() {
 				path: path.join(tmpobj.name, 'foo.json')
 			});
 			configRemoteProvider.add(r, function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				done();
 			});
 		});
@@ -40,7 +40,7 @@ describe('ConfigRemoteProvider', function() {
 				path: path.join(tmpobj.name, 'foo.json')
 			});
 			configRemoteProvider.add(r, function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				done();
 			});
 		});
@@ -53,7 +53,7 @@ describe('ConfigRemoteProvider', function() {
 				path: path.join(tmpobj.name, 'subdir', 'foo.json')
 			});
 			configRemoteProvider.add(r, function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				done();
 			});
 		});
@@ -71,11 +71,11 @@ describe('ConfigRemoteProvider', function() {
 				path: path.join(tmpobj.name, 'foo.json')
 			});
 			configRemoteProvider.add(r, function(addErr) {
-				assert.deepEqual(addErr, undefined);
+				assert(!addErr);
 				configRemoteProvider.add(r2, function(add2Err) {
-					assert.deepEqual(add2Err, undefined);
+					assert(!add2Err);
 					configRemoteProvider.setDefault('foo2', function(setDefaultErr) {
-						assert.deepEqual(setDefaultErr, undefined);
+						assert(!setDefaultErr);
 						assert.deepEqual(configRemoteProvider.getDefault().name, 'foo2');
 						done();
 					});
@@ -92,7 +92,7 @@ describe('ConfigRemoteProvider', function() {
 				path: path.join(tmpobj.name, 'foo.json')
 			});
 			configRemoteProvider.add(r, function(addErr) {
-				assert.deepEqual(addErr, undefined);
+				assert(!addErr);
 				configRemoteProvider.setDefault('foo2', function(setDefaultErr) {
 					assert.deepEqual(setDefaultErr, "Could not determine remote `foo2`");
 					assert.deepEqual(configRemoteProvider.getDefault().name, 'foo');
@@ -108,7 +108,7 @@ describe('ConfigRemoteProvider', function() {
 				path: path.join(tmpobj.name, 'foo.json')
 			});
 			configRemoteProvider.remove('foo', function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				done();
 			});
 		});
@@ -136,7 +136,7 @@ describe('ConfigRemoteProvider', function() {
 					default: true
 				},
 				function(addErr) {
-					assert.deepEqual(addErr, undefined);
+					assert(!addErr);
 					assert.deepEqual(configRemoteProvider.get().name, 'foo');
 					done();
 				}

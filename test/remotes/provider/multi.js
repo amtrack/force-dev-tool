@@ -49,7 +49,7 @@ describe('MultiRemoteProvider', function() {
 				name: 'foo'
 			};
 			multiProvider.add(r, function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				assert.deepEqual(multiProvider.list().length, 3);
 				done();
 			});
@@ -77,9 +77,9 @@ describe('MultiRemoteProvider', function() {
 				name: 'foo'
 			};
 			multiProvider.add(r, function(addErr) {
-				assert.deepEqual(addErr, undefined);
+				assert(!addErr);
 				multiProvider.setDefault('foo', function(err) {
-					assert.deepEqual(err, undefined);
+					assert(!err);
 					assert.deepEqual(multiProvider.getDefault().name, 'foo');
 					done();
 				});
@@ -119,9 +119,9 @@ describe('MultiRemoteProvider', function() {
 				name: 'foo'
 			};
 			multiProvider.add(r, function(addErr) {
-				assert.deepEqual(addErr, undefined);
+				assert(!addErr);
 				multiProvider.remove('foo', function(err) {
-					assert.deepEqual(err, undefined);
+					assert(!err);
 					assert.deepEqual(multiProvider.list().length, 2);
 					done();
 				});

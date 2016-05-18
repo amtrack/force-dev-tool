@@ -18,7 +18,7 @@ describe('Dummy Provider', function() {
 			dummy.add({
 				name: 'foo'
 			}, function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				done();
 			});
 		});
@@ -29,9 +29,9 @@ describe('Dummy Provider', function() {
 			dummy.add({
 				name: 'foo'
 			}, function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				dummy.remove('foo', function(removeErr) {
-					assert.deepEqual(removeErr, undefined);
+					assert(!removeErr);
 					done();
 				});
 			});
@@ -39,7 +39,7 @@ describe('Dummy Provider', function() {
 		it('should not fail on removing a non existing remote', function(done) {
 			var dummy = new Provider();
 			dummy.remove('foo', function(err) {
-				assert.deepEqual(err, undefined);
+				assert(!err);
 				done();
 			});
 		});
