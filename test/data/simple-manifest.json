@@ -14,6 +14,18 @@
     "createdById": "005w0000003zTZPAA2",
     "createdByName": "John Doe",
     "createdDate": "1970-01-01T00:00:00.000Z",
+    "fileName": "labels/CustomLabels.labels",
+    "fullName": "MyLabel",
+    "id": "1012400000FihxnAAB",
+    "lastModifiedById": "005w0000003zTZPAA2",
+    "lastModifiedByName": "John Doe",
+    "lastModifiedDate": "1970-01-01T00:00:00.000Z",
+    "manageableState": "unmanaged",
+    "type": "CustomLabel"
+}, {
+    "createdById": "005w0000003zTZPAA2",
+    "createdByName": "John Doe",
+    "createdDate": "1970-01-01T00:00:00.000Z",
     "fileName": "components/C1.component",
     "fullName": "C1",
     "id": "099w0000000EJqmAAG",

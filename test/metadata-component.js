@@ -63,5 +63,19 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fileName, path.join('documents', 'unfiled$public', 'Test.pdf'));
 			assert.deepEqual(metadataComponent.toString(), 'Document/unfiled$public/Test.pdf');
 		});
+		it('should return a metadata component for the CustomLabels container component', function() {
+			var metadataComponent = new MetadataComponent('CustomLabels/CustomLabels');
+			assert.deepEqual(metadataComponent.type, 'CustomLabels');
+			assert.deepEqual(metadataComponent.fullName, 'CustomLabels');
+			assert.deepEqual(metadataComponent.fileName, path.join('labels', 'CustomLabels.labels'));
+			assert.deepEqual(metadataComponent.toString(), 'CustomLabels/CustomLabels');
+		});
+		it('should return a metadata component for a CustomLabel', function() {
+			var metadataComponent = new MetadataComponent('CustomLabel/MyLabel');
+			assert.deepEqual(metadataComponent.type, 'CustomLabel');
+			assert.deepEqual(metadataComponent.fullName, 'MyLabel');
+			assert.deepEqual(metadataComponent.fileName, path.join('labels', 'CustomLabels.labels'));
+			assert.deepEqual(metadataComponent.toString(), 'CustomLabel/MyLabel');
+		});
 	});
 });

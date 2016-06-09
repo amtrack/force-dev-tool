@@ -49,6 +49,9 @@ describe('Manifest', function() {
 					members: ["Test", "Test2"],
 					name: ["ApexPage"]
 				}, {
+					members: ["MyLabel"],
+					name: ["CustomLabel"]
+				}, {
 					members: ["CustomLabels"],
 					name: ["CustomLabels"]
 				}],
@@ -76,7 +79,7 @@ describe('Manifest', function() {
 			var manifest = new Manifest({
 				manifestJSON: simpleManifestJSON
 			});
-			assert.deepEqual(manifest.getMetadataTypes(), ['ApexComponent', 'ApexPage', 'CustomLabels']);
+			assert.deepEqual(manifest.getMetadataTypes(), ['ApexComponent', 'ApexPage', 'CustomLabel', 'CustomLabels']);
 		});
 	});
 	describe('#getFileNames()', function() {
@@ -92,7 +95,7 @@ describe('Manifest', function() {
 			var manifest = new Manifest({
 				manifestJSON: simpleManifestJSON
 			});
-			assert.deepEqual(manifest.getComponentNames(), ['ApexComponent/C1', 'ApexComponent/Z1', 'ApexPage/Test', 'ApexPage/Test2', 'CustomLabels/CustomLabels']);
+			assert.deepEqual(manifest.getComponentNames(), ['ApexComponent/C1', 'ApexComponent/Z1', 'ApexPage/Test', 'ApexPage/Test2', 'CustomLabel/MyLabel', 'CustomLabels/CustomLabels']);
 		});
 	});
 	describe('#getMatches()', function() {
@@ -120,13 +123,13 @@ describe('Manifest', function() {
 				manifestJSON: manifest.getNotIgnoredMatches([])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels', 'pages/Test.page', 'pages/Test2.page']);
 			assert.deepEqual(new Manifest({
-				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabels/*'])
+				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabel/*', 'CustomLabels/*'])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'pages/Test.page', 'pages/Test2.page']);
 			assert.deepEqual(new Manifest({
 				manifestJSON: manifest.getNotIgnoredMatches(['**/*Test*'])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels']);
 			assert.deepEqual(new Manifest({
-				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabels/*', 'ApexPage/*'])
+				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabel/*', 'CustomLabels/*', 'ApexPage/*'])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component']);
 		});
 	});

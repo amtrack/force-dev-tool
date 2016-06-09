@@ -20,6 +20,10 @@ var components = [
 		fullName: 'Test2'
 	}),
 	new MetadataComponent({
+		type: 'CustomLabel',
+		fullName: 'MyLabel'
+	}),
+	new MetadataComponent({
 		type: 'CustomLabels',
 		fullName: 'CustomLabels'
 	})
@@ -36,6 +40,10 @@ var packageXml = ['<?xml version="1.0" encoding="UTF-8"?>',
 	'        <members>Test</members>',
 	'        <members>Test2</members>',
 	'        <name>ApexPage</name>',
+	'    </types>',
+	'    <types>',
+	'        <members>MyLabel</members>',
+	'        <name>CustomLabel</name>',
 	'    </types>',
 	'    <types>',
 	'        <members>CustomLabels</members>',
@@ -57,6 +65,10 @@ var packageXmlWithoutVersion = ['<?xml version="1.0" encoding="UTF-8"?>',
 	'        <members>Test</members>',
 	'        <members>Test2</members>',
 	'        <name>ApexPage</name>',
+	'    </types>',
+	'    <types>',
+	'        <members>MyLabel</members>',
+	'        <name>CustomLabel</name>',
 	'    </types>',
 	'    <types>',
 	'        <members>CustomLabels</members>',
