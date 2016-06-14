@@ -63,6 +63,14 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fileName, path.join('documents', 'unfiled$public', 'Test.pdf'));
 			assert.deepEqual(metadataComponent.toString(), 'Document/unfiled$public/Test.pdf');
 		});
+		// TODO: it should be possible to construct a DocumentFolder component
+		// it('should return a metadata component for a DocumentFolder', function() {
+		// 	var metadataComponent = new MetadataComponent('DocumentFolder/unfiled$public');
+		// 	assert.deepEqual(metadataComponent.type, 'DocumentFolder');
+		// 	assert.deepEqual(metadataComponent.fullName, 'unfiled$public/Test.pdf');
+		// 	assert.deepEqual(metadataComponent.fileName, path.join('documents', 'unfiled$public'));
+		// 	assert.deepEqual(metadataComponent.toString(), 'DocumentFolder/unfiled$public');
+		// });
 		it('should return a metadata component for the CustomLabels container component', function() {
 			var metadataComponent = new MetadataComponent('CustomLabels/CustomLabels');
 			assert.deepEqual(metadataComponent.type, 'CustomLabels');
