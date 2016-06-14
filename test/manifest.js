@@ -162,6 +162,7 @@ describe('Manifest', function() {
 			manifest.add(new MetadataComponent('AppMenu/Salesforce1'));
 			manifest.add(new MetadataComponent('Document/MyFolder'));
 			manifest.add(new MetadataComponent('MatchingRule/Account.Standard_Account_Match_Rule_v1_0'));
+			manifest.add(new MetadataComponent('CustomApplication/standard__Sales'));
 			assert.deepEqual(new Manifest({
 				manifestJSON: manifest.filterStandard()
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels', 'pages/Test.page', 'pages/Test2.page']);
