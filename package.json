@@ -33,6 +33,9 @@
     "jsdoc": "^3.3.2",
     "mocha": "^2.3.2"
   },
+  "engines": {
+    "node": ">= 0.12.0"
+  },
   "keywords": [
     "cli",
     "deployment",
