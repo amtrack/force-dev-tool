@@ -34,7 +34,6 @@ $ force-dev-tool remote add production user pass3 https://login.salesforce.com
 $ force-dev-tool fetch
 Fetching from remote mydev
 Created config/mydev-describe-metadata-result.json
-Created config/mydev-describe-tooling-objects-result.json
 Created config/mydev-manifest.json
 Fetching remotes finished.
 $ force-dev-tool package -a

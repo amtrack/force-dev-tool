@@ -11,6 +11,10 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>MyLabel</members>
+        <name>CustomLabel</name>
+    </types>
+    <types>
         <members>CustomLabels</members>
         <name>CustomLabels</name>
     </types>

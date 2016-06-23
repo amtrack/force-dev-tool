@@ -4,9 +4,9 @@ var assert = require("assert");
 var EnvRemoteProvider = require("../../../lib/remotes/provider/env");
 var Remote = require('../../../lib/remotes/remote');
 
-describe('EnvRemoteProvider', function(){
-	describe('#list()', function(){
-		it('should return remotes defined in environment variables', function(){
+describe('EnvRemoteProvider', function() {
+	describe('#list()', function() {
+		it('should return remotes defined in environment variables', function() {
 			var provider = new EnvRemoteProvider({
 				env: {
 					'SFDC_USERNAME': 'default@example.com',
@@ -22,9 +22,15 @@ describe('EnvRemoteProvider', function(){
 				}
 			});
 			var expected = [
-				new Remote('env', 'default@example.com', 'default', {default: true}),
-				new Remote('foo', 'foo@example.com', 'lowercase', {serverUrl: 'https://login.salesforce.com'}),
-				new Remote('FOO', 'foo@example.com', 'foo', {serverUrl: 'https://login.salesforce.com'})
+				new Remote('env', 'default@example.com', 'default', {
+					default: true
+				}),
+				new Remote('foo', 'foo@example.com', 'lowercase', {
+					serverUrl: 'https://login.salesforce.com'
+				}),
+				new Remote('FOO', 'foo@example.com', 'foo', {
+					serverUrl: 'https://login.salesforce.com'
+				})
 			];
 			assert.deepEqual(provider.list(), expected);
 		});

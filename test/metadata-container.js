@@ -160,7 +160,9 @@ describe('MetadataContainer', function() {
 		it('should determine files missing in the vinyls array', function() {
 			var metadataContainer = new MetadataContainer();
 			metadataContainer.manifest.add(new MetadataComponent("ApexClass/Test"));
-			assert.deepEqual(metadataContainer.determineMissingFiles(), [path.join("classes", "Test.cls"), path.join("classes", "Test.cls-meta.xml")]);
+			assert.deepEqual(
+				metadataContainer.determineMissingFiles(), [path.join("classes", "Test.cls"), path.join("classes", "Test.cls-meta.xml")]
+			);
 		});
 	});
 	describe('#stream()', function() {

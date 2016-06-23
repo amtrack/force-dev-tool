@@ -107,7 +107,7 @@ else if (validCommands.indexOf(command) !== -1)
 			cwd: process.cwd()
 		}, function(err, message){
 			if (err) {
-				console.log(chalk.red(err));
+				console.log(chalk.red(err instanceof Error ? err : new Error(err)));
 				process.exitCode = 1;
 				return;
 			}

@@ -4,12 +4,20 @@ var assert = require("assert");
 var path = require("path");
 var MetadataFile = require("../lib/metadata-file");
 var TestObject = require("./metadata-parts/objects");
+var TestLabels = require("./metadata-parts/labels");
 
 var objectWithoutFields = [TestObject.header, TestObject.footer].join("\n");
 var objectWithTestField = [TestObject.header, TestObject.fields.textField1, TestObject.footer].join("\n");
 var objectWithModifiedTestField = [TestObject.header, TestObject.fields.textField1Modified, TestObject.footer].join("\n");
 var objectWithRenamedTestField = [TestObject.header, TestObject.fields.textField2, TestObject.footer].join("\n");
-var objectWithTestAndATestField = [TestObject.header, TestObject.fields.textField1.replace('Test__c', 'ATest__c'), TestObject.fields.textField1, TestObject.footer].join("\n");
+var objectWithTestAndATestField = [
+	TestObject.header,
+	TestObject.fields.textField1.replace('Test__c', 'ATest__c'),
+	TestObject.fields.textField1,
+	TestObject.footer
+].join("\n");
+var labelsObjectWithoutLabels = [TestLabels.header, TestLabels.footer].join("\n");
+var labelsObjectWithLabel = [TestLabels.header, TestLabels.labels.label1, TestLabels.footer].join("\n");
 
 describe('MetadataFile', function() {
 	describe('#MetadataFile()', function() {
@@ -65,6 +73,48 @@ describe('MetadataFile', function() {
 			assert.deepEqual(component.fullName, 'Account');
 			assert.deepEqual(component.toString(), 'CustomObject/Account');
 		});
+		it('should return a component for an AuraDefinitionBundle', function() {
+			var component = new MetadataFile({
+				path: path.join('aura', 'TestApp')
+			}).getComponent();
+			assert.deepEqual(component.type, 'AuraDefinitionBundle');
+			assert.deepEqual(component.fileName, path.join('aura', 'TestApp'));
+			assert.deepEqual(component.fullName, 'TestApp');
+			assert.deepEqual(component.toString(), 'AuraDefinitionBundle/TestApp');
+		});
+		it('should return a component for a file belonging to an AuraDefinitionBundle', function() {
+			var component = new MetadataFile({
+				path: path.join('aura', 'TestApp', 'TestApp.cmp')
+			}).getComponent();
+			assert.deepEqual(component.type, 'AuraDefinitionBundle');
+			assert.deepEqual(component.fileName, path.join('aura', 'TestApp'));
+			assert.deepEqual(component.fullName, 'TestApp');
+			assert.deepEqual(component.toString(), 'AuraDefinitionBundle/TestApp');
+		});
+		it('should return a component for a folder', function() {
+			var component = new MetadataFile({
+				path: path.join('documents', 'MyFolder')
+			}).getComponent();
+			assert.deepEqual(component.type, 'Document');
+			assert.deepEqual(component.fileName, path.join('documents', 'MyFolder'));
+			assert.deepEqual(component.fullName, 'MyFolder');
+			assert.deepEqual(component.toString(), 'Document/MyFolder');
+		});
+		it('should return a component for a file in a folder', function() {
+			var component = new MetadataFile({
+				path: path.join('documents', 'MyFolder', 'MyFile.pdf')
+			}).getComponent();
+			assert.deepEqual(component.type, 'Document');
+			assert.deepEqual(component.fileName, path.join('documents', 'MyFolder', 'MyFile.pdf'));
+			assert.deepEqual(component.fullName, 'MyFolder/MyFile.pdf');
+			assert.deepEqual(component.toString(), 'Document/MyFolder/MyFile.pdf');
+		});
+		it('should return null otherwise', function() {
+			var component = new MetadataFile({
+				path: path.join('foo', 'bar')
+			}).getComponent();
+			assert.deepEqual(component, null);
+		});
 	});
 	describe('#getComponents()', function() {
 		it('should return the components of a metadata file', function() {
@@ -74,7 +124,10 @@ describe('MetadataFile', function() {
 			}).getComponents();
 			assert.deepEqual(Object.keys(components).length, 1);
 			// remove all spaces because of indentation
-			assert.deepEqual(components['CustomField']['Test__c'].replace(/ /g, ''), TestObject.fields.textField1.replace(/ /g, ''));
+			assert.deepEqual(
+				components['CustomField']['Test__c'].replace(/ /g, ''),
+				TestObject.fields.textField1.replace(/ /g, '')
+			);
 		});
 	});
 	describe('#diff()', function() {
@@ -85,9 +138,22 @@ describe('MetadataFile', function() {
 				contents: new Buffer(objectWithTestField)
 			});
 			var diffResult = mf1.diff(mf2);
+			// TODO: Treat added and modified components separately and merge arrays for final manifest.
 			assert.deepEqual(diffResult.manifest.manifest().length, 1);
 			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 0);
 			assert.deepEqual(diffResult.manifest.manifest()[0].toString(), 'CustomObject/Account');
+		});
+		it('should return removed custom object', function() {
+			var mf1 = new MetadataFile({
+				path: path.join('objects', 'Account.object'),
+				contents: new Buffer(objectWithTestField)
+			});
+			var mf2 = new MetadataFile();
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.manifest.manifest().length, 0);
+			// TODO: Decision required on how to count added/modified/removed components in the case of container components
+			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 2);
+			assert.deepEqual(diffResult.destructiveManifest.manifest()[0].toString(), 'CustomObject/Account');
 		});
 		it('should return added first custom field of a modified custom object', function() {
 			var mf1 = new MetadataFile({
@@ -115,7 +181,10 @@ describe('MetadataFile', function() {
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.manifest.manifest().length, 0);
 			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 1);
-			assert.deepEqual(diffResult.destructiveManifest.manifest()[0].toString(), 'CustomField/Account.Test__c');
+			assert.deepEqual(
+				diffResult.destructiveManifest.manifest()[0].toString(),
+				'CustomField/Account.Test__c'
+			);
 		});
 		it('should return added additional custom field of custom object', function() {
 			var mf1 = new MetadataFile({
@@ -173,6 +242,34 @@ describe('MetadataFile', function() {
 			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 1);
 			assert.deepEqual(diffResult.manifest.manifest()[0].toString(), 'CustomField/Account.Test2__c');
 			assert.deepEqual(diffResult.destructiveManifest.manifest()[0].toString(), 'CustomField/Account.Test__c');
+		});
+		it('should return an added custom label', function() {
+			var mf1 = new MetadataFile({
+				path: path.join('labels', 'CustomLabels.labels'),
+				contents: new Buffer(labelsObjectWithoutLabels)
+			});
+			var mf2 = new MetadataFile({
+				path: path.join('labels', 'CustomLabels.labels'),
+				contents: new Buffer(labelsObjectWithLabel)
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.manifest.manifest().length, 1);
+			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 0);
+			assert.deepEqual(diffResult.manifest.manifest()[0].toString(), 'CustomLabel/TestLabel');
+		});
+		it('should return a removed custom label', function() {
+			var mf1 = new MetadataFile({
+				path: path.join('labels', 'CustomLabels.labels'),
+				contents: new Buffer(labelsObjectWithLabel)
+			});
+			var mf2 = new MetadataFile({
+				path: path.join('labels', 'CustomLabels.labels'),
+				contents: new Buffer(labelsObjectWithoutLabels)
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.manifest.manifest().length, 0);
+			assert.deepEqual(diffResult.destructiveManifest.manifest().length, 1);
+			assert.deepEqual(diffResult.destructiveManifest.manifest()[0].toString(), 'CustomLabel/TestLabel');
 		});
 	});
 });

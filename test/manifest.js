@@ -2,6 +2,7 @@
 
 var assert = require("assert");
 var Manifest = require('../lib/manifest');
+var MetadataComponent = require('../lib/metadata-component');
 
 var testManifests = require('./metadata-parts/manifest');
 var simpleManifestJSON = require("./data/simple-manifest.json");
@@ -48,6 +49,9 @@ describe('Manifest', function() {
 					members: ["Test", "Test2"],
 					name: ["ApexPage"]
 				}, {
+					members: ["MyLabel"],
+					name: ["CustomLabel"]
+				}, {
 					members: ["CustomLabels"],
 					name: ["CustomLabels"]
 				}],
@@ -75,7 +79,7 @@ describe('Manifest', function() {
 			var manifest = new Manifest({
 				manifestJSON: simpleManifestJSON
 			});
-			assert.deepEqual(manifest.getMetadataTypes(), ['ApexComponent', 'ApexPage', 'CustomLabels']);
+			assert.deepEqual(manifest.getMetadataTypes(), ['ApexComponent', 'ApexPage', 'CustomLabel', 'CustomLabels']);
 		});
 	});
 	describe('#getFileNames()', function() {
@@ -91,7 +95,7 @@ describe('Manifest', function() {
 			var manifest = new Manifest({
 				manifestJSON: simpleManifestJSON
 			});
-			assert.deepEqual(manifest.getComponentNames(), ['ApexComponent/C1', 'ApexComponent/Z1', 'ApexPage/Test', 'ApexPage/Test2', 'CustomLabels/CustomLabels']);
+			assert.deepEqual(manifest.getComponentNames(), ['ApexComponent/C1', 'ApexComponent/Z1', 'ApexPage/Test', 'ApexPage/Test2', 'CustomLabel/MyLabel', 'CustomLabels/CustomLabels']);
 		});
 	});
 	describe('#getMatches()', function() {
@@ -119,14 +123,83 @@ describe('Manifest', function() {
 				manifestJSON: manifest.getNotIgnoredMatches([])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels', 'pages/Test.page', 'pages/Test2.page']);
 			assert.deepEqual(new Manifest({
-				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabels/*'])
+				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabel/*', 'CustomLabels/*'])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'pages/Test.page', 'pages/Test2.page']);
 			assert.deepEqual(new Manifest({
 				manifestJSON: manifest.getNotIgnoredMatches(['**/*Test*'])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels']);
 			assert.deepEqual(new Manifest({
-				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabels/*', 'ApexPage/*'])
+				manifestJSON: manifest.getNotIgnoredMatches(['CustomLabel/*', 'CustomLabels/*', 'ApexPage/*'])
 			}).getFileNames(), ['components/C1.component', 'components/Z1.component']);
+		});
+	});
+	describe('#filterTypes()', function() {
+		it('should filter a list of metadata components by a list of metadataTypes', function() {
+			var manifest = new Manifest({
+				manifestJSON: simpleManifestJSON
+			});
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.filterTypes([])
+			}).getFileNames(), []);
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.filterTypes(['ApexComponent'])
+			}).getFileNames(), ['components/C1.component', 'components/Z1.component']);
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.filterTypes(['ApexComponent', 'ApexPage'])
+			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'pages/Test.page', 'pages/Test2.page']);
+		});
+	});
+	describe('#filterStandard()', function() {
+		it('should filter a list of metadata components remaining custom metadata only', function() {
+			var manifest = new Manifest({
+				manifestJSON: simpleManifestJSON
+			});
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.filterStandard()
+			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels', 'pages/Test.page', 'pages/Test2.page']);
+			// now add standard components
+			manifest.add(new MetadataComponent('CustomObject/Account'));
+			manifest.add(new MetadataComponent('AppMenu/Salesforce1'));
+			manifest.add(new MetadataComponent('Document/MyFolder'));
+			manifest.add(new MetadataComponent('MatchingRule/Account.Standard_Account_Match_Rule_v1_0'));
+			manifest.add(new MetadataComponent('CustomApplication/standard__Sales'));
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.filterStandard()
+			}).getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels', 'pages/Test.page', 'pages/Test2.page']);
+		});
+	});
+	describe('#transform()', function() {
+		it('should transform a list of metadata components to make it valid', function() {
+			var manifest = new Manifest();
+			manifest.add(new MetadataComponent({
+				type: 'DocumentFolder',
+				fullName: 'MyFolder',
+				fileName: 'documents/MyFolder'
+			}));
+			manifest.add(new MetadataComponent('Flow/MyFlow'))
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.transform()
+			}).getComponentNames(), ['Document/MyFolder', 'Flow/MyFlow-10']);
+		});
+	});
+	describe('#filterInvalid()', function() {
+		it('should filter a list of metadata components to make it valid', function() {
+			var manifest = new Manifest();
+			manifest.add(new MetadataComponent('Flow/MyFlow'));
+			manifest.add({
+				type: 'QuickAction',
+				fullName: 'Invalid',
+				fileName: 'quickActions/Invalid.quickAction',
+				id: '09D26000000tiuvEAA'
+			});
+			manifest.add(new MetadataComponent({
+				type: 'DocumentFolder',
+				fullName: 'unfiled$public',
+				fileName: 'documents/unfiled$public'
+			}));
+			assert.deepEqual(new Manifest({
+				manifestJSON: manifest.filterInvalid()
+			}).getComponentNames(), []);
 		});
 	});
 });

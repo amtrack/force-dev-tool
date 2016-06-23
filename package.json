@@ -16,7 +16,6 @@
     "jsforce": "^1.6.3",
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
-    "nconf": "^0.8.4",
     "parse-diff": "^0.3.2",
     "tabtab": "0.0.4",
     "tmp": "0.0.28",
@@ -31,7 +30,11 @@
     "istanbul": "^0.4.3",
     "js-beautify": "^1.6.2",
     "jsdoc": "^3.3.2",
-    "mocha": "^2.3.2"
+    "mocha": "^2.3.2",
+    "sinon": "^1.17.4"
+  },
+  "engines": {
+    "node": ">= 0.12.0"
   },
   "keywords": [
     "cli",

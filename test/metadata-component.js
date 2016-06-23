@@ -10,6 +10,21 @@ describe('MetadataComponent', function() {
 			var metadataComponent = new MetadataComponent('Test');
 			assert.deepEqual(metadataComponent, {});
 		});
+		it('should return a component with and without optional contents', function() {
+			var metadataComponent = new MetadataComponent({
+				type: 'ApexPage',
+				fullName: 'Test',
+				fileName: path.join('pages', 'Test.page')
+			});
+			assert.deepEqual(metadataComponent.contents, undefined);
+			var metadataComponentWithContents = new MetadataComponent({
+				type: 'ApexPage',
+				fullName: 'Test',
+				fileName: path.join('pages', 'Test.page'),
+				contents: 'hello'
+			});
+			assert.deepEqual(metadataComponentWithContents.contents, 'hello');
+		});
 		it('should return a metadata component for an ApexPage', function() {
 			var metadataComponent = new MetadataComponent('ApexPage/Test');
 			assert.deepEqual(metadataComponent.type, 'ApexPage');
@@ -47,6 +62,28 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fullName, 'unfiled$public/Test.pdf');
 			assert.deepEqual(metadataComponent.fileName, path.join('documents', 'unfiled$public', 'Test.pdf'));
 			assert.deepEqual(metadataComponent.toString(), 'Document/unfiled$public/Test.pdf');
+		});
+		// TODO: it should be possible to construct a DocumentFolder component
+		// it('should return a metadata component for a DocumentFolder', function() {
+		// 	var metadataComponent = new MetadataComponent('DocumentFolder/unfiled$public');
+		// 	assert.deepEqual(metadataComponent.type, 'DocumentFolder');
+		// 	assert.deepEqual(metadataComponent.fullName, 'unfiled$public/Test.pdf');
+		// 	assert.deepEqual(metadataComponent.fileName, path.join('documents', 'unfiled$public'));
+		// 	assert.deepEqual(metadataComponent.toString(), 'DocumentFolder/unfiled$public');
+		// });
+		it('should return a metadata component for the CustomLabels container component', function() {
+			var metadataComponent = new MetadataComponent('CustomLabels/CustomLabels');
+			assert.deepEqual(metadataComponent.type, 'CustomLabels');
+			assert.deepEqual(metadataComponent.fullName, 'CustomLabels');
+			assert.deepEqual(metadataComponent.fileName, path.join('labels', 'CustomLabels.labels'));
+			assert.deepEqual(metadataComponent.toString(), 'CustomLabels/CustomLabels');
+		});
+		it('should return a metadata component for a CustomLabel', function() {
+			var metadataComponent = new MetadataComponent('CustomLabel/MyLabel');
+			assert.deepEqual(metadataComponent.type, 'CustomLabel');
+			assert.deepEqual(metadataComponent.fullName, 'MyLabel');
+			assert.deepEqual(metadataComponent.fileName, path.join('labels', 'CustomLabels.labels'));
+			assert.deepEqual(metadataComponent.toString(), 'CustomLabel/MyLabel');
 		});
 	});
 });
