@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.5.0
+ * drop support for node v0.10
+ * format code using js-prettify
+ * refactoring
+ * improve code coverage
+ * add integration tests for cli
+
 ## 0.4.0
  * add `query` command for running a SOQL query
  * add `bulk` command for importing/exporting data
