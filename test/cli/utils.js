@@ -2,7 +2,7 @@
 
 var assert = require("assert");
 var path = require("path");
-var CliUtils = require('../lib/cli/utils');
+var CliUtils = require('../../lib/cli/utils');
 
 describe('CliUtils', function() {
 	describe('#readForceIgnore()', function() {
