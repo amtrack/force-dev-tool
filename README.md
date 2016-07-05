@@ -91,6 +91,42 @@ Manifest:
 exported metadata container to config/deployments/vat
 ```
 
+**Creating destructive deployments (reverting changes)**
+
+1\. By explicitly listing metadata files or metadata components
+```console
+$ force-dev-tool changeset create undo-vat --destructive src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
+```
+
+2\. By providing a unified diff (e.g. `git diff`)
+```console
+$ git diff feature/vat master | force-dev-tool changeset create undo-vat
+```
+
+Both approaches lead to the following result
+```console
+Manifest:
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+ <version>34.0</version>
+</Package>
+
+Destructive Manifest:
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+ <types>
+     <members>Account.VAT__c</members>
+     <name>CustomField</name>
+ </types>
+ <types>
+     <members>AccountExtensionVAT</members>
+     <name>ApexPage</name>
+ </types>
+</Package>
+
+exported metadata container to config/deployments/undo-vat
+```
+
 **Deploying metadata**
 
 ```console
