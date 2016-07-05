@@ -9,4 +9,4 @@ sed -i '' \
 	-e 's/"lastModifiedById".*/"lastModifiedById": "005w0000003zTZPAA2",/g' \
 	-e 's/"createdByName".*/"createdByName": "John Doe",/g' \
 	-e 's/"lastModifiedByName".*/"lastModifiedByName": "John Doe",/g' \
-	${DIR}/../test/*manifest.json
+	${DIR}/../test/data/*manifest.json
