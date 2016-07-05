@@ -28,6 +28,16 @@ $ force-dev-tool remote add build user pass2
 $ force-dev-tool remote add production user pass3 https://login.salesforce.com
 ```
 
+**Validating credentials for a given remote (optional)**
+
+```console
+$ force-dev-tool login mydev
+Logged in successfully to remote mydev.
+Use the following URL to open Salesforce in your web browser:
+
+https://mynamespace.my.salesforce.com/secur/frontdoor.jsp?sid=REDACTED
+```
+
 **Building a manifest**
 
 ```console
