@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.6.0
+
+ * add `login` command to log in using the Metadata API
+ * add example for creating a destructive deployment to README
+
 ## 0.5.0
  * drop support for node v0.10
  * format code using js-prettify
