@@ -49,4 +49,28 @@ describe('MetadataUtils', function() {
 			assert(!metadataUtils.isValidMetaFilename(path.join('foo', 'Foo')));
 		});
 	});
+
+	describe('#compareMetadataTypeNames()', function() {
+		it('should sort an array of metadata type names according to Salesforce', function() {
+			var unsorted = ['Settings', 'ApexPage', 'ApexClass', 'Workflow'];
+			var expected = ['ApexClass', 'ApexPage', 'Workflow', 'Settings'];
+			assert.deepEqual(unsorted.sort(metadataUtils.compareMetadataTypeNames), expected);
+		});
+	});
+
+	describe('#compareMetadataFileNames()', function() {
+		it('should sort an array of metadata file names according to Salesforce', function() {
+			var unsorted = ['D', 'C', 'B', 'A'];
+			var expected = ['A', 'B', 'C', 'D'];
+			assert.deepEqual(unsorted.sort(metadataUtils.compareMetadataFileNames), expected);
+		});
+	});
+
+	describe('#compareMetadataFullNames()', function() {
+		it('should sort an array of metadata full names according to Salesforce', function() {
+			var unsorted = ['D', 'C', 'B', 'A'];
+			var expected = ['A', 'B', 'C', 'D'];
+			assert.deepEqual(unsorted.sort(metadataUtils.compareMetadataFullNames), expected);
+		});
+	});
 });
