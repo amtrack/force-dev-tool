@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.7.0
+
+ * implement custom sort order for `package.xml`
+ * update default API version to `37.0`
+ * add integration test to validate deploying metadata
+ * update dependencies
+
 ## 0.6.0
 
  * add `login` command to log in using the Metadata API
