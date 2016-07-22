@@ -42,6 +42,13 @@ describe('MetadataComponent', function() {
 			});
 			assert.deepEqual(metadataComponentFromFullObject, metadataComponent);
 		});
+		it('should return a metadata component for a CustomObject', function() {
+			var metadataComponent = new MetadataComponent('CustomObject/Account');
+			assert.deepEqual(metadataComponent.type, 'CustomObject');
+			assert.deepEqual(metadataComponent.fullName, 'Account');
+			assert.deepEqual(metadataComponent.fileName, path.join('objects', 'Account.object'));
+			assert.deepEqual(metadataComponent.toString(), 'CustomObject/Account');
+		});
 		it('should return a metadata component for a CustomField', function() {
 			var metadataComponent = new MetadataComponent('CustomField/Account.Test__c');
 			assert.deepEqual(metadataComponent.type, 'CustomField');
@@ -85,5 +92,12 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fileName, path.join('labels', 'CustomLabels.labels'));
 			assert.deepEqual(metadataComponent.toString(), 'CustomLabel/MyLabel');
 		});
+	});
+	describe('#getMetadataType()', function() {
+		var metadataComponent = new MetadataComponent('CustomObject/Account');
+		var metadataType = metadataComponent.getMetadataType();
+		assert(metadataType);
+		assert(metadataType.childXmlNames);
+		assert(metadataType.childXmlNames.indexOf('CustomField') >= 0);
 	});
 });

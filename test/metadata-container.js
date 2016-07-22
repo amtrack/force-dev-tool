@@ -4,6 +4,7 @@ var assert = require("assert");
 var path = require("path");
 var MetadataContainer = require("../lib/metadata-container");
 var MetadataFile = require("../lib/metadata-file");
+var MetadataFileContainer = require("../lib/metadata-file-container");
 var MetadataComponent = require("../lib/metadata-component");
 var Manifest = require("../lib/manifest");
 var TestObject = require("./metadata-parts/objects");
@@ -11,7 +12,7 @@ var TestObject = require("./metadata-parts/objects");
 var objectWithOneTestField = [TestObject.header, TestObject.fields.textField1, TestObject.footer].join("\n");
 var objectWithTwoTestFields = [TestObject.header, TestObject.fields.textField1, TestObject.fields.textField2, TestObject.footer].join("\n");
 
-var customObject = new MetadataFile({
+var customObject = new MetadataFileContainer({
 	path: path.join("objects", "Account.object"),
 	contents: new Buffer(objectWithTwoTestFields)
 });
