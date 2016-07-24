@@ -101,15 +101,53 @@ describe('MetadataFile', function() {
 			assert.deepEqual(component, null);
 		});
 	});
+	describe('#diff()', function() {
+		it('should return added ApexPage', function() {
+			var mf1 = new MetadataFile();
+			var mf2 = new MetadataFile({
+				path: path.join('pages', 'Test.page')
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 1);
+			assert.deepEqual(diffResult.modified.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.added.manifest()[0].toString(), 'ApexPage/Test');
+		});
+		it('should return modified ApexPage', function() {
+			var mf1 = new MetadataFile({
+				path: path.join('pages', 'Test.page'),
+				contents: new Buffer('<apex:page ><h1>Hello World!</h1></apex:page>')
+			});
+			var mf2 = new MetadataFile({
+				path: path.join('pages', 'Test.page'),
+				contents: new Buffer('<apex:page ><h1>Bye World!</h1></apex:page>')
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 1);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest()[0].toString(), 'ApexPage/Test');
+		});
+		it('should return deleted ApexPage', function() {
+			var mf1 = new MetadataFile();
+			var mf2 = new MetadataFile({
+				path: path.join('pages', 'Test.page')
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 1);
+			assert.deepEqual(diffResult.modified.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.added.manifest()[0].toString(), 'ApexPage/Test');
+		});
+	});
 	describe('#getMetadataType()', function() {
 		it('should return a metadata type for a file', function() {
 			var f = new MetadataFile({
-				path: path.join('objects', 'Account.object')
+				path: path.join('classes', 'Test.cls')
 			});
 			var metadataType = f.getMetadataType();
 			assert(metadataType);
-			assert(metadataType.childXmlNames);
-			assert(metadataType.childXmlNames.indexOf('CustomField') >= 0);
+			assert.deepEqual(metadataType.xmlName, 'ApexClass');
 		});
 	});
 });

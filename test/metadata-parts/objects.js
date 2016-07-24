@@ -6,6 +6,9 @@ var header = ['<?xml version="1.0" encoding="UTF-8"?>',
 
 var footer = '</CustomObject>\n';
 
+var attribute = '<enableHistory>false</enableHistory>';
+var attributeModified = '<enableHistory>true</enableHistory>';
+
 var textField = [
 	'    <fields>',
 	'        <fullName>Test__c</fullName>',
@@ -41,6 +44,8 @@ var searchLayouts1Modified = [
 module.exports = {
 	header: header,
 	footer: footer,
+	attribute: attribute,
+	attributeModified: attributeModified,
 	fields: {
 		textField1: textField,
 		textField1Modified: textField.replace('<label>Test</label>', '<label>Test Modified</label>'),
