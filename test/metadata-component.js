@@ -56,6 +56,13 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fileName, path.join('objects', 'Account.object'));
 			assert.deepEqual(metadataComponent.toString(), 'CustomField/Account.Test__c');
 		});
+		it('should return a metadata component for a ProfileFieldLevelSecurity', function() {
+			var metadataComponent = new MetadataComponent('ProfileFieldLevelSecurity/Admin.Account.Test__c');
+			assert.deepEqual(metadataComponent.type, 'ProfileFieldLevelSecurity');
+			assert.deepEqual(metadataComponent.fullName, 'Admin.Account.Test__c');
+			assert.deepEqual(metadataComponent.fileName, path.join('profiles', 'Admin.profile'));
+			assert.deepEqual(metadataComponent.toString(), 'ProfileFieldLevelSecurity/Admin.Account.Test__c');
+		});
 		it('should return a metadata component for a AuraDefinitionBundle', function() {
 			var metadataComponent = new MetadataComponent('AuraDefinitionBundle/TestApp');
 			assert.deepEqual(metadataComponent.type, 'AuraDefinitionBundle');

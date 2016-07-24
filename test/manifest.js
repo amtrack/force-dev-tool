@@ -8,6 +8,36 @@ var MetadataComponent = require('../lib/metadata-component');
 var testManifests = require('./metadata-parts/manifest');
 
 describe('Manifest', function() {
+	describe('#constructor()', function() {
+		it('should initialize a Manifest and remove duplicate components', function() {
+			var manifest = new Manifest({
+				manifestJSON: [new MetadataComponent('ApexClass/TestClass'), new MetadataComponent('ApexClass/TestClass')]
+			});
+			assert.deepEqual(manifest.manifest().length, 1);
+		});
+	});
+	describe('#rollup()', function() {
+		it('should transform a list of metadata components to resolve to its parent', function() {
+			var manifest = new Manifest();
+			manifest.add(new MetadataComponent({
+				type: 'ProfileApexClassAccess',
+				fullName: 'Admin.TestClass',
+				fileName: 'profiles/Admin.profile'
+			}));
+			assert.deepEqual(manifest.rollup().getComponentNames(), ['Profile/Admin']);
+		});
+	});
+	describe('#filterUnnamed()', function() {
+		it('should filter a list of metadata components to ignore unnamed child components', function() {
+			var manifest = new Manifest();
+			manifest.add(new MetadataComponent({
+				type: 'ProfileApexClassAccess',
+				fullName: 'Admin.TestClass',
+				fileName: 'profiles/Admin.profile'
+			}));
+			assert.deepEqual(manifest.filterUnnamed().getComponentNames(), []);
+		});
+	});
 	describe('#manifest()', function() {
 		it('should return an empty manifest as JSON', function() {
 			var manifest = new Manifest();

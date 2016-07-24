@@ -5,6 +5,7 @@ var path = require("path");
 var MetadataFileContainer = require("../lib/metadata-file-container");
 var TestObject = require("./metadata-parts/objects");
 var TestLabels = require("./metadata-parts/labels");
+var TestProfile = require("./metadata-parts/profiles");
 
 var objectWithoutFields = [TestObject.header, TestObject.attribute, TestObject.footer].join("\n");
 // var objectWithoutFieldsModified = [TestObject.header, TestObject.attributeModified, TestObject.footer].join("\n");
@@ -19,6 +20,12 @@ var objectWithTestAndATestField = [
 ].join("\n");
 var labelsObjectWithoutLabels = [TestLabels.header, TestLabels.footer].join("\n");
 var labelsObjectWithLabel = [TestLabels.header, TestLabels.labels.label1, TestLabels.footer].join("\n");
+var profileWithoutClassAccess = [TestProfile.header, TestProfile.footer].join("\n");
+var profileWithClassAccess = [TestProfile.header, TestProfile.classAccesses.classAccess1, TestProfile.footer].join("\n");
+var profileWithClassAccessModified = [TestProfile.header, TestProfile.classAccesses.classAccess1Modified, TestProfile.footer].join("\n");
+var profileWithoutFieldPermission = [TestProfile.header, TestProfile.footer].join("\n");
+var profileWithFieldPermission = [TestProfile.header, TestProfile.fieldPermissions.fieldPermission1, TestProfile.footer].join("\n");
+var profileWithFieldPermissionModified = [TestProfile.header, TestProfile.fieldPermissions.fieldPermission1Modified, TestProfile.footer].join("\n");
 
 describe('MetadataFileContainer', function() {
 	describe('#MetadataFileContainer()', function() {
@@ -29,17 +36,41 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(f.path, path.join('pages', 'Test.page'));
 		});
 	});
-	describe('#getComponents()', function() {
+	describe('#parse()', function() {
 		it('should return the components of a metadata file', function() {
-			var components = new MetadataFileContainer({
+			var mfc = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
 				contents: new Buffer(objectWithTestField)
-			}).getComponents();
-			assert.deepEqual(Object.keys(components).length, 1);
+			});
+			assert.deepEqual(mfc.components.length, 1);
 			// remove all spaces because of indentation
 			assert.deepEqual(
-				components['CustomField']['Test__c'].replace(/ /g, ''),
+				mfc.components[0].contents.replace(/ /g, ''),
 				TestObject.fields.textField1.replace(/ /g, '')
+			);
+		});
+		it('should return the ProfileApexClassAccess of a metadata file', function() {
+			var mfc = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithClassAccess)
+			});
+			assert.deepEqual(mfc.components.length, 1);
+			// remove all spaces because of indentation
+			assert.deepEqual(
+				mfc.components[0].contents.replace(/ /g, ''),
+				TestProfile.classAccesses.classAccess1.replace(/ /g, '')
+			);
+		});
+		it('should return the ProfileFieldLevelSecurity of a metadata file', function() {
+			var mfc = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithFieldPermission)
+			});
+			assert.deepEqual(mfc.components.length, 1);
+			// remove all spaces because of indentation
+			assert.deepEqual(
+				mfc.components[0].contents.replace(/ /g, ''),
+				TestProfile.fieldPermissions.fieldPermission1.replace(/ /g, '')
 			);
 		});
 	});
@@ -55,21 +86,66 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(diffResult.deleted.manifest().length, 0);
 			assert.deepEqual(diffResult.added.manifest()[0].toString(), 'CustomObject/Account');
 		});
-		// it('should return modified custom object of a custom object', function() {
-		// 	var mf1 = new MetadataFileContainer({
-		// 		path: path.join('objects', 'Account.object'),
-		// 		contents: new Buffer(objectWithoutFields)
-		// 	});
-		// 	var mf2 = new MetadataFileContainer({
-		// 		path: path.join('objects', 'Account.object'),
-		// 		contents: new Buffer(objectWithoutFieldsModified)
-		// 	});
-		// 	var diffResult = mf1.diff(mf2);
-		// 	assert.deepEqual(diffResult.added.manifest().length, 0);
-		// 	assert.deepEqual(diffResult.modified.manifest().length, 1);
-		// 	assert.deepEqual(diffResult.deleted.manifest().length, 0);
-		// 	assert.deepEqual(diffResult.modified.manifest()[0].toString(), 'CustomObject/Account');
-		// });
+		it('should return an added ProfileApexClassAccess of a profile', function() {
+			var mf1 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithoutClassAccess)
+			});
+			var mf2 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithClassAccess)
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 1);
+			assert.deepEqual(diffResult.modified.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.added.manifest()[0].toString(), 'ProfileApexClassAccess/Admin.TestClass');
+		});
+		it('should return an added ProfileFieldLevelSecurity of a profile', function() {
+			var mf1 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithoutFieldPermission)
+			});
+			var mf2 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithFieldPermission)
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 1);
+			assert.deepEqual(diffResult.modified.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.added.manifest()[0].toString(), 'ProfileFieldLevelSecurity/Admin.Account.VAT__c');
+		});
+		it('should return a modified ProfileApexClassAccess of a profile', function() {
+			var mf1 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithClassAccess)
+			});
+			var mf2 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithClassAccessModified)
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 1);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest()[0].toString(), 'ProfileApexClassAccess/Admin.TestClass');
+		});
+		it('should return a modified ProfileFieldLevelSecurity of a profile', function() {
+			var mf1 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithFieldPermission)
+			});
+			var mf2 = new MetadataFileContainer({
+				path: path.join('profiles', 'Admin.profile'),
+				contents: new Buffer(profileWithFieldPermissionModified)
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 1);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest()[0].toString(), 'ProfileFieldLevelSecurity/Admin.Account.VAT__c');
+		});
 		it('should return removed custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
