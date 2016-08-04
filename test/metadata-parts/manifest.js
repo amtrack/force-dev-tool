@@ -3,30 +3,12 @@
 var MetadataComponent = require('../../lib/metadata-component');
 
 var components = [
-	new MetadataComponent({
-		type: 'ApexComponent',
-		fullName: 'C1'
-	}),
-	new MetadataComponent({
-		type: 'ApexComponent',
-		fullName: 'Z1'
-	}),
-	new MetadataComponent({
-		type: 'ApexPage',
-		fullName: 'Test'
-	}),
-	new MetadataComponent({
-		type: 'ApexPage',
-		fullName: 'Test2'
-	}),
-	new MetadataComponent({
-		type: 'CustomLabel',
-		fullName: 'MyLabel'
-	}),
-	new MetadataComponent({
-		type: 'CustomLabels',
-		fullName: 'CustomLabels'
-	})
+	new MetadataComponent('ApexComponent/C1'),
+	new MetadataComponent('ApexComponent/Z1'),
+	new MetadataComponent('ApexPage/Test'),
+	new MetadataComponent('ApexPage/Test2'),
+	new MetadataComponent('CustomLabel/MyLabel'),
+	new MetadataComponent('CustomLabels/CustomLabels')
 ];
 
 var packageXml = ['<?xml version="1.0" encoding="UTF-8"?>',
