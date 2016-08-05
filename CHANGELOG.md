@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.7.1
+
+ * fix issue with minor release of vinyl npm package
+
 ## 0.7.0
 
  * implement custom sort order for `package.xml`
