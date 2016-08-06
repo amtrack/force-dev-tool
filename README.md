@@ -43,8 +43,7 @@ https://mynamespace.my.salesforce.com/secur/frontdoor.jsp?sid=REDACTED
 ```console
 $ force-dev-tool fetch
 Fetching from remote mydev
-Created config/mydev-describe-metadata-result.json
-Created config/mydev-manifest.json
+Created config/mydev-fetch-result.json
 Fetching remotes finished.
 $ force-dev-tool package -a
 Created src/package.xml

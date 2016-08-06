@@ -68,6 +68,24 @@ describe('Manifest', function() {
 			assert.equal(manifest.toPackageXml(), testManifests.packageXml);
 		});
 	});
+	describe('#fromFetchResult()', function() {
+		it('should parse a fetch result', function() {
+			var describeMetadataResult = require('../lib/describe-metadata-result.json');
+			var fileProperties = require('./data/fetch-results/file-properties');
+			var manifest = Manifest.fromFetchResult({
+				describeMetadataResult: describeMetadataResult,
+				fileProperties: [
+					fileProperties.CustomLabels.CustomLabels,
+					fileProperties.CustomLabel.MyLabel,
+					fileProperties.ApexComponent.C1,
+					fileProperties.ApexComponent.Z1,
+					fileProperties.ApexPage.Test,
+					fileProperties.ApexPage.Test2
+				]
+			});
+			assert.equal(manifest.manifestJSON.length, 6);
+		});
+	});
 	describe('#getMetadataTypes()', function() {
 		it('should return a list of metadataTypes', function() {
 			var manifest = new Manifest({
@@ -149,36 +167,6 @@ describe('Manifest', function() {
 			manifest.add(new MetadataComponent('MatchingRule/Account.Standard_Account_Match_Rule_v1_0'));
 			manifest.add(new MetadataComponent('CustomApplication/standard__Sales'));
 			assert.deepEqual(manifest.filterStandard().getFileNames(), ['components/C1.component', 'components/Z1.component', 'labels/CustomLabels.labels', 'pages/Test.page', 'pages/Test2.page']);
-		});
-	});
-	describe('#transform()', function() {
-		it('should transform a list of metadata components to make it valid', function() {
-			var manifest = new Manifest();
-			manifest.add(new MetadataComponent({
-				type: 'DocumentFolder',
-				fullName: 'MyFolder',
-				fileName: 'documents/MyFolder'
-			}));
-			manifest.add(new MetadataComponent('Flow/MyFlow'));
-			assert.deepEqual(manifest.transform().getComponentNames(), ['Document/MyFolder', 'Flow/MyFlow-10']);
-		});
-	});
-	describe('#filterInvalid()', function() {
-		it('should filter a list of metadata components to make it valid', function() {
-			var manifest = new Manifest();
-			manifest.add(new MetadataComponent('Flow/MyFlow'));
-			manifest.add({
-				type: 'QuickAction',
-				fullName: 'Invalid',
-				fileName: 'quickActions/Invalid.quickAction',
-				id: '09D26000000tiuvEAA'
-			});
-			manifest.add(new MetadataComponent({
-				type: 'DocumentFolder',
-				fullName: 'unfiled$public',
-				fileName: 'documents/unfiled$public'
-			}));
-			assert.deepEqual(manifest.filterInvalid().getComponentNames(), []);
 		});
 	});
 });
