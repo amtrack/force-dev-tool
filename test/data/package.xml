@@ -14,9 +14,5 @@
         <members>MyLabel</members>
         <name>CustomLabel</name>
     </types>
-    <types>
-        <members>CustomLabels</members>
-        <name>CustomLabels</name>
-    </types>
     <version>33.0</version>
 </Package>

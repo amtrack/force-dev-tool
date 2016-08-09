@@ -7,8 +7,7 @@ var components = [
 	new MetadataComponent('ApexComponent/Z1'),
 	new MetadataComponent('ApexPage/Test'),
 	new MetadataComponent('ApexPage/Test2'),
-	new MetadataComponent('CustomLabel/MyLabel'),
-	new MetadataComponent('CustomLabels/CustomLabels')
+	new MetadataComponent('CustomLabel/MyLabel')
 ];
 
 var packageXml = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -26,10 +25,6 @@ var packageXml = ['<?xml version="1.0" encoding="UTF-8"?>',
 	'    <types>',
 	'        <members>MyLabel</members>',
 	'        <name>CustomLabel</name>',
-	'    </types>',
-	'    <types>',
-	'        <members>CustomLabels</members>',
-	'        <name>CustomLabels</name>',
 	'    </types>',
 	'    <version>33.0</version>',
 	'</Package>',
@@ -51,10 +46,6 @@ var packageXmlWithoutVersion = ['<?xml version="1.0" encoding="UTF-8"?>',
 	'    <types>',
 	'        <members>MyLabel</members>',
 	'        <name>CustomLabel</name>',
-	'    </types>',
-	'    <types>',
-	'        <members>CustomLabels</members>',
-	'        <name>CustomLabels</name>',
 	'    </types>',
 	'</Package>',
 	''
