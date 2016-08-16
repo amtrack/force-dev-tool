@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.8.0
+
+ * improve generating the package.xml file by fetching more information from remotes
+	* determine active Flow version by running a SOQL query
+	* identify PersonAccount RecordTypes listed as Account RecordTypes by running a SOQL query
+	* retrieve api versions from remote
+ * improve creating changesets
+	* implement diffing profiles and permissionsets
+
 ## 0.7.1
 
  * fix issue with minor release of vinyl npm package
