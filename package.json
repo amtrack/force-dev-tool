@@ -26,7 +26,7 @@
     "yauzl": "^2.3.1"
   },
   "devDependencies": {
-    "eslint": "^2.13.1",
+    "eslint": "^3.3.1",
     "istanbul": "^0.4.4",
     "js-beautify": "^1.6.2",
     "jsdoc": "^3.3.2",
