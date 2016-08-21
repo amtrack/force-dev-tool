@@ -1,6 +1,6 @@
 {
   "name": "force-dev-tool",
-  "description": "Command line tool supporting the Force.com development and deployment workflow",
+  "description": "Command line tool supporting the Force.com development lifecycle",
   "version": "0.8.0",
   "author": "Matthias Rolke <mr.amtrack@gmail.com>",
   "bin": {
@@ -44,7 +44,8 @@
     "forcedotcom",
     "metadata",
     "salesforce",
-    "sfdc"
+    "sfdc",
+    "lifecycle"
   ],
   "license": "MIT",
   "main": "lib/index.js",

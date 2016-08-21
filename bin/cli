@@ -35,9 +35,9 @@ var doc = "force-dev-tool.\n" +
 "	deployTest      Deploy metadata and run local unit tests\n" +
 "	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
 "	query           Execute a SOQL query returing JSON\n" +
-"	bulk            Import/export data in CSV format using the bulk API\n" +
-"	execute         Execute anonymous Apex\n" +
-"	completion      Print command line completion\n" +
+"	bulk            (alpha) Import/export data in CSV format using the bulk API\n" +
+"	execute         (alpha) Execute anonymous Apex\n" +
+"	completion      (alpha) Print command line completion\n" +
 "\n" +
 "See 'force-dev-tool help <command>' for more information on a specific command.";
 

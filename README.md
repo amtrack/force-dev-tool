@@ -1,6 +1,6 @@
 # force-dev-tool
 
-> Command line tool supporting the Force.com development and deployment workflow
+> Command line tool supporting the Force.com development lifecycle
 
 [![Build Status](https://travis-ci.org/amtrack/force-dev-tool.svg?branch=master)](https://travis-ci.org/amtrack/force-dev-tool) OS X / Linux
 
@@ -17,6 +17,36 @@ $ npm install --global force-dev-tool
 
 ```console
 $ force-dev-tool --help
+force-dev-tool.
+
+Usage:
+  force-dev-tool <command> [<args>...]
+  force-dev-tool -h | --help
+  force-dev-tool --version
+
+Options:
+  -h --help       Show this screen.
+  --version       Show version.
+
+Commands:
+  help            Print help for a command or in general
+  remote          Manage orgs (list, add, remove, set default, set password)
+  login           Login using Metadata API and show login URL
+  fetch           Fetch describe information from a remote
+  package         Generate a package.xml file from local describe information
+  retrieve        Retrieve metadata specified in package.xml
+  test            Execute unit tests
+  validate        Validate metadata deployment
+  validateTest    Validate metadata deployment and run local unit tests
+  deploy          Deploy metadata
+  deployTest      Deploy metadata and run local unit tests
+  changeset       Create a changeset/deployment from a unified diff input or cli args
+  query           Execute a SOQL query returing JSON
+  bulk            (alpha) Import/export data in CSV format using the bulk API
+  execute         (alpha) Execute anonymous Apex
+  completion      (alpha) Print command line completion
+
+See 'force-dev-tool help <command>' for more information on a specific command.
 ```
 
 ## Examples
@@ -40,16 +70,29 @@ https://mynamespace.my.salesforce.com/secur/frontdoor.jsp?sid=REDACTED
 
 **Building a manifest**
 
+Fetch various information from the remote first
+
 ```console
-$ force-dev-tool fetch
+$ force-dev-tool fetch --progress
 Fetching from remote mydev
+API Versions
+Available Metadata Types
+Folders
+Metadata Components
+RecordTypes of PersonAccount
+Active Flow versions
 Created config/mydev-fetch-result.json
 Fetching remotes finished.
+```
+
+Now generate a `package.xml` file based on the fetched information
+
+```console
 $ force-dev-tool package -a
 Created src/package.xml
 ```
 
-In order to exclude certain metadata components from being added to the manifest, add patterns (similar to `.gitignore`) to `.forceignore`.
+In order to exclude certain metadata components from being added to the `package.xml` file, add patterns (similar to `.gitignore`) to `.forceignore`.
 
 **Retrieving metadata**
 
@@ -160,6 +203,8 @@ The following environment variables will be available as remote environment `env
 $ force-dev-tool validateTest env
 ```
 
+Note: You can also define named remotes (e.g. `SFDC_ci_USERNAME`, `SFDC_ci_PASSWORD`, `SFDC_ci_SERVER_URL`).
+
 **Executing a SOQL query**
 
 ```console
@@ -186,7 +231,7 @@ $ force-dev-tool query "SELECT COUNT(Id) c FROM Account"
 ]
 ```
 
-**Exporting/importing data using the bulk API**
+**(alpha) Exporting/importing data using the bulk API**
 
 Exporting data
 
@@ -203,11 +248,19 @@ Updating data
 $ force-dev-tool bulk update Account --in Accounts.csv --out Accounts-update-results.csv
 ```
 
-**Executing anonymous Apex**
+Note: Importing more than one batch is currently not yet supported.
+
+**(alpha) Executing anonymous Apex**
 
 ```console
 $ echo "insert new Account(Name = 'Test Account');" | force-dev-tool execute
 ```
+
+## Getting help
+
+Please see the [wiki](https://github.com/amtrack/force-dev-tool/wiki) for [Motivation](https://github.com/amtrack/force-dev-tool/wiki/Motivation) and [Troubleshooting](https://github.com/amtrack/force-dev-tool/wiki/Troubleshooting) and [Resources](https://github.com/amtrack/force-dev-tool/wiki/Resources).
+
+Feel free to open issues with questions.
 
 ## License
 MIT © [Matthias Rolke](mailto:mr.amtrack@gmail.com)
