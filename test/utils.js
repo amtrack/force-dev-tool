@@ -5,6 +5,31 @@ var metadataUtils = require("../lib/utils");
 var path = require('path');
 
 describe('MetadataUtils', function() {
+	describe('#ensureArray()', function() {
+		context('when passed an Array', function() {
+			it('returns the argument', function() {
+				var array = ['i am an array']
+				assert.strictEqual(metadataUtils.ensureArray(array), array);
+			});
+		});
+
+		context('when passed an Object', function() {
+			it('returns an Array containing the Object', function() {
+				var object = {
+					iAm: 'an object'
+				};
+				assert.deepEqual(metadataUtils.ensureArray(object), [object]);
+			});
+		});
+
+		context('when passed a falsy value', function() {
+			it('returns an empty Array', function() {
+				assert.deepEqual(metadataUtils.ensureArray(null), []);
+				assert.deepEqual(metadataUtils.ensureArray(undefined), []);
+			});
+		});
+	});
+
 	describe('#getFileNameWithoutExtension()', function() {
 		it('should return the filename without extension', function() {
 			assert.deepEqual(metadataUtils.getFileNameWithoutExtension(path.join('pages', 'Test.page')), 'Test');
