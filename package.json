@@ -61,6 +61,6 @@
     "lint": "eslint --ignore-path .gitignore .",
     "mocha": "mocha test/ --recursive",
     "test": "npm run lint && npm run istanbul",
-    "fmt": "glob-all 'lib/**/*.js' 'test/**/*.js' | xargs js-beautify -r"
+    "fmt": "glob-all 'lib/**/*.{js,json}' 'test/**/*.{js,json}' 'bin/cli' | xargs js-beautify -r"
   }
 }
