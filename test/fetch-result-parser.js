@@ -6,10 +6,27 @@ var FetchResultParser = require('../lib/fetch-result-parser');
 var MetadataComponent = require('../lib/metadata-component');
 
 var describeMetadataResult = require('../lib/describe-metadata-result.json');
+var apiVersions = require('./data/fetch-results/api-versions.json');
 var fileProperties = require('./data/fetch-results/file-properties');
 var soqlResponses = require('./data/fetch-results/soql-responses');
 
 describe('FetchResultParser', function() {
+	describe('#getComponents()', function() {
+		it('should return components', function() {
+			var fetchResult = new FetchResultParser({
+				fileProperties: []
+			});
+			assert.deepEqual(fetchResult.getComponents().length, 0);
+		});
+	});
+	describe('#getApiVersion()', function() {
+		it('should return the latest API version', function() {
+			var fetchResult = new FetchResultParser({
+				apiVersions: apiVersions
+			});
+			assert.deepEqual(fetchResult.getApiVersion(), "37.0");
+		});
+	});
 	describe('#filterManaged()', function() {
 		it('should filter components from installed managed packages', function() {
 			var fetchResult = new FetchResultParser({
