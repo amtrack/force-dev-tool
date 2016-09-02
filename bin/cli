@@ -11,37 +11,40 @@ var Fdt = require('../lib/index');
 var packageJson = require('../package.json');
 
 var doc = "force-dev-tool.\n" +
-"\n" +
-"Usage:\n" +
-"	force-dev-tool <command> [<args>...]\n" +
-"	force-dev-tool -h | --help\n" +
-"	force-dev-tool --version\n" +
-"\n" +
-"Options:\n" +
-"	-h --help       Show this screen.\n" +
-"	--version       Show version.\n" +
-"\n" +
-"Commands:\n" +
-"	help            Print help for a command or in general\n" +
-"	remote          Manage orgs (list, add, remove, set default, set password)\n" +
-"	login           Login using Metadata API and show login URL\n" +
-"	fetch           Fetch describe information from a remote\n" +
-"	package         Generate a package.xml file from local describe information\n" +
-"	retrieve        Retrieve metadata specified in package.xml\n" +
-"	test            Execute unit tests\n" +
-"	validate        Validate metadata deployment\n" +
-"	validateTest    Validate metadata deployment and run local unit tests\n" +
-"	deploy          Deploy metadata\n" +
-"	deployTest      Deploy metadata and run local unit tests\n" +
-"	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
-"	query           Execute a SOQL query returing JSON\n" +
-"	bulk            (alpha) Import/export data in CSV format using the bulk API\n" +
-"	execute         (alpha) Execute anonymous Apex\n" +
-"	completion      (alpha) Print command line completion\n" +
-"\n" +
-"See 'force-dev-tool help <command>' for more information on a specific command.";
+	"\n" +
+	"Usage:\n" +
+	"	force-dev-tool <command> [<args>...]\n" +
+	"	force-dev-tool -h | --help\n" +
+	"	force-dev-tool --version\n" +
+	"\n" +
+	"Options:\n" +
+	"	-h --help       Show this screen.\n" +
+	"	--version       Show version.\n" +
+	"\n" +
+	"Commands:\n" +
+	"	help            Print help for a command or in general\n" +
+	"	remote          Manage orgs (list, add, remove, set default, set password)\n" +
+	"	login           Login using Metadata API and show login URL\n" +
+	"	fetch           Fetch describe information from a remote\n" +
+	"	package         Generate a package.xml file from local describe information\n" +
+	"	retrieve        Retrieve metadata specified in package.xml\n" +
+	"	test            Execute unit tests\n" +
+	"	validate        Validate metadata deployment\n" +
+	"	validateTest    Validate metadata deployment and run local unit tests\n" +
+	"	deploy          Deploy metadata\n" +
+	"	deployTest      Deploy metadata and run local unit tests\n" +
+	"	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
+	"	query           Execute a SOQL query returing JSON\n" +
+	"	bulk            (alpha) Import/export data in CSV format using the bulk API\n" +
+	"	execute         (alpha) Execute anonymous Apex\n" +
+	"	completion      (alpha) Print command line completion\n" +
+	"\n" +
+	"See 'force-dev-tool help <command>' for more information on a specific command.";
 
-var opts = docopt(doc, {version: packageJson.version, options_first: true});
+var opts = docopt(doc, {
+	version: packageJson.version,
+	options_first: true
+});
 
 var command = opts['<command>'];
 var args = opts['<args>'];
@@ -52,15 +55,19 @@ var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join(
 var storagePath = process.cwd();
 var storagePathBestGuess = findUp.sync(path.join('src', 'package.xml'));
 if (storagePathBestGuess) {
-	storagePath = storagePathBestGuess.substr(0, storagePathBestGuess.lastIndexOf(path.join('src', 'package.xml')) -1);
+	storagePath = storagePathBestGuess.substr(0, storagePathBestGuess.lastIndexOf(path.join('src', 'package.xml')) - 1);
 }
 var storage = new Fdt.Storage({
 	path: storagePath
 });
 var remotes = new Fdt.Providers.Multi({
 	providers: [
-		new Fdt.Providers.Env({env: process.env}),
-		new Fdt.Providers.Config({path: path.join(storage.getConfigPath(), '.orgs.json')})
+		new Fdt.Providers.Env({
+			env: process.env
+		}),
+		new Fdt.Providers.Config({
+			path: path.join(storage.getConfigPath(), '.orgs.json')
+		})
 	]
 });
 var project = new Fdt.Project({
@@ -73,12 +80,10 @@ if (command === 'help') {
 	if (validCommands.indexOf(topic) !== -1) {
 		SubCommand = require('../lib/cli/' + topic);
 		new SubCommand(project).help();
-	}
-	else {
+	} else {
 		console.log(doc);
 	}
-}
-else if (command === 'completion') {
+} else if (command === 'completion') {
 	return tabtab.complete('force-dev-tool', function(err, data) {
 		if (err || !data) {
 			return;
@@ -96,9 +101,7 @@ else if (command === 'completion') {
 		}
 		tabtab.log(validCommands.concat(['help', '--help', '--version', '-h']), data);
 	});
-}
-else if (validCommands.indexOf(command) !== -1)
-{
+} else if (validCommands.indexOf(command) !== -1) {
 	SubCommand = require('../lib/cli/' + command);
 	try {
 		new SubCommand(project).process({
@@ -106,7 +109,7 @@ else if (validCommands.indexOf(command) !== -1)
 			stdout: process.stdout,
 			stderr: process.stderr,
 			cwd: process.cwd()
-		}, function(err, message){
+		}, function(err, message) {
 			if (err) {
 				console.log(chalk.red(err instanceof Error ? err : new Error(err)));
 				process.exitCode = 1;
@@ -123,8 +126,7 @@ else if (validCommands.indexOf(command) !== -1)
 		console.log(chalk.red(processErr));
 		process.exitCode = 1;
 	}
-}
-else {
+} else {
 	console.log(doc);
 	process.exitCode = 1;
 }
