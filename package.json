@@ -13,6 +13,7 @@
     "docopt": "^0.6.2",
     "find-up": "^1.1.2",
     "fs-extra": "^0.30.0",
+    "glob": "^7.0.6",
     "jsforce": "^1.7.0",
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
@@ -23,7 +24,8 @@
     "vinyl": "^1.2.0",
     "vinyl-fs": "^2.4.3",
     "xmldoc": "github:nyurik/xmldoc#3107ca5fe10227539299fb1bb82992d5b824bc37",
-    "yauzl": "^2.3.1"
+    "yauzl": "^2.3.1",
+    "yazl": "^2.4.1"
   },
   "devDependencies": {
     "eslint": "^2.13.1",
