@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.9.0
+
+ * fix `npm run fmt` for macOS
+ * fix getApiVersion() of fetch-result-parser
+ * implement zipping and unzipping based on yazl and yauzl
+	* fixes issues deploying metadata with file names containing umlauts
+	* adds ability to deploy zip files instead of directories
+ * add `package version` command to get/set api version of a `package.xml`
+ * add `info` command to show describe information for a remote
+
 ## 0.8.0
 
  * improve generating the package.xml file by fetching more information from remotes
