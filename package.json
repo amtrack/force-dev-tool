@@ -16,7 +16,7 @@
     "jsforce": "^1.7.0",
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
-    "parse-diff": "^0.3.2",
+    "parse-diff": "^0.4.0",
     "tabtab": "0.0.4",
     "tmp": "0.0.28",
     "underscore": "^1.8.3",
