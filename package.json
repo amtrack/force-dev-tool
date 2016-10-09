@@ -17,7 +17,7 @@
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
     "parse-diff": "^0.3.2",
-    "tabtab": "0.0.4",
+    "tabtab": "2.1.1",
     "tmp": "0.0.28",
     "underscore": "^1.8.3",
     "vinyl": "^1.2.0",
