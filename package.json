@@ -32,7 +32,7 @@
     "istanbul": "^0.4.4",
     "js-beautify": "^1.6.2",
     "jsdoc": "^3.3.2",
-    "mocha": "^2.3.2",
+    "mocha": "^3.1.1",
     "sinon": "^1.17.4"
   },
   "engines": {
