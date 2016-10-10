@@ -191,6 +191,10 @@ $ force-dev-tool test
 
 Note: Runs local unit tests using an empty deployment.
 
+```console
+$ force-dev-tool test --classNames 'Test_Foo Test_Bar'
+```
+
 **Using `force-dev-tool` in a build script**
 
 The following environment variables will be available as remote environment `env`:
