@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.10.0
+
+ * add --classNames option to test command (#42)
+
 ## 0.9.0
 
  * fix `npm run fmt` for macOS
