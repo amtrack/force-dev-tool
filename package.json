@@ -1,7 +1,7 @@
 {
   "name": "force-dev-tool",
   "description": "Command line tool supporting the Force.com development lifecycle",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "author": "Matthias Rolke <mr.amtrack@gmail.com>",
   "bin": {
     "force-dev-tool": "bin/cli"
