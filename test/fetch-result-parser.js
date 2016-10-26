@@ -24,7 +24,7 @@ describe('FetchResultParser', function() {
 			var fetchResult = new FetchResultParser({
 				apiVersions: apiVersions
 			});
-			assert.deepEqual(fetchResult.getApiVersion(), "37.0");
+			assert.deepEqual(fetchResult.getApiVersion(), "38.0");
 		});
 	});
 	describe('#filterManaged()', function() {
