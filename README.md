@@ -33,6 +33,7 @@ Commands:
   remote          Manage orgs (list, add, remove, set default, set password)
   login           Login using Metadata API and show login URL
   fetch           Fetch describe information from a remote
+  info            Show describe information from a remote
   package         Generate a package.xml file from local describe information
   retrieve        Retrieve metadata specified in package.xml
   test            Execute unit tests
