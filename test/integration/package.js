@@ -18,7 +18,7 @@ describe('force-dev-tool package', function() {
 	});
 	it('should get/set the api version of a package', function() {
 		this.slow(1000);
-		var packageVersionSetCmd = child.spawnSync("node", [fdt, 'package', 'version', '37.0'], {
+		var packageVersionSetCmd = child.spawnSync("node", [fdt, 'package', 'version', '38.0'], {
 			cwd: tmpobj.name
 		});
 		assert.deepEqual(packageVersionSetCmd.status, 0);
@@ -26,6 +26,6 @@ describe('force-dev-tool package', function() {
 			cwd: tmpobj.name
 		});
 		assert.deepEqual(packageVersionCmd.status, 0);
-		assert(/37\.0/.test(packageVersionCmd.stdout.toString()));
+		assert(new RegExp('38.0').test(packageVersionCmd.stdout.toString()));
 	});
 });

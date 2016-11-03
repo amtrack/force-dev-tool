@@ -128,7 +128,7 @@ Manifest:
      <members>AccountExtensionVAT</members>
      <name>ApexPage</name>
  </types>
- <version>37.0</version>
+ <version>38.0</version>
 </Package>
 
 exported metadata container to config/deployments/vat
@@ -151,7 +151,7 @@ Both approaches lead to the following result
 Manifest:
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
- <version>37.0</version>
+ <version>38.0</version>
 </Package>
 
 Destructive Manifest:
@@ -218,7 +218,7 @@ $ force-dev-tool query "SELECT Id, Name FROM Account LIMIT 1"
   {
     "attributes": {
       "type": "Account",
-      "url": "/services/data/v37.0/sobjects/Account/001200000183ZCFAA2"
+      "url": "/services/data/v38.0/sobjects/Account/001200000183ZCFAA2"
     },
     "Id": "001200000183ZCFAA2",
     "Name": "GenePoint"
