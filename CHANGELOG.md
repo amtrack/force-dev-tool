@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.11.0
+
+ * fix PersonAccount RecordType
+ * add info command to README
+ * bump API version to 38.0
+
 ## 0.10.0
 
  * add --classNames option to test command (#42)
