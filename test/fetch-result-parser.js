@@ -85,20 +85,6 @@ describe('FetchResultParser', function() {
 			assert.deepEqual(fetchResult.fileProperties.length, 1);
 			assert.deepEqual(new MetadataComponent(fetchResult.fileProperties[0]).toString(), 'RecordType/PersonAccount.Trader');
 		});
-		it('should filter the PersonAccount CustomObject but children should remain', function() {
-			var fetchResult = new FetchResultParser({
-				describeMetadataResult: describeMetadataResult,
-				fileProperties: [
-					fileProperties.CustomObject.PersonAccount,
-					fileProperties.RecordType.PersonAccount.Trader
-				],
-				personAccountRecordTypes: soqlResponses.personAccountRecordTypes
-			});
-			fetchResult.transform();
-			fetchResult.filterInvalid();
-			assert.deepEqual(fetchResult.fileProperties.length, 1);
-			assert.deepEqual(new MetadataComponent(fetchResult.fileProperties[0]).toString(), 'RecordType/PersonAccount.Trader');
-		});
 	});
 	describe('#filterInvalid()', function() {
 		it('should filter standard fileProperties', function() {

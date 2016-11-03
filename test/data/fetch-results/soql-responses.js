@@ -6,7 +6,7 @@ module.exports = {
 			"type": "RecordType",
 			"url": "/services/data/v37.0/sobjects/RecordType/01236000000O47hAAC"
 		},
-		"Name": "Trader",
+		"DeveloperName": "Trader",
 		"SobjectType": "Account",
 		"IsPersonType": true
 	}],
