@@ -6,7 +6,9 @@
 		"suffix": "installedPackage",
 		"xmlName": "InstalledPackage"
 	}, {
-		"childXmlNames": ["CustomLabel"],
+		"childXmlNames": [
+			"CustomLabel"
+		],
 		"directoryName": "labels",
 		"inFolder": false,
 		"metaFile": false,
@@ -24,6 +26,12 @@
 		"metaFile": true,
 		"suffix": "scf",
 		"xmlName": "Scontrol"
+	}, {
+		"directoryName": "certs",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "crt",
+		"xmlName": "Certificate"
 	}, {
 		"directoryName": "aura",
 		"inFolder": false,
@@ -72,7 +80,35 @@
 		"suffix": "group",
 		"xmlName": "Group"
 	}, {
-		"childXmlNames": ["CustomField", "BusinessProcess", "CompactLayout", "RecordType", "WebLink", "ValidationRule", "SharingReason", "ListView", "FieldSet"],
+		"directoryName": "globalValueSets",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "globalValueSet",
+		"xmlName": "GlobalValueSet"
+	}, {
+		"directoryName": "standardValueSets",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "standardValueSet",
+		"xmlName": "StandardValueSet"
+	}, {
+		"directoryName": "customPermissions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "customPermission",
+		"xmlName": "CustomPermission"
+	}, {
+		"childXmlNames": [
+			"CustomField",
+			"BusinessProcess",
+			"CompactLayout",
+			"RecordType",
+			"WebLink",
+			"ValidationRule",
+			"SharingReason",
+			"ListView",
+			"FieldSet"
+		],
 		"directoryName": "objects",
 		"inFolder": false,
 		"metaFile": false,
@@ -103,6 +139,12 @@
 		"suffix": "snapshot",
 		"xmlName": "AnalyticSnapshot"
 	}, {
+		"directoryName": "feedFilters",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "feedFilter",
+		"xmlName": "CustomFeedFilter"
+	}, {
 		"directoryName": "layouts",
 		"inFolder": false,
 		"metaFile": false,
@@ -119,6 +161,18 @@
 		"metaFile": false,
 		"suffix": "weblink",
 		"xmlName": "CustomPageWebLink"
+	}, {
+		"directoryName": "letterhead",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "letter",
+		"xmlName": "Letterhead"
+	}, {
+		"directoryName": "email",
+		"inFolder": true,
+		"metaFile": true,
+		"suffix": "email",
+		"xmlName": "EmailTemplate"
 	}, {
 		"directoryName": "quickActions",
 		"inFolder": false,
@@ -138,23 +192,35 @@
 		"suffix": "tab",
 		"xmlName": "CustomTab"
 	}, {
+		"directoryName": "customApplicationComponents",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "customApplicationComponent",
+		"xmlName": "CustomApplicationComponent"
+	}, {
 		"directoryName": "applications",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "app",
 		"xmlName": "CustomApplication"
 	}, {
-		"directoryName": "letterhead",
+		"directoryName": "portals",
 		"inFolder": false,
 		"metaFile": false,
-		"suffix": "letter",
-		"xmlName": "Letterhead"
+		"suffix": "portal",
+		"xmlName": "Portal"
 	}, {
-		"directoryName": "email",
-		"inFolder": true,
-		"metaFile": true,
-		"suffix": "email",
-		"xmlName": "EmailTemplate"
+		"directoryName": "EmbeddedServiceConfig",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "EmbeddedServiceConfig",
+		"xmlName": "EmbeddedServiceConfig"
+	}, {
+		"directoryName": "EmbeddedServiceLiveAgent",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "EmbeddedServiceLiveAgent",
+		"xmlName": "EmbeddedServiceLiveAgent"
 	}, {
 		"directoryName": "flows",
 		"inFolder": false,
@@ -162,28 +228,48 @@
 		"suffix": "flow",
 		"xmlName": "Flow"
 	}, {
-		"childXmlNames": ["WorkflowFieldUpdate", "WorkflowTask", "WorkflowAlert", "WorkflowSend", "WorkflowOutboundMessage", "WorkflowRule"],
+		"directoryName": "flowDefinitions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "flowDefinition",
+		"xmlName": "FlowDefinition"
+	}, {
+		"childXmlNames": [
+			"WorkflowFieldUpdate",
+			"WorkflowKnowledgePublish",
+			"WorkflowTask",
+			"WorkflowAlert",
+			"WorkflowSend",
+			"WorkflowOutboundMessage",
+			"WorkflowRule"
+		],
 		"directoryName": "workflows",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "workflow",
 		"xmlName": "Workflow"
 	}, {
-		"childXmlNames": ["AssignmentRule"],
+		"childXmlNames": [
+			"AssignmentRule"
+		],
 		"directoryName": "assignmentRules",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "assignmentRules",
 		"xmlName": "AssignmentRules"
 	}, {
-		"childXmlNames": ["AutoResponseRule"],
+		"childXmlNames": [
+			"AutoResponseRule"
+		],
 		"directoryName": "autoResponseRules",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "autoResponseRules",
 		"xmlName": "AutoResponseRules"
 	}, {
-		"childXmlNames": ["EscalationRule"],
+		"childXmlNames": [
+			"EscalationRule"
+		],
 		"directoryName": "escalationRules",
 		"inFolder": false,
 		"metaFile": false,
@@ -226,6 +312,18 @@
 		"suffix": "translation",
 		"xmlName": "Translations"
 	}, {
+		"directoryName": "globalValueSetTranslations",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "globalValueSetTranslation",
+		"xmlName": "GlobalValueSetTranslation"
+	}, {
+		"directoryName": "standardValueSetTranslations",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "standardValueSetTranslation",
+		"xmlName": "StandardValueSetTranslation"
+	}, {
 		"directoryName": "classes",
 		"inFolder": false,
 		"metaFile": true,
@@ -237,6 +335,12 @@
 		"metaFile": true,
 		"suffix": "trigger",
 		"xmlName": "ApexTrigger"
+	}, {
+		"directoryName": "testSuites",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "testSuite",
+		"xmlName": "ApexTestSuite"
 	}, {
 		"directoryName": "profiles",
 		"inFolder": false,
@@ -268,12 +372,26 @@
 		"suffix": "remoteSite",
 		"xmlName": "RemoteSiteSetting"
 	}, {
-		"childXmlNames": ["MatchingRule"],
+		"childXmlNames": [
+			"MatchingRule"
+		],
 		"directoryName": "matchingRules",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "matchingRule",
 		"xmlName": "MatchingRules"
+	}, {
+		"directoryName": "duplicateRules",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "duplicateRule",
+		"xmlName": "DuplicateRule"
+	}, {
+		"directoryName": "cleanDataServices",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "cleanDataService",
+		"xmlName": "CleanDataService"
 	}, {
 		"directoryName": "authproviders",
 		"inFolder": false,
@@ -293,12 +411,27 @@
 		"suffix": "channelLayout",
 		"xmlName": "ChannelLayout"
 	}, {
-		"childXmlNames": ["SharingOwnerRule", "SharingCriteriaRule"],
+		"directoryName": "contentassets",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "asset",
+		"xmlName": "ContentAsset"
+	}, {
+		"childXmlNames": [
+			"SharingOwnerRule",
+			"SharingCriteriaRule"
+		],
 		"directoryName": "sharingRules",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "sharingRules",
 		"xmlName": "SharingRules"
+	}, {
+		"directoryName": "sharingSets",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "sharingSet",
+		"xmlName": "SharingSet"
 	}, {
 		"directoryName": "communities",
 		"inFolder": false,
@@ -312,6 +445,24 @@
 		"suffix": "callCenter",
 		"xmlName": "CallCenter"
 	}, {
+		"directoryName": "milestoneTypes",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "milestoneType",
+		"xmlName": "MilestoneType"
+	}, {
+		"directoryName": "entitlementProcesses",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "entitlementProcess",
+		"xmlName": "EntitlementProcess"
+	}, {
+		"directoryName": "entitlementTemplates",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "entitlementTemplate",
+		"xmlName": "EntitlementTemplate"
+	}, {
 		"directoryName": "connectedApps",
 		"inFolder": false,
 		"metaFile": false,
@@ -324,17 +475,56 @@
 		"suffix": "appMenu",
 		"xmlName": "AppMenu"
 	}, {
-		"directoryName": "customPermissions",
+		"directoryName": "delegateGroups",
 		"inFolder": false,
 		"metaFile": false,
-		"suffix": "customPermission",
-		"xmlName": "CustomPermission"
+		"suffix": "delegateGroup",
+		"xmlName": "DelegateGroup"
 	}, {
 		"directoryName": "siteDotComSites",
 		"inFolder": false,
 		"metaFile": true,
 		"suffix": "site",
 		"xmlName": "SiteDotCom"
+	}, {
+		"directoryName": "networks",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "network",
+		"xmlName": "Network"
+	}, {
+		"directoryName": "communityThemeDefinitions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "communityThemeDefinition",
+		"xmlName": "CommunityThemeDefinition"
+	}, {
+		"directoryName": "communityTemplateDefinitions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "communityTemplateDefinition",
+		"xmlName": "CommunityTemplateDefinition"
+	}, {
+		"childXmlNames": [
+			"ManagedTopic"
+		],
+		"directoryName": "managedTopics",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "managedTopics",
+		"xmlName": "ManagedTopics"
+	}, {
+		"directoryName": "moderation",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "keywords",
+		"xmlName": "KeywordList"
+	}, {
+		"directoryName": "moderation",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "rule",
+		"xmlName": "ModerationRule"
 	}, {
 		"directoryName": "samlssoconfigs",
 		"inFolder": false,
@@ -353,6 +543,60 @@
 		"metaFile": false,
 		"suffix": "actionLinkGroupTemplate",
 		"xmlName": "ActionLinkGroupTemplate"
+	}, {
+		"directoryName": "transactionSecurityPolicies",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "transactionSecurityPolicy",
+		"xmlName": "TransactionSecurityPolicy"
+	}, {
+		"directoryName": "skills",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "skill",
+		"xmlName": "Skill"
+	}, {
+		"directoryName": "liveChatDeployments",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "liveChatDeployment",
+		"xmlName": "LiveChatDeployment"
+	}, {
+		"directoryName": "liveChatButtons",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "liveChatButton",
+		"xmlName": "LiveChatButton"
+	}, {
+		"directoryName": "liveChatAgentConfigs",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "liveChatAgentConfig",
+		"xmlName": "LiveChatAgentConfig"
+	}, {
+		"directoryName": "synonymDictionaries",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "synonymDictionary",
+		"xmlName": "SynonymDictionary"
+	}, {
+		"directoryName": "pathAssistants",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "pathAssistant",
+		"xmlName": "PathAssistant"
+	}, {
+		"directoryName": "liveChatSensitiveDataRule",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "liveChatSensitiveDataRule",
+		"xmlName": "LiveChatSensitiveDataRule"
+	}, {
+		"directoryName": "cachePartitions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "cachePartition",
+		"xmlName": "PlatformCachePartition"
 	}, {
 		"directoryName": "settings",
 		"inFolder": false,

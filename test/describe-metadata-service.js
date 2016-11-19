@@ -19,7 +19,8 @@ describe('Metadata', function() {
 	});
 	describe('#getDirectoryNames()', function() {
 		it('should return a list of extended metadata type directory names', function() {
-			assert.equal(describeMetadataService.getDirectoryNames().length, numberOfMetadataObjects);
+			// KeywordList and ModerationRule unfortunately use the same directoryName 'moderation'
+			assert.equal(describeMetadataService.getDirectoryNames().length, numberOfMetadataObjects - 1);
 		});
 	});
 	describe('#getType()', function() {
