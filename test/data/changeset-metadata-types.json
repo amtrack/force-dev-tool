@@ -1,0 +1,381 @@
+[{
+		"value": "QuickActionDefinition",
+		"name": "Action"
+	},
+	{
+		"value": "ActionLinkGroupTemplate",
+		"name": "Action Link Group Template"
+	},
+	{
+		"value": "ApexClass",
+		"name": "Apex Class"
+	},
+	{
+		"value": "CustomShareRowCause",
+		"name": "Apex Sharing Reason"
+	},
+	{
+		"value": "ApexTrigger",
+		"name": "Apex Trigger"
+	},
+	{
+		"value": "TabSet",
+		"name": "App"
+	},
+	{
+		"value": "ProcessDefinition",
+		"name": "Approval Process"
+	},
+	{
+		"value": "ArticleSearchExclusions__mdt",
+		"name": "Article Search Exclusions"
+	},
+	{
+		"value": "Article Type",
+		"name": "Article Type"
+	},
+	{
+		"value": "ContentAsset",
+		"name": "Asset File"
+	},
+	{
+		"value": "AssignmentRule",
+		"name": "Assignment Rule"
+	},
+	{
+		"value": "AuthProvider",
+		"name": "Auth. Provider"
+	},
+	{
+		"value": "AutoResponseRule",
+		"name": "Auto-Response Rule"
+	},
+	{
+		"value": "BaseURL__mdt",
+		"name": "BaseURL"
+	},
+	{
+		"value": "WebLink",
+		"name": "Button or Link"
+	},
+	{
+		"value": "CorsWhitelistEntry",
+		"name": "CORS Whitelist Origin"
+	},
+	{
+		"value": "CallCenter",
+		"name": "Call Center"
+	},
+	{
+		"value": "LiveChatButton",
+		"name": "Chat Button"
+	},
+	{
+		"value": "CommChannelLayout",
+		"name": "Communication Channel Layout"
+	},
+	{
+		"value": "CompactLayout",
+		"name": "Compact Layout"
+	},
+	{
+		"value": "CspTrustedSite",
+		"name": "Content Security Policy Trusted Site"
+	},
+	{
+		"value": "CustomConsoleComponent",
+		"name": "Custom Console Component"
+	},
+	{
+		"value": "CustomFieldDefinition",
+		"name": "Custom Field"
+	},
+	{
+		"value": "ExternalString",
+		"name": "Custom Label"
+	},
+	{
+		"value": "Custom Metadata Type",
+		"name": "Custom Metadata Type"
+	},
+	{
+		"value": "CustomEntityDefinition",
+		"name": "Custom Object"
+	},
+	{
+		"value": "CustomPermission",
+		"name": "Custom Permission"
+	},
+	{
+		"value": "CustomReportType",
+		"name": "Custom Report Type"
+	},
+	{
+		"value": "Custom Settings",
+		"name": "Custom Setting"
+	},
+	{
+		"value": "Dashboard",
+		"name": "Dashboard"
+	},
+	{
+		"value": "CleanDataService",
+		"name": "Data Service"
+	},
+	{
+		"value": "Document",
+		"name": "Document"
+	},
+	{
+		"value": "DuplicateRule",
+		"name": "Duplicate Rule"
+	},
+	{
+		"value": "EclairNgMapGeoJson",
+		"name": "EclairNG Map GeoJson"
+	},
+	{
+		"value": "EmailTemplate",
+		"name": "Email Template"
+	},
+	{
+		"value": "SlaProcess",
+		"name": "Entitlement Process"
+	},
+	{
+		"value": "EntitlementTemplate",
+		"name": "Entitlement Template"
+	},
+	{
+		"value": "EscalationRule",
+		"name": "Escalation Rule"
+	},
+	{
+		"value": "ExternalDataSource",
+		"name": "External Data Source"
+	},
+	{
+		"value": "FeedFilterDefinition",
+		"name": "Feed Filter"
+	},
+	{
+		"value": "FieldMapping",
+		"name": "Field Mapping"
+	},
+	{
+		"value": "FieldSet",
+		"name": "Field Set"
+	},
+	{
+		"value": "FlowDefinition",
+		"name": "Flow Definition"
+	},
+	{
+		"value": "Folder",
+		"name": "Folder"
+	},
+	{
+		"value": "SharedPicklistDefinition",
+		"name": "Global Value Set"
+	},
+	{
+		"value": "Group",
+		"name": "Group"
+	},
+	{
+		"value": "PageComponent",
+		"name": "Home Page Component"
+	},
+	{
+		"value": "CustomPage",
+		"name": "Home Page Layout"
+	},
+	{
+		"value": "ActionKnowledgeSubmit",
+		"name": "Knowledge Action"
+	},
+	{
+		"value": "Translation",
+		"name": "Language Translation"
+	},
+	{
+		"value": "BrandTemplate",
+		"name": "Letterhead"
+	},
+	{
+		"value": "CommunityTemplateDefinition",
+		"name": "Lightning Bolt Solution"
+	},
+	{
+		"value": "AuraDefinitionBundle",
+		"name": "Lightning Component Bundle"
+	},
+	{
+		"value": "FlexiPage",
+		"name": "Lightning Page"
+	},
+	{
+		"value": "ListView",
+		"name": "List View"
+	},
+	{
+		"value": "LiveChatUserConfig",
+		"name": "Live Agent Configuration"
+	},
+	{
+		"value": "LiveChatBlockingRule",
+		"name": "Live Chat Blocking Rule"
+	},
+	{
+		"value": "LiveChatDeployment",
+		"name": "Live Chat Deployment"
+	},
+	{
+		"value": "LiveChatSensitiveDataRule",
+		"name": "Live Chat Sensitive Data Rule"
+	},
+	{
+		"value": "MatchingRule",
+		"name": "Matching Rule"
+	},
+	{
+		"value": "MailAppOwaWhitelist",
+		"name": "Microsoft® Outlook® Web App Domain"
+	},
+	{
+		"value": "MilestoneType",
+		"name": "Milestone"
+	},
+	{
+		"value": "NamedCredential",
+		"name": "Named Credential"
+	},
+	{
+		"value": "Layout",
+		"name": "Page Layout"
+	},
+	{
+		"value": "PermissionSet",
+		"name": "Permission Set"
+	},
+	{
+		"value": "PlatformCachePartition",
+		"name": "Platform Cache Partition"
+	},
+	{
+		"value": "FeedPostTemplate",
+		"name": "Post Template"
+	},
+	{
+		"value": "Queues",
+		"name": "Queue"
+	},
+	{
+		"value": "QuickSearchConfig__mdt",
+		"name": "QuickSearchConfig"
+	},
+	{
+		"value": "RecordType",
+		"name": "Record Type"
+	},
+	{
+		"value": "RemoteProxy",
+		"name": "Remote Site"
+	},
+	{
+		"value": "Report",
+		"name": "Report"
+	},
+	{
+		"value": "ReportJob",
+		"name": "Reporting Snapshot"
+	},
+	{
+		"value": "UserRole",
+		"name": "Role"
+	},
+	{
+		"value": "Scontrol",
+		"name": "S-Control"
+	},
+	{
+		"value": "SecurityCustomBaseline",
+		"name": "Security Custom Baseline"
+	},
+	{
+		"value": "ActionSend",
+		"name": "Send Action"
+	},
+	{
+		"value": "CustomObjectCriteriaSharingRule",
+		"name": "Sharing Criteria Rule"
+	},
+	{
+		"value": "CustomObjectOwnerSharingRule",
+		"name": "Sharing Owner Rule"
+	},
+	{
+		"value": "SharingSet",
+		"name": "Sharing Set"
+	},
+	{
+		"value": "Site",
+		"name": "Site.com"
+	},
+	{
+		"value": "Skill",
+		"name": "Skill"
+	},
+	{
+		"value": "StaticResource",
+		"name": "Static Resource"
+	},
+	{
+		"value": "CustomTabDefinition",
+		"name": "Tab"
+	},
+	{
+		"value": "UserProvisioningConfig",
+		"name": "User Provisioning Config"
+	},
+	{
+		"value": "ValidationFormula",
+		"name": "Validation Rule"
+	},
+	{
+		"value": "ApexComponent",
+		"name": "Visualforce Component"
+	},
+	{
+		"value": "ApexPage",
+		"name": "Visualforce Page"
+	},
+	{
+		"value": "CspFrameAncestor",
+		"name": "Whitelisted Site"
+	},
+	{
+		"value": "ActionEmail",
+		"name": "Workflow Email Alert"
+	},
+	{
+		"value": "ActionFieldUpdate",
+		"name": "Workflow Field Update"
+	},
+	{
+		"value": "ActionOutboundMessage",
+		"name": "Workflow Outbound Message"
+	},
+	{
+		"value": "WorkflowRule",
+		"name": "Workflow Rule"
+	},
+	{
+		"value": "ActionTask",
+		"name": "Workflow Task"
+	},
+	{
+		"value": "Community",
+		"name": "Zone"
+	}
+]

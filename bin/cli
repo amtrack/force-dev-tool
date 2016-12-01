@@ -50,7 +50,7 @@ var opts = docopt(doc, {
 var command = opts['<command>'];
 var args = opts['<args>'];
 var topic = (args !== null && args.length > 0) ? args[0] : null;
-var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'query', 'bulk', 'execute'];
+var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'query', 'bulk', 'execute', 'real-changeset'];
 var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join('|') + ')\\w?');
 
 var storagePath = process.cwd();
