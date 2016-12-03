@@ -28,12 +28,12 @@ var doc = "force-dev-tool.\n" +
 	"	fetch           Fetch describe information from a remote\n" +
 	"	info            Show describe information from a remote\n" +
 	"	package         Generate a package.xml file from local describe information\n" +
-	"	retrieve        Retrieve metadata specified in package.xml\n" +
+	"	retrieve        Retrieve metadata specified in a package.xml\n" +
+	"	deploy          Deploy metadata specified in a package.xml\n" +
+	"	deployTest      DEPRECATED! Use `deploy -t` instead\n" +
+	"	validate        DEPRECATED! Use `deploy -c` instead\n" +
+	"	validateTest    DEPRECATED! Use `deploy -ct` instead\n" +
 	"	test            Execute unit tests\n" +
-	"	validate        Validate metadata deployment\n" +
-	"	validateTest    Validate metadata deployment and run local unit tests\n" +
-	"	deploy          Deploy metadata\n" +
-	"	deployTest      Deploy metadata and run local unit tests\n" +
 	"	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
 	"	query           Execute a SOQL query returing JSON\n" +
 	"	bulk            (alpha) Import/export data in CSV format using the bulk API\n" +
