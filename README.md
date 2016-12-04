@@ -186,14 +186,34 @@ Options:
 
 **Running unit tests**
 
+Running all local tests
+
 ```console
 $ force-dev-tool test
+Running Test execution to remote mydev
+Failures:
+Test_Foo#test_method_one took 32.0
+  - System.AssertException: Assertion Failed: Expected: foo, Actual: bar
+  - Class.Test_Foo.test_method_one: line 8, column 1
+Test_Foo2#test_method_one took 11.0
+  - System.AssertException: Assertion Failed
+  - Class.Test_Foo2.test_method_one: line 7, column 1
+Error: Visit https://mynamespace.my.salesforce.com/changemgmt/monitorDeploymentsDetails.apexp?asyncId=REDACTED for more information.
+3 methods, 2 failures
 ```
 
-Note: Runs local unit tests using an empty deployment.
+Running specified test classes
 
 ```console
-$ force-dev-tool test --classNames 'Test_Foo Test_Bar'
+$ force-dev-tool test --classNames 'Test_MockFoo Test_MockBar'
+```
+
+Running test classes matching a pattern (in src/package.xml)
+
+```console
+$ force-dev-tool package grep 'ApexClass/Test_Mock*' \
+ | cut -d '/' -f 2 \
+ | xargs -0 force-dev-tool test --classNames
 ```
 
 **Using `force-dev-tool` in a build script**

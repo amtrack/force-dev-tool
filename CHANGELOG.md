@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.12.0
+
+ * fix running specific tests (#80)
+ * implement `package grep` subcommand (#77)
+ * implement workaround for standard picklists (#75)
+
 ## 0.11.0
 
  * fix PersonAccount RecordType
