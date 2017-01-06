@@ -17,8 +17,8 @@ describe('UnZip Zip', function() {
 				if (err) {
 					return done(err);
 				}
-				var unzipFiles = fs.readdirSync(unzipDir);
-				var unzipLayoutFiles = fs.readdirSync(path.join(unzipDir, 'layouts'));
+				var unzipFiles = fs.readdirSync(path.join(unzipDir, 'unpackaged'));
+				var unzipLayoutFiles = fs.readdirSync(path.join(unzipDir, 'unpackaged', 'layouts'));
 				assert.deepEqual(unzipFiles, ['layouts', 'package.xml']);
 				assert.deepEqual(path.join(unzipLayoutFiles[0]).normalize(), 'Account-Umlautsäöü And Spaces.layout');
 				var zipPath = path.join(tmpDir.name, 'zipped.zip');
@@ -28,7 +28,7 @@ describe('UnZip Zip', function() {
 					assert(zippedStat.isFile());
 					return done();
 				});
-				new Zip().directory(unzipDir).stream().pipe(output);
+				new Zip().directory(path.join(unzipDir, 'unpackaged')).stream().pipe(output);
 			});
 		});
 	});

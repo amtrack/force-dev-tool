@@ -27,7 +27,7 @@ var Unzip = require('../../lib/unzip');
 			if (err) {
 				return done(err);
 			}
-			var validateCmd = child.spawnSync("node", [fdt, 'validate', '-d', unzipDir]);
+			var validateCmd = child.spawnSync("node", [fdt, 'validate', '-d', path.join(unzipDir, 'unpackaged')]);
 			assert.deepEqual(validateCmd.status, 0);
 			assert(/Running Validation of directory/.test(validateCmd.stdout.toString()));
 			assert(/Visit https/.test(validateCmd.stdout.toString()));
