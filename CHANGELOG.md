@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.13.0
+
+ * fix package.xml generation (#82)
+ * implement `info list`, `info grep` and `info show` subcommands
+ * implement `package add`, `package remove` and `package list` subcommands
+ * implement retrieving packages (outbound changesets)
+ * add support for more DeployOptions: `--runTests` (#76) and `--purgeOnDelete`
+ * deprecate aliases for `deploy`: `deployTest`, `validate` and `validateTest`
+
 ## 0.12.0
 
  * fix running specific tests (#80)
