@@ -18,8 +18,8 @@ describe('UnZip Zip', function() {
 					return done(err);
 				}
 				var unzipFiles = fs.readdirSync(unzipDir);
-				var unzipLayoutFiles = fs.readdirSync(path.join(unzipDir, 'layouts'));
 				assert.deepEqual(unzipFiles, ['layouts', 'package.xml']);
+				var unzipLayoutFiles = fs.readdirSync(path.join(unzipDir, 'layouts'));
 				assert.deepEqual(path.join(unzipLayoutFiles[0]).normalize(), 'Account-Umlautsäöü And Spaces.layout');
 				var zipPath = path.join(tmpDir.name, 'zipped.zip');
 				var output = fs.createWriteStream(zipPath);

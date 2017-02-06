@@ -36,11 +36,11 @@ Commands:
   info            Show describe information from a remote
   package         Generate a package.xml file from local describe information
   retrieve        Retrieve metadata specified in package.xml
+  deploy          Deploy metadata specified in a package.xml
+  deployTest      DEPRECATED! Use `deploy -t` instead
+  validate        DEPRECATED! Use `deploy -c` instead
+  validateTest    DEPRECATED! Use `deploy -ct` instead
   test            Execute unit tests
-  validate        Validate metadata deployment
-  validateTest    Validate metadata deployment and run local unit tests
-  deploy          Deploy metadata
-  deployTest      Deploy metadata and run local unit tests
   changeset       Create a changeset/deployment from a unified diff input or cli args
   query           Execute a SOQL query returing JSON
   bulk            (alpha) Import/export data in CSV format using the bulk API
