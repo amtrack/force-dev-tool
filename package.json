@@ -22,6 +22,7 @@
     "underscore": "^1.8.3",
     "vinyl": "^1.2.0",
     "vinyl-fs": "^2.4.3",
+    "xml2js": "^0.4.17",
     "xmldoc": "github:nyurik/xmldoc#3107ca5fe10227539299fb1bb82992d5b824bc37",
     "yauzl": "^2.3.1",
     "yazl": "^2.4.1"

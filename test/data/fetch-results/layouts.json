@@ -1,0 +1,203 @@
+[{
+	"fullName": "Campaign-Campaign Layout",
+	"excludeButtons": "Submit",
+	"headers": [
+		"PersonalTagging",
+		"PublicTagging"
+	],
+	"layoutSections": [{
+		"customLabel": "false",
+		"detailHeading": "false",
+		"editHeading": "true",
+		"label": "Campaign Information",
+		"layoutColumns": [{
+			"layoutItems": [{
+				"behavior": "Edit",
+				"field": "OwnerId"
+			}, {
+				"behavior": "Required",
+				"field": "Name"
+			}, {
+				"behavior": "Edit",
+				"field": "IsActive"
+			}, {
+				"behavior": "Edit",
+				"field": "Type"
+			}, {
+				"behavior": "Edit",
+				"field": "Status"
+			}, {
+				"behavior": "Edit",
+				"field": "StartDate"
+			}, {
+				"behavior": "Edit",
+				"field": "EndDate"
+			}, {
+				"behavior": "Edit",
+				"field": "ExpectedRevenue"
+			}, {
+				"behavior": "Edit",
+				"field": "BudgetedCost"
+			}, {
+				"behavior": "Edit",
+				"field": "ActualCost"
+			}, {
+				"behavior": "Edit",
+				"field": "ExpectedResponse"
+			}, {
+				"behavior": "Edit",
+				"field": "NumberSent"
+			}, {
+				"behavior": "Edit",
+				"field": "ParentId"
+			}]
+		}, {
+			"layoutItems": [{
+				"behavior": "Readonly",
+				"field": "NumberOfLeads"
+			}, {
+				"behavior": "Readonly",
+				"field": "NumberOfConvertedLeads"
+			}, {
+				"behavior": "Readonly",
+				"field": "NumberOfContacts"
+			}, {
+				"behavior": "Readonly",
+				"field": "NumberOfResponses"
+			}, {
+				"behavior": "Readonly",
+				"field": "NumberOfOpportunities"
+			}, {
+				"behavior": "Readonly",
+				"field": "NumberOfWonOpportunities"
+			}, {
+				"behavior": "Readonly",
+				"field": "AmountAllOpportunities"
+			}, {
+				"behavior": "Readonly",
+				"field": "AmountWonOpportunities"
+			}]
+		}],
+		"style": "TwoColumnsTopToBottom"
+	}, {
+		"customLabel": "false",
+		"detailHeading": "false",
+		"editHeading": "true",
+		"label": "Other Information",
+		"layoutColumns": [
+			"",
+			""
+		],
+		"style": "TwoColumnsTopToBottom"
+	}, {
+		"customLabel": "false",
+		"detailHeading": "false",
+		"editHeading": "true",
+		"label": "Additional Information",
+		"layoutColumns": [
+			"",
+			""
+		],
+		"style": "TwoColumnsLeftToRight"
+	}, {
+		"customLabel": "false",
+		"detailHeading": "false",
+		"editHeading": "true",
+		"label": "System Information",
+		"layoutColumns": [{
+			"layoutItems": {
+				"behavior": "Readonly",
+				"field": "CreatedById"
+			}
+		}, {
+			"layoutItems": {
+				"behavior": "Readonly",
+				"field": "LastModifiedById"
+			}
+		}],
+		"style": "TwoColumnsTopToBottom"
+	}, {
+		"customLabel": "false",
+		"detailHeading": "false",
+		"editHeading": "true",
+		"label": "Description Information",
+		"layoutColumns": {
+			"layoutItems": {
+				"behavior": "Edit",
+				"field": "Description"
+			}
+		},
+		"style": "OneColumn"
+	}, {
+		"customLabel": "false",
+		"detailHeading": "true",
+		"editHeading": "false",
+		"layoutColumns": [{
+				"layoutItems": {
+					"customLink": "ViewCampaignInfluenceReport"
+				}
+			},
+			"",
+			""
+		],
+		"style": "CustomLinks"
+	}],
+	"relatedContent": {
+		"relatedContentItems": {
+			"layoutItem": {
+				"behavior": "Readonly",
+				"field": "ParentId"
+			}
+		}
+	},
+	"relatedLists": [{
+		"fields": "CAMPAIGN.NAME",
+		"relatedList": "RelatedCampaignHierarchyList"
+	}, {
+		"fields": [
+			"TASK.SUBJECT",
+			"TASK.WHO_NAME",
+			"ACTIVITY.TASK",
+			"TASK.DUE_DATE",
+			"TASK.STATUS",
+			"TASK.PRIORITY",
+			"CORE.USERS.FULL_NAME"
+		],
+		"relatedList": "RelatedActivityList"
+	}, {
+		"fields": [
+			"TASK.SUBJECT",
+			"TASK.WHO_NAME",
+			"ACTIVITY.TASK",
+			"TASK.DUE_DATE",
+			"CORE.USERS.FULL_NAME",
+			"TASK.LAST_UPDATE"
+		],
+		"relatedList": "RelatedHistoryList"
+	}, {
+		"relatedList": "RelatedAttachmentList"
+	}, {
+		"fields": [
+			"OPPORTUNITY.NAME",
+			"OPPORTUNITY.STAGE_NAME",
+			"OPPORTUNITY.AMOUNT",
+			"OPPORTUNITY.CLOSE_DATE"
+		],
+		"relatedList": "RelatedOpportunityList"
+	}, {
+		"fields": [
+			"MEMBER_TYPE",
+			"STATUS",
+			"FIRST_NAME",
+			"LAST_NAME",
+			"TITLE",
+			"COMPANY"
+		],
+		"relatedList": "RelatedCampaignMemberList"
+	}],
+	"showEmailCheckbox": "false",
+	"showHighlightsPanel": "false",
+	"showInteractionLogPanel": "false",
+	"showRunAssignmentRulesCheckbox": "false",
+	"showSubmitAndAttachButton": "false"
+}]
