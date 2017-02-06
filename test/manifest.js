@@ -60,6 +60,16 @@ describe('Manifest', function() {
 			assert.deepEqual(manifest.manifest().length, numberOfComponents + 1);
 		});
 	});
+	describe('#remove()', function() {
+		it('should remove components from the manifest matching the given patterns', function() {
+			var manifest = new Manifest({
+				manifestJSON: testManifests.components
+			});
+			var numberOfComponents = manifest.manifest().length;
+			manifest.remove(['ApexPage/*']);
+			assert.deepEqual(manifest.manifest().length, numberOfComponents - 2);
+		});
+	});
 	describe('#getJSON()', function() {
 		it('should return a JSON representation to be used for jsforce', function() {
 			var manifest = new Manifest({
