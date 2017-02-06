@@ -93,7 +93,7 @@ $ force-dev-tool package -a
 Created src/package.xml
 ```
 
-In order to exclude certain metadata components from being added to the `package.xml` file, add patterns (similar to `.gitignore`) to `.forceignore`.
+In order to exclude certain metadata components from being added to the `package.xml` file, add patterns (similar to `.gitignore`) to `.forceignore`. See [here](https://gist.github.com/amtrack/7b99d31b60971b95dda801fd58288257) for some sane default rules.
 
 **Retrieving metadata**
 
