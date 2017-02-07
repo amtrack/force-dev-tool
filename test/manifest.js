@@ -175,6 +175,12 @@ describe('Manifest', function() {
 			assert.deepEqual(new Manifest({
 				manifestJSON: testManifests.components
 			}).getNotIgnoredMatches(['CustomLabel/*', 'ApexPage/*']).getComponentNames(), ['ApexComponent/C1', 'ApexComponent/Z1']);
+			assert.deepEqual(new Manifest({
+				manifestJSON: testManifests.components
+			}).getNotIgnoredMatches(['**/*', '!*/Test*']).getComponentNames(), ['ApexPage/Test', 'ApexPage/Test2']);
+			assert.deepEqual(new Manifest({
+				manifestJSON: testManifests.components
+			}).getNotIgnoredMatches(['**/*', '!*/Test*', '*/*2']).getComponentNames(), ['ApexPage/Test']);
 		});
 	});
 	describe('#filterTypes()', function() {
