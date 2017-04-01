@@ -41,6 +41,16 @@ var searchLayouts1Modified = [
 	'    </searchLayouts>'
 ].join("\n");
 
+var validationRule1 = [
+	'<validationRules>',
+	'	<fullName>Test_10</fullName>',
+	'	<active>true</active>',
+	'	<errorConditionFormula>LEN(Test__c) != 10</errorConditionFormula>',
+	'	<errorDisplayField>Test__c</errorDisplayField>',
+	'	<errorMessage>Test__c should be 10 characters long</errorMessage>',
+	'</validationRules>'
+].join("\n");
+
 module.exports = {
 	header: header,
 	footer: footer,
@@ -51,6 +61,9 @@ module.exports = {
 		textField1Modified: textField.replace('<label>Test</label>', '<label>Test Modified</label>'),
 		textField2: textField.replace('Test__c', 'Test2__c'),
 		textField2Modified: textField.replace('Test__c', 'Test2__c').replace('<label>Test</label>', '<label>Test Modified</label>')
+	},
+	validationRules: {
+		validationRule1: validationRule1
 	},
 	properties: {
 		searchLayouts1: searchLayouts1,
