@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.13.1
+
+ * fix sort order of childXmlTypes in metadata file container
+ * declare EscalationRule as childType
+
 ## 0.13.0
 
  * fix package.xml generation (#82)
