@@ -287,4 +287,21 @@ describe('MetadataFileContainer', function() {
 			assert(metadataType.childXmlNames.indexOf('CustomField') >= 0);
 		});
 	});
+	describe('#toString()', function() {
+		it('should respect the sort order of types and components', function() {
+			var objectWithUnsortedFieldsAndValidationRule = [TestObject.header, TestObject.fields.textField1, TestObject.validationRules.validationRule1, TestObject.fields.textField2, TestObject.footer].join("\n");
+			var objectWithSortedFieldsAndValidationRule = [TestObject.header, TestObject.fields.textField1, TestObject.fields.textField2, TestObject.validationRules.validationRule1, TestObject.footer].join("\n");
+			var mfUnsorted = new MetadataFileContainer({
+				path: path.join('objects', 'Account.object'),
+				contents: new Buffer(objectWithUnsortedFieldsAndValidationRule)
+			});
+			var mfSorted = new MetadataFileContainer({
+				path: path.join('objects', 'Account.object'),
+				contents: new Buffer(objectWithSortedFieldsAndValidationRule)
+			});
+			mfUnsorted.writeContents();
+			mfSorted.writeContents();
+			assert.deepEqual(mfUnsorted.toString(), mfSorted.toString());
+		});
+	});
 });
