@@ -106,8 +106,7 @@ describe('MetadataContainer', function() {
 			var filteredMetadataContainer = metadataContainer.filter(manifestCustomFieldOnly);
 			assert.deepEqual(filteredMetadataContainer.vinyls.length, 1);
 			assert.deepEqual(filteredMetadataContainer.vinyls[0].path, path.join('objects', 'Account.object'));
-			// remove all spaces because of indentation
-			assert.deepEqual(filteredMetadataContainer.vinyls[0].contents.toString().replace(/ /g, ''), objectWithOneTestField.replace(/ /g, ''));
+			assert.deepEqual(filteredMetadataContainer.vinyls[0].contents.toString(), objectWithOneTestField);
 			assert.deepEqual(filteredMetadataContainer.manifest.manifest().length, 1);
 			var manifestIncludingCustomObject = metadataContainer.manifest;
 			manifestIncludingCustomObject.add(new MetadataComponent("CustomObject/Account"));

@@ -43,10 +43,9 @@ describe('MetadataFileContainer', function() {
 				contents: new Buffer(objectWithTestField)
 			});
 			assert.deepEqual(mfc.components.length, 1);
-			// remove all spaces because of indentation
 			assert.deepEqual(
-				mfc.components[0].contents.replace(/ /g, ''),
-				TestObject.fields.textField1.replace(/ /g, '')
+				mfc.components[0].contents,
+				TestObject.fields.textField1
 			);
 		});
 		it('should return the ProfileApexClassAccess of a metadata file', function() {
@@ -55,10 +54,9 @@ describe('MetadataFileContainer', function() {
 				contents: new Buffer(profileWithClassAccess)
 			});
 			assert.deepEqual(mfc.components.length, 1);
-			// remove all spaces because of indentation
 			assert.deepEqual(
-				mfc.components[0].contents.replace(/ /g, ''),
-				TestProfile.classAccesses.classAccess1.replace(/ /g, '')
+				mfc.components[0].contents,
+				TestProfile.classAccesses.classAccess1
 			);
 		});
 		it('should return the ProfileFieldLevelSecurity of a metadata file', function() {
@@ -67,10 +65,9 @@ describe('MetadataFileContainer', function() {
 				contents: new Buffer(profileWithFieldPermission)
 			});
 			assert.deepEqual(mfc.components.length, 1);
-			// remove all spaces because of indentation
 			assert.deepEqual(
-				mfc.components[0].contents.replace(/ /g, ''),
-				TestProfile.fieldPermissions.fieldPermission1.replace(/ /g, '')
+				mfc.components[0].contents,
+				TestProfile.fieldPermissions.fieldPermission1
 			);
 		});
 	});

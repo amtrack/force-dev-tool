@@ -1,0 +1,38 @@
+[{
+	"fullName": "Account",
+	"compactLayoutAssignment": "SYSTEM",
+	"enableFeeds": "true",
+	"enableHistory": "false",
+	"fields": [{
+		"fullName": "VAT_Number__c",
+		"externalId": "false",
+		"label": "VAT Number",
+		"length": "255",
+		"required": "false",
+		"trackFeedHistory": "false",
+		"type": "Text",
+		"unique": "false"
+	}],
+	"validationRules": [{
+			"fullName": "VAT_Number_Length_10",
+			"active": "true",
+			"errorConditionFormula": "LEN(VAT_Number__c) != 10",
+			"errorDisplayField": "VAT_Number__c",
+			"errorMessage": "VAT_Number__c should be exactly 10 characters long"
+		},
+		{
+			"fullName": "VAT_Number_Length_Min_10",
+			"active": "true",
+			"errorConditionFormula": "LEN(VAT_Number__c) < 10",
+			"errorDisplayField": "VAT_Number__c",
+			"errorMessage": "VAT_Number__c should be at least 10 characters long"
+		},
+		{
+			"fullName": "VAT_Number_Length_Min_5_Max_10",
+			"active": "true",
+			"errorConditionFormula": "OR(\n            LEN(VAT_Number__c) < 5,\n            LEN(VAT_Number__c) > 10\n        )",
+			"errorDisplayField": "VAT_Number__c",
+			"errorMessage": "VAT_Number__c should be between 5 and 10 characters long"
+		}
+	]
+}]

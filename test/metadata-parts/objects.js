@@ -43,11 +43,11 @@ var searchLayouts1Modified = [
 
 var validationRule1 = [
 	'<validationRules>',
-	'	<fullName>Test_10</fullName>',
-	'	<active>true</active>',
-	'	<errorConditionFormula>LEN(Test__c) != 10</errorConditionFormula>',
-	'	<errorDisplayField>Test__c</errorDisplayField>',
-	'	<errorMessage>Test__c should be 10 characters long</errorMessage>',
+	'    <fullName>Test_10</fullName>',
+	'    <active>true</active>',
+	'    <errorConditionFormula>LEN(Test__c) != 10</errorConditionFormula>',
+	'    <errorDisplayField>Test__c</errorDisplayField>',
+	'    <errorMessage>Test__c should be exactly 10 characters long</errorMessage>',
 	'</validationRules>'
 ].join("\n");
 
