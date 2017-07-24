@@ -218,7 +218,7 @@ $ force-dev-tool package grep 'ApexClass/Test_Mock*' \
 
 **Using `force-dev-tool` in a build script**
 
-The following environment variables will be available as remote environment `env`:
+The following environment variables can be used to define a default remote environment called `env`:
 
 * `SFDC_USERNAME`
 * `SFDC_PASSWORD`
@@ -228,7 +228,7 @@ The following environment variables will be available as remote environment `env
 $ force-dev-tool validateTest env
 ```
 
-Note: You can also define named remotes (e.g. `SFDC_ci_USERNAME`, `SFDC_ci_PASSWORD`, `SFDC_ci_SERVER_URL`).
+Note: You can also define named remotes using [Environment Variables](https://github.com/amtrack/force-dev-tool/wiki/Environment-Variables) (e.g. `SFDC_ci_USERNAME`, `SFDC_ci_PASSWORD`, `SFDC_ci_SERVER_URL`).
 
 **Executing a SOQL query**
 
