@@ -29,7 +29,7 @@ describe('force-dev-tool package', function() {
 		assert.deepEqual(packageVersionCmd.status, 0);
 		assert(new RegExp('38.0').test(packageVersionCmd.stdout.toString()));
 	});
-	context('package add', function() {
+	context('add', function() {
 		it('should fail adding invalid components', function() {
 			this.slow(2000);
 			var tmpobj = tmp.dirSync();
@@ -40,9 +40,10 @@ describe('force-dev-tool package', function() {
 			assert(/Error:.*Invalid components.*/.test(packageAddCmd.stdout.toString()));
 		});
 	});
-	context('package add/list/grep/remove', function() {
+	context('add/list/grep/remove', function() {
 		it('should add/remove components', function() {
 			this.slow(2000);
+			this.timeout(5000);
 			var tmpobj = tmp.dirSync();
 			var packageAddCmd = child.spawnSync("node", [fdt, 'package', 'add', 'ApexClass/Foo'], {
 				cwd: tmpobj.name
