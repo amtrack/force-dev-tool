@@ -35,6 +35,7 @@ var doc = "force-dev-tool.\n" +
 	"	validateTest    DEPRECATED! Use `deploy -ct` instead\n" +
 	"	test            Execute unit tests\n" +
 	"	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
+	"	factory-reset   Create a changeset/deployment to remove all custom metadata from a remote\n" +
 	"	query           Execute a SOQL query returing JSON\n" +
 	"	bulk            (alpha) Import/export data in CSV format using the bulk API\n" +
 	"	execute         (alpha) Execute anonymous Apex\n" +
@@ -50,7 +51,7 @@ var opts = docopt(doc, {
 var command = opts['<command>'];
 var args = opts['<args>'];
 var topic = (args !== null && args.length > 0) ? args[0] : null;
-var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'query', 'bulk', 'execute'];
+var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'factory-reset', 'query', 'bulk', 'execute'];
 var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join('|') + ')\\w?');
 
 var storagePath = process.cwd();
