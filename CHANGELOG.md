@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 1.0.0
+Removed (breaking change)
+ * drop support for node 0.12
+
+Added
+ * implement querying using Tooling API
+ * .forceignore: implement whitelisting
+ * add package-lock.json to speed up installation
+
+Fixed
+ * fix standard picklists
+ * fix regex alerted by eslint
+ * adjust timeout of flaky unit test
+ * xmldoc: use main repository again and fix indentation for metadata
+
+Changed
+ * update dev dependencies
+ * clarify usage of environment variables
+ * use metadata-writer for writing packages
+
 ## 0.13.1
 
  * fix sort order of childXmlTypes in metadata file container
