@@ -360,6 +360,18 @@
 		"suffix": "md",
 		"xmlName": "CustomMetadata"
 	}, {
+		"directoryName": "profilePasswordPolicies",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "profilePasswordPolicy",
+		"xmlName": "ProfilePasswordPolicy"
+	}, {
+		"directoryName": "profileSessionSettings",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "profileSessionSetting",
+		"xmlName": "ProfileSessionSetting"
+	}, {
 		"directoryName": "datacategorygroups",
 		"inFolder": false,
 		"metaFile": false,
@@ -519,6 +531,12 @@
 		"metaFile": false,
 		"suffix": "keywords",
 		"xmlName": "KeywordList"
+	}, {
+		"directoryName": "userCriteria",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "userCriteria",
+		"xmlName": "UserCriteria"
 	}, {
 		"directoryName": "moderation",
 		"inFolder": false,
