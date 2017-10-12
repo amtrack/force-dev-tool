@@ -38,6 +38,8 @@ describe('FetchResultParser', function() {
 			fetchResult.filterManaged();
 			assert.deepEqual(fetchResult.fileProperties.length, 0);
 		});
+	});
+	describe('#filterInstalledPackages()', function() {
 		it('should filter InstalledPackages', function() {
 			var fetchResult = new FetchResultParser({
 				describeMetadataResult: describeMetadataResult,
@@ -45,7 +47,7 @@ describe('FetchResultParser', function() {
 					fileProperties.InstalledPackage.al
 				]
 			});
-			fetchResult.filterManaged();
+			fetchResult.filterInstalledPackages();
 			assert.deepEqual(fetchResult.fileProperties.length, 0);
 		});
 	});
