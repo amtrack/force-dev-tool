@@ -29,6 +29,6 @@ var child = require("child_process");
 		var validateTestCmd = child.spawnSync("node", [fdt, 'validateTest', '-d', path.resolve(__dirname, '..', 'data', 'unpackaged', 'apex-failing')]);
 		assert.deepEqual(validateTestCmd.status, 1);
 		assert(/Running Validation with test execution of directory/.test(validateTestCmd.stdout.toString()));
-		assert(/Visit https/.test(validateTestCmd.stdout.toString()));
+		assert(/Error:.*failed\./.test(validateTestCmd.stderr.toString()));
 	});
 });

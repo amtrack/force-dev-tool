@@ -14,7 +14,7 @@ describe('force-dev-tool package', function() {
 			cwd: tmpobj.name
 		});
 		assert.deepEqual(packageVersionCmd.status, 1);
-		assert(/Error:.*does not exist/.test(packageVersionCmd.stdout.toString()));
+		assert(/Error:.*does not exist/.test(packageVersionCmd.stderr.toString()));
 	});
 	it('should get/set the api version of a package', function() {
 		this.slow(1000);
@@ -37,7 +37,7 @@ describe('force-dev-tool package', function() {
 				cwd: tmpobj.name
 			});
 			assert.deepEqual(packageAddCmd.status, 1);
-			assert(/Error:.*Invalid components.*/.test(packageAddCmd.stdout.toString()));
+			assert(/Error:.*Invalid components.*/.test(packageAddCmd.stderr.toString()));
 		});
 	});
 	context('add/list/grep/remove', function() {
@@ -71,7 +71,7 @@ describe('force-dev-tool package', function() {
 				cwd: tmpobj.name
 			});
 			assert.deepEqual(packageGrep2Cmd.status, 1);
-			assert(/Error:.*No matches found/.test(packageGrep2Cmd.stdout.toString()));
+			assert(/Error:.*No matches found/.test(packageGrep2Cmd.stderr.toString()));
 		});
 	});
 });

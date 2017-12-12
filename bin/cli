@@ -112,7 +112,7 @@ if (command === 'help') {
 			cwd: process.cwd()
 		}, function(err, message) {
 			if (err) {
-				console.log(chalk.red(err instanceof Error ? err : new Error(err)));
+				console.error(chalk.red(err instanceof Error ? err : new Error(err)));
 				process.exitCode = 1;
 				return;
 			}
@@ -124,7 +124,7 @@ if (command === 'help') {
 		if (process.env.DEBUG) {
 			throw processErr;
 		}
-		console.log(chalk.red(processErr));
+		console.error(chalk.red(processErr));
 		process.exitCode = 1;
 	}
 } else {
