@@ -123,13 +123,13 @@
 	}, {
 		"directoryName": "reports",
 		"inFolder": true,
-		"metaFile": false,
+		"metaFile": true,
 		"suffix": "report",
 		"xmlName": "Report"
 	}, {
 		"directoryName": "dashboards",
 		"inFolder": true,
-		"metaFile": false,
+		"metaFile": true,
 		"suffix": "dashboard",
 		"xmlName": "Dashboard"
 	}, {
