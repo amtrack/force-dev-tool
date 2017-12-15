@@ -19,4 +19,18 @@ var tmp = require("tmp");
 		assert(/Logged in successfully/.test(loginCmd.stdout.toString()));
 		assert(/https/.test(loginCmd.stdout.toString()));
 	});
+	it('should fail login using invalid credentials', function() {
+		var env = JSON.parse(JSON.stringify(process.env));
+		env["SFDC_USERNAME"] = "invalidUsername";
+		env["SFDC_PASSWORD"] = "invalidPassword";
+		env["SFDC_SERVER_URL"] = "https://test.salesforce.com";
+		this.timeout(1000 * 20);
+		this.slow(1000 * 5);
+		var loginCmd = child.spawnSync("node", [fdt, 'login'], {
+			cwd: tmpobj.name,
+			env: env
+		});
+		assert.deepEqual(loginCmd.status, 1);
+		assert(/Login failed/.test(loginCmd.stderr.toString()));
+	});
 });

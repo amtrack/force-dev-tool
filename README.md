@@ -110,7 +110,7 @@ Succeeded
 $ force-dev-tool changeset create vat src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
 ```
 
-2\. By providing a unified diff (e.g. `git diff`)
+2\. By providing a unified diff (e.g. `git diff`). Tweak the `git diff` command with `--ignore-space-at-eol` or `--ignore-all-space` to ignore space changes.
 ```console
 $ git diff master feature/vat | force-dev-tool changeset create vat
 ```
