@@ -112,7 +112,7 @@ $ force-dev-tool changeset create vat src/pages/AccountExtensionVAT.page CustomF
 
 2\. By providing a unified diff (e.g. `git diff`). Tweak the `git diff` command with `--ignore-space-at-eol` or `--ignore-all-space` to ignore space changes.
 ```console
-$ git diff master feature/vat | force-dev-tool changeset create vat
+$ git diff --no-renames master feature/vat | force-dev-tool changeset create vat
 ```
 
 Both approaches lead to the following result
@@ -143,7 +143,7 @@ $ force-dev-tool changeset create undo-vat --destructive src/pages/AccountExtens
 
 2\. By providing a unified diff (e.g. `git diff`)
 ```console
-$ git diff feature/vat master | force-dev-tool changeset create undo-vat
+$ git diff --no-renames feature/vat master | force-dev-tool changeset create undo-vat
 ```
 
 Both approaches lead to the following result
