@@ -80,10 +80,10 @@ describe('MetadataFile', function() {
 			var component = new MetadataFile({
 				path: path.join('documents', 'MyFolder')
 			}).getComponent();
-			assert.deepEqual(component.type, 'Document');
+			assert.deepEqual(component.type, 'DocumentFolder');
 			assert.deepEqual(component.fileName, path.join('documents', 'MyFolder'));
 			assert.deepEqual(component.fullName, 'MyFolder');
-			assert.deepEqual(component.toString(), 'Document/MyFolder');
+			assert.deepEqual(component.toString(), 'DocumentFolder/MyFolder');
 		});
 		it('should return a component for a file in a folder', function() {
 			var component = new MetadataFile({
@@ -93,6 +93,15 @@ describe('MetadataFile', function() {
 			assert.deepEqual(component.fileName, path.join('documents', 'MyFolder', 'MyFile.pdf'));
 			assert.deepEqual(component.fullName, 'MyFolder/MyFile.pdf');
 			assert.deepEqual(component.toString(), 'Document/MyFolder/MyFile.pdf');
+		});
+		it('should return a component for a file without extension in a folder', function() {
+			var component = new MetadataFile({
+				path: path.join('documents', 'MyFolder', 'MyFile')
+			}).getComponent();
+			assert.deepEqual(component.type, 'Document');
+			assert.deepEqual(component.fileName, path.join('documents', 'MyFolder', 'MyFile'));
+			assert.deepEqual(component.fullName, 'MyFolder/MyFile');
+			assert.deepEqual(component.toString(), 'Document/MyFolder/MyFile');
 		});
 		it('should return null otherwise', function() {
 			var component = new MetadataFile({

@@ -207,7 +207,7 @@ describe('Manifest', function() {
 			});
 			manifest.add(new MetadataComponent('CustomObject/Account'));
 			manifest.add(new MetadataComponent('AppMenu/Salesforce1'));
-			manifest.add(new MetadataComponent('Document/MyFolder'));
+			manifest.add(new MetadataComponent('DocumentFolder/unfiled$public'));
 			manifest.add(new MetadataComponent('MatchingRule/Account.Standard_Account_Match_Rule_v1_0'));
 			manifest.add(new MetadataComponent('CustomApplication/standard__Sales'));
 			assert.deepEqual(manifest.filterStandard().getComponentNames(), ['ApexComponent/C1', 'ApexComponent/Z1', 'ApexPage/Test', 'ApexPage/Test2', 'CustomLabel/MyLabel']);
