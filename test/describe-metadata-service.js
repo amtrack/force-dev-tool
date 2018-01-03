@@ -31,12 +31,21 @@ describe('Metadata', function() {
 	describe('#getTypeForFilepath()', function() {
 		it('should return metadata type for a given file path', function() {
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('pages', 'Test.page')).xmlName, 'ApexPage');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('pages', 'Test.page-meta.xml')).xmlName, 'ApexPage');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('objects', 'Account.object')).xmlName, 'CustomObject');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.app')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.cmp')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.js')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.css')).xmlName, 'AuraDefinitionBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('reports', 'unfiled$public')).xmlName, 'ReportFolder');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('reports', 'unfiled$public', 'Foo.report')).xmlName, 'Report');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('documents', 'unfiled$public')).xmlName, 'DocumentFolder');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('documents', 'unfiled$public', 'Foo')).xmlName, 'Document');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join("documents", "unfiled$public", "Foo.bin")).xmlName, "Document");
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join("documents", "documents")).xmlName, "DocumentFolder");
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join("documents", "documents", "Foo")).xmlName, "Document");
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join("documents", "documents", "Foo.bin")).xmlName, "Document");
 		});
 		it('should return undefined for an invalid file path', function() {
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('foo', 'bar')), undefined);
