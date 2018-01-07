@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 1.1.0
+Added
+ * implement multiple packaging options (`-p, --no-recursive` and `-m, --include-managed`)
+ * implement `remote display` command to show `sfdx`-like JSON
+ * add some unit and integration tests for changeset command
+ * deploy/test: show overall code coverage when available
+
+Changed
+ * reimplement changeset command using streams @leboff (#99)
+ * bump default API version to 41.0
+ * print to stderr on failure
+
+Fixed
+ * handle DashboardFolder, DocumentFolder, EmailFolder and ReportFolder (#103)
+ * TypeError: field.childNamed is not a function (#97)
+ * improve package generation for translation types
+
 ## 1.0.0
 Removed (breaking change)
  * drop support for node 0.12
