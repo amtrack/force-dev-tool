@@ -14,20 +14,20 @@ describe('force-dev-tool fetch package retrieve', function() {
 		var fetchCmd = child.spawnSync("node", [fdt, 'fetch'], {
 			cwd: tmpobj.name
 		});
-		assert.deepEqual(fetchCmd.status, 0);
+		assert.deepEqual(fetchCmd.status, 0, fetchCmd.stderr);
 		assert(/Fetching from remote env/.test(fetchCmd.stdout.toString()));
 		assert(/Fetching remotes finished/.test(fetchCmd.stdout.toString()));
 
 		var packageCmd = child.spawnSync("node", [fdt, 'package'], {
 			cwd: tmpobj.name
 		});
-		assert.deepEqual(packageCmd.status, 0);
+		assert.deepEqual(packageCmd.status, 0, packageCmd.stderr);
 		assert(/Created src.*package\.xml/.test(packageCmd.stdout.toString()));
 
 		var retrieveCmd = child.spawnSync("node", [fdt, 'retrieve'], {
 			cwd: tmpobj.name
 		});
-		assert.deepEqual(retrieveCmd.status, 0);
+		assert.deepEqual(retrieveCmd.status, 0, retrieveCmd.stderr);
 		assert(/Retrieving from remote env to directory src/.test(retrieveCmd.stdout.toString()));
 		assert(/Succeeded/.test(retrieveCmd.stdout.toString()));
 	});
