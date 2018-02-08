@@ -4,15 +4,14 @@ var assert = require("assert");
 var path = require("path");
 var child = require("child_process");
 var tmp = require("tmp");
-var Unzip = require('../../lib/unzip');
+var Unzip = require('../lib/unzip');
 
-// run integration tests against remote organization only when TEST_INTEGRATION environment variable is set to true
-(process.env.TEST_INTEGRATION === 'true' ? describe : describe.skip)('force-dev-tool validate', function() {
-	var fdt = path.resolve(__dirname, '..', '..', 'bin', 'cli');
+describe('force-dev-tool validate', function() {
+	var fdt = path.resolve(__dirname, '..', 'bin', 'cli');
 	it('should simulate deploying a zip file containing a layout with umlauts in the filename', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
-		var validateCmd = child.spawnSync("node", [fdt, 'validate', '-f', path.resolve(__dirname, '..', 'data', 'unpackaged', 'layout-with-umlauts.zip')]);
+		var validateCmd = child.spawnSync("node", [fdt, 'validate', '-f', path.resolve(__dirname, '..', 'test', 'data', 'unpackaged', 'layout-with-umlauts.zip')]);
 		assert.deepEqual(validateCmd.status, 0);
 		assert(/Running Validation of zip file/.test(validateCmd.stdout.toString()));
 		assert(/Visit https/.test(validateCmd.stdout.toString()));
@@ -21,7 +20,7 @@ var Unzip = require('../../lib/unzip');
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var tmpDir = tmp.dirSync();
-		var testZipPath = path.join(__dirname, '..', 'data', 'unpackaged', 'layout-with-umlauts.zip');
+		var testZipPath = path.join(__dirname, '..', 'test', 'data', 'unpackaged', 'layout-with-umlauts.zip');
 		var unzipDir = path.join(tmpDir.name, 'unzipped');
 		new Unzip(testZipPath).target(unzipDir, function(err) {
 			if (err) {

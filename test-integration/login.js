@@ -5,9 +5,8 @@ var path = require("path");
 var child = require("child_process");
 var tmp = require("tmp");
 
-// run integration tests against remote organization only when TEST_INTEGRATION environment variable is set to true
-(process.env.TEST_INTEGRATION === 'true' ? describe : describe.skip)('force-dev-tool login', function() {
-	var fdt = path.resolve(__dirname, '..', '..', 'bin', 'cli');
+describe('force-dev-tool login', function() {
+	var fdt = path.resolve(__dirname, '..', 'bin', 'cli');
 	var tmpobj = tmp.dirSync();
 	it('should login using the Metadata API and print a login URL', function() {
 		this.timeout(1000 * 20);

@@ -6,3 +6,4 @@ node_js:
 script:
   - npm test
   - npm run fmt
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run test:integration; fi
