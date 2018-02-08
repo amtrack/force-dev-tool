@@ -10,7 +10,7 @@ describe('force-dev-tool validateTest', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var validateTestCmd = child.spawnSync("node", [fdt, 'validateTest', '-d', path.resolve(__dirname, '..', 'test', 'data', 'metadata', 'visualforce')]);
-		assert.deepEqual(validateTestCmd.status, 0);
+		assert.deepEqual(validateTestCmd.status, 0, validateTestCmd.stderr);
 		assert(/Running Validation with test execution of directory/.test(validateTestCmd.stdout.toString()));
 		assert(/Visit https/.test(validateTestCmd.stdout.toString()));
 	});
@@ -18,7 +18,7 @@ describe('force-dev-tool validateTest', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var validateTestCmd = child.spawnSync("node", [fdt, 'validateTest', '-d', path.resolve(__dirname, '..', 'test', 'data', 'unpackaged', 'apex')]);
-		assert.deepEqual(validateTestCmd.status, 0);
+		assert.deepEqual(validateTestCmd.status, 0, validateTestCmd.stderr);
 		assert(/Running Validation with test execution of directory/.test(validateTestCmd.stdout.toString()));
 		assert(/Visit https/.test(validateTestCmd.stdout.toString()));
 	});

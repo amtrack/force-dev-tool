@@ -12,7 +12,7 @@ describe('force-dev-tool validate', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var validateCmd = child.spawnSync("node", [fdt, 'validate', '-f', path.resolve(__dirname, '..', 'test', 'data', 'unpackaged', 'layout-with-umlauts.zip')]);
-		assert.deepEqual(validateCmd.status, 0);
+		assert.deepEqual(validateCmd.status, 0, validateCmd.stderr);
 		assert(/Running Validation of zip file/.test(validateCmd.stdout.toString()));
 		assert(/Visit https/.test(validateCmd.stdout.toString()));
 	});
@@ -27,7 +27,7 @@ describe('force-dev-tool validate', function() {
 				return done(err);
 			}
 			var validateCmd = child.spawnSync("node", [fdt, 'validate', '-d', unzipDir]);
-			assert.deepEqual(validateCmd.status, 0);
+			assert.deepEqual(validateCmd.status, 0, validateCmd.stderr);
 			assert(/Running Validation of directory/.test(validateCmd.stdout.toString()));
 			assert(/Visit https/.test(validateCmd.stdout.toString()));
 			done();
