@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.1
+Fixed
+ * changeset: handle recordType in layoutAssignments of Profile @leboff (#126)
+
 ## 1.1.0
 Added
  * implement multiple packaging options (`-p, --no-recursive` and `-m, --include-managed`)
