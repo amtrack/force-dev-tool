@@ -34,6 +34,15 @@ var tests = [{
 	},
 	{
 		gitCloneUrl: "https://github.com/amtrack/sfdx-playground.git",
+		branch: "profile-layout-assignments",
+		description: "should handle changed ProfileLayoutAssignments",
+		a: "HEAD^{/v1:}",
+		b: "HEAD",
+		unpackaged_path: "src",
+		expected: path.join("config", "deployments", "expected")
+	},
+	{
+		gitCloneUrl: "https://github.com/amtrack/sfdx-playground.git",
 		branch: "object-properties",
 		description: "should handle changed properties of CustomObjects",
 		a: "HEAD^{/v0:}",
