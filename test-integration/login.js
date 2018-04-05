@@ -23,7 +23,7 @@ describe('force-dev-tool login', function() {
 		env["SFDC_USERNAME"] = "invalidUsername";
 		env["SFDC_PASSWORD"] = "invalidPassword";
 		env["SFDC_SERVER_URL"] = "https://test.salesforce.com";
-		this.timeout(1000 * 20);
+		this.timeout(1000 * 120);
 		this.slow(1000 * 5);
 		var loginCmd = child.spawnSync("node", [fdt, 'login'], {
 			cwd: tmpobj.name,
