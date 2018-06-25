@@ -7,3 +7,11 @@ script:
   - npm test
   - npm run fmt
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run test:integration; fi
+jobs:
+  include:
+    - stage: release
+      if: branch = master
+      node_js: v8
+      script:
+        - npm install --global semantic-release@15
+        - semantic-release
