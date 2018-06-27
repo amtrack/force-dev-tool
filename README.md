@@ -200,6 +200,18 @@ Test_Foo2#test_method_one took 11.0
   - Class.Test_Foo2.test_method_one: line 7, column 1
 Error: Visit https://mynamespace.my.salesforce.com/changemgmt/monitorDeploymentsDetails.apexp?asyncId=REDACTED for more information.
 3 methods, 2 failures
+
+$ force-dev-tool test build
+Running Test execution to remote build
+Failures:
+Test_Foo#test_method_one took 32.0
+  - System.AssertException: Assertion Failed: Expected: foo, Actual: bar
+  - Class.Test_Foo.test_method_one: line 8, column 1
+Test_Foo2#test_method_one took 11.0
+  - System.AssertException: Assertion Failed
+  - Class.Test_Foo2.test_method_one: line 7, column 1
+Error: Visit https://mynamespace.my.salesforce.com/changemgmt/monitorDeploymentsDetails.apexp?asyncId=REDACTED for more information.
+3 methods, 2 failures
 ```
 
 Running specified test classes
