@@ -37,9 +37,6 @@ Commands:
   package         Generate a package.xml file from local describe information
   retrieve        Retrieve metadata specified in package.xml
   deploy          Deploy metadata specified in a package.xml
-  deployTest      DEPRECATED! Use `deploy -t` instead
-  validate        DEPRECATED! Use `deploy -c` instead
-  validateTest    DEPRECATED! Use `deploy -ct` instead
   test            Execute unit tests
   changeset       Create a changeset/deployment from a unified diff input or cli args
   query           Execute a SOQL query returing JSON
@@ -172,16 +169,56 @@ exported metadata container to config/deployments/undo-vat
 **Deploying metadata**
 
 ```console
-$ force-dev-tool validate
-$ force-dev-tool validateTest
-$ force-dev-tool validateTest -d config/deployments/vat
-$ force-dev-tool deploy
-$ force-dev-tool deployTest
-```
+$ force-dev-tool deploy --help
+Usage:
+  force-dev-tool deploy [options] [<remote>]
+
+Deploy metadata specified in a package.xml.
 
 Options:
+  -c --checkOnly           Perform a test deployment (validation).
+  -t --test                Run local tests.
+  --runTests=<classNames>  Names of test classes (one argument, separated by whitespace).
+  --runAllTests            Run all tests including tests of managed packages.
+  --purgeOnDelete          Don't store deleted components in the recycle bin.
+  --noSinglePackage        Allows to deploy multiple packages.
+  -d=<directory>           Directory to be deployed [default: src].
+  -f=<zipFile>             Zip file to be deployed.
 
-	-d=<directory>    Directory containing the metadata and package.xml [default: ./src].
+Examples:
+
+  Deploying the default directory to the default remote
+    $ force-dev-tool deploy
+    Running Deployment of directory src to remote mydev
+    Visit https://mynamespace.my.salesforce.com/changemgmt/monitorDeploymentsDetails.apexp?asyncId=REDACTED for more information.
+
+  Deploying to another remote
+    $ force-dev-tool deploy myqa
+
+  Deploying a specified directory
+    $ force-dev-tool deploy -d config/deployments/vat
+
+  Perform a test deployment (validation)
+    $ force-dev-tool deploy --checkOnly
+    $ force-dev-tool deploy -c
+
+  Deploying with running local tests
+    $ force-dev-tool deploy -t
+    $ force-dev-tool deploy --test
+
+  Deploying with running specified test classes
+    $ force-dev-tool deploy --runTests 'Test_MockFoo Test_MockBar'
+
+  Deploying with running test classes matching a pattern
+    $ force-dev-tool package grep 'ApexClass/Test_Mock*' \
+     | cut -d '/' -f 2 \
+     | xargs -0 force-dev-tool deploy --runTests
+
+  Deploying with running only test classes being contained in a deployment
+    $ force-dev-tool package grep 'ApexClass/Test_*' --template config/deployments/mock \
+     | cut -d '/' -f 2 \
+     | xargs -0 force-dev-tool deploy -d config/deployments/mock --runTests
+```
 
 **Running unit tests**
 
@@ -236,7 +273,7 @@ The following environment variables can be used to define a default remote envir
 * `SFDC_SERVER_URL`
 
 ```console
-$ force-dev-tool validateTest env
+$ force-dev-tool deploy -ct env
 ```
 
 Note: You can also define named remotes using [Environment Variables](https://github.com/amtrack/force-dev-tool/wiki/Environment-Variables) (e.g. `SFDC_ci_USERNAME`, `SFDC_ci_PASSWORD`, `SFDC_ci_SERVER_URL`).

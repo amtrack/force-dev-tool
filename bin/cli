@@ -29,9 +29,6 @@ var doc = "force-dev-tool.\n" +
 	"	package         Generate a package.xml file from local describe information\n" +
 	"	retrieve        Retrieve metadata specified in a package.xml\n" +
 	"	deploy          Deploy metadata specified in a package.xml\n" +
-	"	deployTest      DEPRECATED! Use `deploy -t` instead\n" +
-	"	validate        DEPRECATED! Use `deploy -c` instead\n" +
-	"	validateTest    DEPRECATED! Use `deploy -ct` instead\n" +
 	"	test            Execute unit tests\n" +
 	"	changeset       Create a changeset/deployment from a unified diff input or cli args\n" +
 	"	query           Execute a SOQL query returing JSON\n" +
@@ -48,7 +45,7 @@ var opts = docopt(doc, {
 var command = opts['<command>'];
 var args = opts['<args>'];
 var topic = (args !== null && args.length > 0) ? args[0] : null;
-var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'query', 'bulk', 'execute'];
+var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'deploy', 'changeset', 'query', 'bulk', 'execute'];
 
 var storagePath = process.cwd();
 var storagePathBestGuess = findUp.sync(path.join('src', 'package.xml'));
