@@ -45,7 +45,6 @@ Commands:
   query           Execute a SOQL query returing JSON
   bulk            (alpha) Import/export data in CSV format using the bulk API
   execute         (alpha) Execute anonymous Apex
-  completion      (alpha) Print command line completion
 
 See 'force-dev-tool help <command>' for more information on a specific command.
 ```
