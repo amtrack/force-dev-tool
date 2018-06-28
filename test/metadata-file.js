@@ -125,11 +125,11 @@ describe('MetadataFile', function() {
 		it('should return modified ApexPage', function() {
 			var mf1 = new MetadataFile({
 				path: path.join('pages', 'Test.page'),
-				contents: new Buffer('<apex:page ><h1>Hello World!</h1></apex:page>')
+				contents: Buffer.from('<apex:page ><h1>Hello World!</h1></apex:page>')
 			});
 			var mf2 = new MetadataFile({
 				path: path.join('pages', 'Test.page'),
-				contents: new Buffer('<apex:page ><h1>Bye World!</h1></apex:page>')
+				contents: Buffer.from('<apex:page ><h1>Bye World!</h1></apex:page>')
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);

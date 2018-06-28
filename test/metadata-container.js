@@ -14,25 +14,25 @@ var objectWithTwoTestFields = [TestObject.header, TestObject.fields.textField1, 
 
 var customObject = new MetadataFileContainer({
 	path: path.join("objects", "Account.object"),
-	contents: new Buffer(objectWithTwoTestFields)
+	contents: Buffer.from(objectWithTwoTestFields)
 });
 
 var vinyls = [
 	new MetadataFile({
 		path: path.join("classes", "Test.cls"),
-		contents: new Buffer("")
+		contents: Buffer.from("")
 	}),
 	new MetadataFile({
 		path: path.join("classes", "Test.cls-meta.xml"),
-		contents: new Buffer("")
+		contents: Buffer.from("")
 	}),
 	new MetadataFile({
 		path: path.join("pages", "Test.page"),
-		contents: new Buffer("")
+		contents: Buffer.from("")
 	}),
 	new MetadataFile({
 		path: path.join("pages", "Test.page-meta.xml"),
-		contents: new Buffer("")
+		contents: Buffer.from("")
 	})
 ];
 

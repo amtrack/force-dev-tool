@@ -40,7 +40,7 @@ describe('MetadataFileContainer', function() {
 		it('should return the components of a metadata file', function() {
 			var mfc = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			assert.deepEqual(mfc.components.length, 1);
 			assert.deepEqual(
@@ -51,7 +51,7 @@ describe('MetadataFileContainer', function() {
 		it('should return the ProfileApexClassAccess of a metadata file', function() {
 			var mfc = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithClassAccess)
+				contents: Buffer.from(profileWithClassAccess)
 			});
 			assert.deepEqual(mfc.components.length, 1);
 			assert.deepEqual(
@@ -62,7 +62,7 @@ describe('MetadataFileContainer', function() {
 		it('should return the ProfileFieldLevelSecurity of a metadata file', function() {
 			var mfc = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithFieldPermission)
+				contents: Buffer.from(profileWithFieldPermission)
 			});
 			assert.deepEqual(mfc.components.length, 1);
 			assert.deepEqual(
@@ -76,7 +76,7 @@ describe('MetadataFileContainer', function() {
 			var mf1 = new MetadataFileContainer();
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -86,11 +86,11 @@ describe('MetadataFileContainer', function() {
 		it('should return an added ProfileApexClassAccess of a profile', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithoutClassAccess)
+				contents: Buffer.from(profileWithoutClassAccess)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithClassAccess)
+				contents: Buffer.from(profileWithClassAccess)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -101,11 +101,11 @@ describe('MetadataFileContainer', function() {
 		it('should return an added ProfileFieldLevelSecurity of a profile', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithoutFieldPermission)
+				contents: Buffer.from(profileWithoutFieldPermission)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithFieldPermission)
+				contents: Buffer.from(profileWithFieldPermission)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -116,11 +116,11 @@ describe('MetadataFileContainer', function() {
 		it('should return a modified ProfileApexClassAccess of a profile', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithClassAccess)
+				contents: Buffer.from(profileWithClassAccess)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithClassAccessModified)
+				contents: Buffer.from(profileWithClassAccessModified)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
@@ -131,11 +131,11 @@ describe('MetadataFileContainer', function() {
 		it('should return a modified ProfileFieldLevelSecurity of a profile', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithFieldPermission)
+				contents: Buffer.from(profileWithFieldPermission)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('profiles', 'Admin.profile'),
-				contents: new Buffer(profileWithFieldPermissionModified)
+				contents: Buffer.from(profileWithFieldPermissionModified)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
@@ -146,7 +146,7 @@ describe('MetadataFileContainer', function() {
 		it('should return removed custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var mf2 = new MetadataFileContainer();
 			var diffResult = mf1.diff(mf2);
@@ -158,11 +158,11 @@ describe('MetadataFileContainer', function() {
 		it('should return added first custom field of a modified custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithoutFields)
+				contents: Buffer.from(objectWithoutFields)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -172,11 +172,11 @@ describe('MetadataFileContainer', function() {
 		it('should return deleted last custom field of custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithoutFields)
+				contents: Buffer.from(objectWithoutFields)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
@@ -189,11 +189,11 @@ describe('MetadataFileContainer', function() {
 		it('should return added additional custom field of custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestAndATestField)
+				contents: Buffer.from(objectWithTestAndATestField)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -203,11 +203,11 @@ describe('MetadataFileContainer', function() {
 		it('should return destructiveManifest.manifest() additional custom field of custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestAndATestField)
+				contents: Buffer.from(objectWithTestAndATestField)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
@@ -217,11 +217,11 @@ describe('MetadataFileContainer', function() {
 		it('should return modified custom field of custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithModifiedTestField)
+				contents: Buffer.from(objectWithModifiedTestField)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
@@ -232,11 +232,11 @@ describe('MetadataFileContainer', function() {
 		it('should return renamed custom field of custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithTestField)
+				contents: Buffer.from(objectWithTestField)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithRenamedTestField)
+				contents: Buffer.from(objectWithRenamedTestField)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -247,11 +247,11 @@ describe('MetadataFileContainer', function() {
 		it('should return an added custom label', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('labels', 'CustomLabels.labels'),
-				contents: new Buffer(labelsObjectWithoutLabels)
+				contents: Buffer.from(labelsObjectWithoutLabels)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('labels', 'CustomLabels.labels'),
-				contents: new Buffer(labelsObjectWithLabel)
+				contents: Buffer.from(labelsObjectWithLabel)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 1);
@@ -261,11 +261,11 @@ describe('MetadataFileContainer', function() {
 		it('should return a removed custom label', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('labels', 'CustomLabels.labels'),
-				contents: new Buffer(labelsObjectWithLabel)
+				contents: Buffer.from(labelsObjectWithLabel)
 			});
 			var mf2 = new MetadataFileContainer({
 				path: path.join('labels', 'CustomLabels.labels'),
-				contents: new Buffer(labelsObjectWithoutLabels)
+				contents: Buffer.from(labelsObjectWithoutLabels)
 			});
 			var diffResult = mf1.diff(mf2);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
@@ -290,11 +290,11 @@ describe('MetadataFileContainer', function() {
 			var objectWithSortedFieldsAndValidationRule = [TestObject.header, TestObject.fields.textField1, TestObject.fields.textField2, TestObject.validationRules.validationRule1, TestObject.footer].join("\n");
 			var mfUnsorted = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithUnsortedFieldsAndValidationRule)
+				contents: Buffer.from(objectWithUnsortedFieldsAndValidationRule)
 			});
 			var mfSorted = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
-				contents: new Buffer(objectWithSortedFieldsAndValidationRule)
+				contents: Buffer.from(objectWithSortedFieldsAndValidationRule)
 			});
 			mfUnsorted.writeContents();
 			mfSorted.writeContents();
