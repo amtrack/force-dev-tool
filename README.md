@@ -215,7 +215,7 @@ Examples:
      | xargs -0 force-dev-tool deploy --runTests
 
   Deploying with running only test classes being contained in a deployment
-    $ force-dev-tool package grep 'ApexClass/Test_*' --template config/deployments/mock \
+    $ force-dev-tool package -f config/deployments/mock/package.xml grep 'ApexClass/Test_*' \
      | cut -d '/' -f 2 \
      | xargs -0 force-dev-tool deploy -d config/deployments/mock --runTests
 ```
