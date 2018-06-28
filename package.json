@@ -31,7 +31,7 @@
     "yazl": "^2.4.3"
   },
   "devDependencies": {
-    "eslint": "^4.15.0",
+    "eslint": "^5.0.0",
     "glob-all": "^3.1.0",
     "istanbul": "^0.4.4",
     "js-beautify": "^1.7.5",
