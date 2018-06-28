@@ -20,7 +20,6 @@
     "multimatch": "^2.1.0",
     "parse-diff": "^0.3.2",
     "split2": "^2.2.0",
-    "tabtab": "0.0.4",
     "tmp": "0.0.33",
     "underscore": "^1.8.3",
     "vinyl": "^1.2.0",

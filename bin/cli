@@ -4,7 +4,6 @@
 
 var docopt = require('docopt').docopt;
 var chalk = require("chalk");
-var tabtab = require('tabtab');
 var path = require('path');
 var findUp = require('find-up');
 var Fdt = require('../lib/index');
@@ -38,7 +37,6 @@ var doc = "force-dev-tool.\n" +
 	"	query           Execute a SOQL query returing JSON\n" +
 	"	bulk            (alpha) Import/export data in CSV format using the bulk API\n" +
 	"	execute         (alpha) Execute anonymous Apex\n" +
-	"	completion      (alpha) Print command line completion\n" +
 	"\n" +
 	"See 'force-dev-tool help <command>' for more information on a specific command.";
 
@@ -51,7 +49,6 @@ var command = opts['<command>'];
 var args = opts['<args>'];
 var topic = (args !== null && args.length > 0) ? args[0] : null;
 var validCommands = ['remote', 'login', 'fetch', 'info', 'package', 'retrieve', 'test', 'validate', 'validateTest', 'deploy', 'deployTest', 'changeset', 'query', 'bulk', 'execute'];
-var validCommandsRegExp = new RegExp('^force-dev-tool\\s(' + validCommands.join('|') + ')\\w?');
 
 var storagePath = process.cwd();
 var storagePathBestGuess = findUp.sync(path.join('src', 'package.xml'));
@@ -84,24 +81,6 @@ if (command === 'help') {
 	} else {
 		console.log(doc);
 	}
-} else if (command === 'completion') {
-	return tabtab.complete('force-dev-tool', function(err, data) {
-		if (err || !data) {
-			return;
-		}
-		// TODO: use docopt parse information instead
-		if (validCommandsRegExp.test(data.line)) {
-			SubCommand = require('../lib/cli/' + data.line.split(/\s/)[1]);
-			return new SubCommand(project).complete(tabtab, data);
-		}
-		if (/^--\w?/.test(data.last)) {
-			return tabtab.log(['help', 'version'], data, '--');
-		}
-		if (/^-\w?/.test(data.last)) {
-			return tabtab.log(['h'], data, '-');
-		}
-		tabtab.log(validCommands.concat(['help', '--help', '--version', '-h']), data);
-	});
 } else if (validCommands.indexOf(command) !== -1) {
 	SubCommand = require('../lib/cli/' + command);
 	try {
