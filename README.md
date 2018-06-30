@@ -103,7 +103,7 @@ Succeeded
 
 1\. By explicitly listing metadata files or metadata components
 ```console
-$ force-dev-tool changeset create vat src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
+$ echo "" | force-dev-tool changeset create vat src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
 ```
 
 2\. By providing a unified diff (e.g. `git diff`). Tweak the `git diff` command with `--ignore-space-at-eol` or `--ignore-all-space` to ignore space changes.
@@ -134,7 +134,7 @@ exported metadata container to config/deployments/vat
 
 1\. By explicitly listing metadata files or metadata components
 ```console
-$ force-dev-tool changeset create undo-vat --destructive src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
+$ echo "" | force-dev-tool changeset create undo-vat --destructive src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
 ```
 
 2\. By providing a unified diff (e.g. `git diff`)
