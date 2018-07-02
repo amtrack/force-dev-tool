@@ -6,6 +6,16 @@
 
 [![Build Status Windows](https://ci.appveyor.com/api/projects/status/wmdv146qn3oi582u/branch/master?svg=true)](https://ci.appveyor.com/project/amtrack/force-dev-tool/branch/master) Windows
 
+## Disclaimer
+
+> **Reduced maintenance for `force-dev-tool`**
+>
+> `force-dev-tool` has been created in 2015 trying to provide a CLI for developers to do deployments leveraging Version Control Systems because i felt a need to improve the painful Software Development Lifecycle for Salesforce.
+>
+> Fortunately times have changed.
+>
+> If you're looking for a modern Software Development Lifecycle for Salesforce please get familiar with [Salesforce DX](https://trailhead.salesforce.com/en/trails/sfdx_get_started) and use the
+> official [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) (a.k.a. [sfdx-cli](https://www.npmjs.com/package/sfdx-cli)).
 
 ## Install
 
