@@ -6,6 +6,18 @@
 
 [![Build Status Windows](https://ci.appveyor.com/api/projects/status/wmdv146qn3oi582u/branch/master?svg=true)](https://ci.appveyor.com/project/amtrack/force-dev-tool/branch/master) Windows
 
+## Disclaimer
+
+**Reduced maintenance for `force-dev-tool`**
+
+> `force-dev-tool` has been created in 2015 trying to provide a CLI for developers to do deployments leveraging Version Control Systems.
+>
+> Back then there was a need to improve the painful Software Development Lifecycle for Salesforce.
+>
+> Fortunately times have changed.
+>
+> If you're looking for a modern Software Development Lifecycle for Salesforce please get familiar with [Salesforce DX](https://trailhead.salesforce.com/en/trails/sfdx_get_started) and use the
+> officially supported CLI now called [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) ([sfdx-cli](https://www.npmjs.com/package/sfdx-cli) at npm).
 
 ## Install
 
@@ -47,6 +59,7 @@ See 'force-dev-tool help <command>' for more information on a specific command.
 ```
 
 ## Examples
+
 **Managing remote environments**
 
 ```console
@@ -102,16 +115,19 @@ Succeeded
 **Creating deployments**
 
 1\. By explicitly listing metadata files or metadata components
+
 ```console
 $ echo "" | force-dev-tool changeset create vat src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
 ```
 
 2\. By providing a unified diff (e.g. `git diff`). Tweak the `git diff` command with `--ignore-space-at-eol` or `--ignore-all-space` to ignore space changes.
+
 ```console
 $ git diff --no-renames master feature/vat | force-dev-tool changeset create vat
 ```
 
 Both approaches lead to the following result
+
 ```console
 Manifest:
 <?xml version="1.0" encoding="UTF-8"?>
@@ -133,16 +149,19 @@ exported metadata container to config/deployments/vat
 **Creating destructive deployments (reverting changes)**
 
 1\. By explicitly listing metadata files or metadata components
+
 ```console
 $ echo "" | force-dev-tool changeset create undo-vat --destructive src/pages/AccountExtensionVAT.page CustomField/Account.VAT__c
 ```
 
 2\. By providing a unified diff (e.g. `git diff`)
+
 ```console
 $ git diff --no-renames feature/vat master | force-dev-tool changeset create undo-vat
 ```
 
 Both approaches lead to the following result
+
 ```console
 Manifest:
 <?xml version="1.0" encoding="UTF-8"?>
@@ -268,9 +287,9 @@ $ force-dev-tool package grep 'ApexClass/Test_Mock*' \
 
 The following environment variables can be used to define a default remote environment called `env`:
 
-* `SFDC_USERNAME`
-* `SFDC_PASSWORD`
-* `SFDC_SERVER_URL`
+- `SFDC_USERNAME`
+- `SFDC_PASSWORD`
+- `SFDC_SERVER_URL`
 
 ```console
 $ force-dev-tool deploy -ct env
@@ -336,4 +355,5 @@ Please see the [wiki](https://github.com/amtrack/force-dev-tool/wiki) for [Motiv
 Feel free to open issues with questions.
 
 ## License
+
 MIT © [Matthias Rolke](mailto:mr.amtrack@gmail.com)
