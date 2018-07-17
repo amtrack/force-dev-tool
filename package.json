@@ -12,7 +12,7 @@
     "docopt": "^0.6.2",
     "event-stream": "^3.3.4",
     "find-up": "^3.0.0",
-    "fs-extra": "^6.0.1",
+    "fs-extra": "^7.0.0",
     "glob": "^7.0.6",
     "jsforce": "^1.7.0",
     "mississippi": "^3.0.0",
