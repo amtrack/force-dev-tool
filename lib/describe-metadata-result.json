@@ -632,7 +632,7 @@
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "lightningExperienceThemes",
-		"xmlName": "lightningExperienceTheme"
+		"xmlName": "LightningExperienceTheme"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
