@@ -621,6 +621,18 @@
 		"metaFile": false,
 		"suffix": "settings",
 		"xmlName": "Settings"
+	}, {
+		"directoryName": "brandingSets",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "brandingSets",
+		"xmlName": "BrandingSet"
+	}, {
+		"directoryName": "lightningExperienceThemes",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "lightningExperienceThemes",
+		"xmlName": "LightningExperienceTheme"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
