@@ -19,8 +19,12 @@ describe('Metadata', function() {
 	});
 	describe('#getDirectoryNames()', function() {
 		it('should return a list of extended metadata type directory names', function() {
-			// KeywordList and ModerationRule unfortunately use the same directoryName 'moderation'
-			assert.equal(describeMetadataService.getDirectoryNames().length, numberOfMetadataObjects - 1);
+			// KeywordList and ModerationRule use the same directoryName 'moderation'
+			// WaveApplication, WaveDashboard, WaveDataflow, WaveDataset, WaveLens, WaveRecipe, WaveXmd use the same directoryName 'wave'
+			var reusedDirectoryCount = ['KeywordList', 'ModerationRule',
+				'WaveApplication', 'WaveDashboard', 'WaveDataflow', 'WaveDataset', 'WaveLens', 'WaveRecipe', 'WaveXmd'
+			].length - ['moderation', 'wave'].length;
+			assert.equal(describeMetadataService.getDirectoryNames().length, numberOfMetadataObjects - reusedDirectoryCount);
 		});
 	});
 	describe('#getType()', function() {
@@ -38,6 +42,31 @@ describe('Metadata', function() {
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.cmp')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.js')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.css')).xmlName, 'AuraDefinitionBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wapp')).xmlName, 'WaveApplication');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdash')).xmlName, 'WaveDashboard');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdash-meta.xml')).xmlName, 'WaveDashboard');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdf')).xmlName, 'WaveDataflow');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdf-meta.xml')).xmlName, 'WaveDataflow');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wds')).xmlName, 'WaveDataset');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wlens')).xmlName, 'WaveLens');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wlens-meta.xml')).xmlName, 'WaveLens');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdpr')).xmlName, 'WaveRecipe');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdpr-meta.xml')).xmlName, 'WaveRecipe');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.xmd')).xmlName, 'WaveXmd');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.xmd-meta.xml')).xmlName, 'WaveXmd');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'dashboards', 'Service_Omni.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'dataflows', 'ServiceAnalyticsDataflow.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'dataset_files', 'ServiceActivity_XMD_20_template.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'DatasetUserXmd_XMD.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'folder.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'macros.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'releasenotes.html')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'rules.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'template-info.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'template-to-app-rules.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'ui.json')).xmlName, 'WaveTemplateBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('waveTemplates', 'TestAnalyticsBundle', 'variables.json')).xmlName, 'WaveTemplateBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('reports', 'unfiled$public')).xmlName, 'ReportFolder');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('reports', 'unfiled$public', 'Foo.report')).xmlName, 'Report');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('documents', 'unfiled$public')).xmlName, 'DocumentFolder');

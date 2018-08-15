@@ -103,6 +103,42 @@ describe('MetadataFile', function() {
 			assert.deepEqual(component.fullName, 'MyFolder/MyFile');
 			assert.deepEqual(component.toString(), 'Document/MyFolder/MyFile');
 		});
+		it('should return a component for a WaveDashboard', function() {
+			var component = new MetadataFile({
+				path: path.join('wave', 'About_Wave_for_Sales.wdash')
+			}).getComponent();
+			assert.deepEqual(component.type, 'WaveDashboard');
+			assert.deepEqual(component.fileName, path.join('wave', 'About_Wave_for_Sales.wdash'));
+			assert.deepEqual(component.fullName, 'About_Wave_for_Sales');
+			assert.deepEqual(component.toString(), 'WaveDashboard/About_Wave_for_Sales');
+		});
+		it('should return a component for a WaveTemplateBundle', function() {
+			var component = new MetadataFile({
+				path: path.join('waveTemplates', 'Service_Analytics_Flex')
+			}).getComponent();
+			assert.deepEqual(component.type, 'WaveTemplateBundle');
+			assert.deepEqual(component.fileName, path.join('waveTemplates', 'Service_Analytics_Flex'));
+			assert.deepEqual(component.fullName, 'Service_Analytics_Flex');
+			assert.deepEqual(component.toString(), 'WaveTemplateBundle/Service_Analytics_Flex');
+		});
+		it('should return a component for a folder belonging to a WaveTemplateBundle', function() {
+			var component = new MetadataFile({
+				path: path.join('waveTemplates', 'Service_Analytics_Flex', 'dashboards')
+			}).getComponent();
+			assert.deepEqual(component.type, 'WaveTemplateBundle');
+			assert.deepEqual(component.fileName, path.join('waveTemplates', 'Service_Analytics_Flex'));
+			assert.deepEqual(component.fullName, 'Service_Analytics_Flex');
+			assert.deepEqual(component.toString(), 'WaveTemplateBundle/Service_Analytics_Flex');
+		});
+		it('should return a component for a file belonging to a WaveTemplateBundle subfolder', function() {
+			var component = new MetadataFile({
+				path: path.join('waveTemplates', 'Service_Analytics_Flex', 'dashboards', 'Service_Backlog.json')
+			}).getComponent();
+			assert.deepEqual(component.type, 'WaveTemplateBundle');
+			assert.deepEqual(component.fileName, path.join('waveTemplates', 'Service_Analytics_Flex'));
+			assert.deepEqual(component.fullName, 'Service_Analytics_Flex');
+			assert.deepEqual(component.toString(), 'WaveTemplateBundle/Service_Analytics_Flex');
+		});
 		it('should return null otherwise', function() {
 			var component = new MetadataFile({
 				path: path.join('foo', 'bar')
