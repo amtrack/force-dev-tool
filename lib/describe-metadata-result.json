@@ -38,6 +38,11 @@
 		"metaFile": false,
 		"xmlName": "AuraDefinitionBundle"
 	}, {
+		"directoryName": "lwc",
+		"inFolder": false,
+		"metaFile": false,
+		"xmlName": "LightningComponentBundle"
+	}, {
 		"directoryName": "components",
 		"inFolder": false,
 		"metaFile": true,
@@ -56,6 +61,12 @@
 		"suffix": "queue",
 		"xmlName": "Queue"
 	}, {
+		"directoryName": "CaseSubjectParticles",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "CaseSubjectParticle",
+		"xmlName": "CaseSubjectParticle"
+	}, {
 		"directoryName": "dataSources",
 		"inFolder": false,
 		"metaFile": false,
@@ -67,6 +78,12 @@
 		"metaFile": false,
 		"suffix": "namedCredential",
 		"xmlName": "NamedCredential"
+	}, {
+		"directoryName": "externalServiceRegistrations",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "externalServiceRegistration",
+		"xmlName": "ExternalServiceRegistration"
 	}, {
 		"directoryName": "roles",
 		"inFolder": false,
@@ -100,14 +117,16 @@
 	}, {
 		"childXmlNames": [
 			"CustomField",
+			"Index",
 			"BusinessProcess",
-			"CompactLayout",
 			"RecordType",
+			"CompactLayout",
 			"WebLink",
 			"ValidationRule",
 			"SharingReason",
 			"ListView",
-			"FieldSet"
+			"FieldSet",
+			"ActionOverride"
 		],
 		"directoryName": "objects",
 		"inFolder": false,
@@ -221,6 +240,20 @@
 		"metaFile": false,
 		"suffix": "EmbeddedServiceLiveAgent",
 		"xmlName": "EmbeddedServiceLiveAgent"
+	},
+	{
+		"directoryName": "EmbeddedServiceBranding",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "EmbeddedServiceBranding",
+		"xmlName": "EmbeddedServiceBranding"
+	},
+	{
+		"directoryName": "EmbeddedServiceFlowConfig",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "EmbeddedServiceFlowConfig",
+		"xmlName": "EmbeddedServiceFlowConfig"
 	}, {
 		"directoryName": "flows",
 		"inFolder": false,
@@ -233,6 +266,20 @@
 		"metaFile": false,
 		"suffix": "flowDefinition",
 		"xmlName": "FlowDefinition"
+	},
+	{
+		"directoryName": "eventSubscriptions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "subscription",
+		"xmlName": "EventSubscription"
+	},
+	{
+		"directoryName": "eventDeliveries",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "delivery",
+		"xmlName": "EventDelivery"
 	}, {
 		"childXmlNames": [
 			"WorkflowFieldUpdate",
@@ -241,7 +288,8 @@
 			"WorkflowAlert",
 			"WorkflowSend",
 			"WorkflowOutboundMessage",
-			"WorkflowRule"
+			"WorkflowRule",
+			"WorkflowFlowAction"
 		],
 		"directoryName": "workflows",
 		"inFolder": false,
@@ -346,13 +394,38 @@
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "profile",
-		"xmlName": "Profile"
+		"xmlName": "Profile",
+		"childXmlNames": [
+			"ProfileApplicationVisibility",
+			"ProfileApexClassAccess",
+			"ProfileApexPageAccess",
+			"ProfileCustomPermissions",
+			"ProfileExternalDataSourceAccess",
+			"ProfileFieldLevelSecurity",
+			"ProfileLayoutAssignments",
+			"ProfileObjectPermissions",
+			"ProfileRecordTypeVisibility",
+			"ProfileTabVisibility",
+			"ProfileUserPermission"
+		]
 	}, {
 		"directoryName": "permissionsets",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "permissionset",
-		"xmlName": "PermissionSet"
+		"xmlName": "PermissionSet",
+		"childXmlNames": [
+			"PermissionSetApplicationVisibility",
+			"PermissionSetApexClassAccess",
+			"PermissionSetApexPageAccess",
+			"PermissionSetCustomPermissions",
+			"PermissionSetExternalDataSourceAccess",
+			"PermissionSetFieldPermissions",
+			"PermissionSetObjectPermissions",
+			"PermissionSetRecordTypeVisibility",
+			"PermissionSetTabSetting",
+			"PermissionSetUserPermission"
+		]
 	}, {
 		"directoryName": "customMetadata",
 		"inFolder": false,
@@ -383,6 +456,13 @@
 		"metaFile": false,
 		"suffix": "remoteSite",
 		"xmlName": "RemoteSiteSetting"
+	},
+	{
+		"directoryName": "cspTrustedSites",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "cspTrustedSite",
+		"xmlName": "CspTrustedSite"
 	}, {
 		"childXmlNames": [
 			"MatchingRule"
@@ -410,6 +490,13 @@
 		"metaFile": false,
 		"suffix": "authprovider",
 		"xmlName": "AuthProvider"
+	},
+	{
+		"directoryName": "eclair",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "geodata",
+		"xmlName": "EclairGeoData"
 	}, {
 		"directoryName": "sites",
 		"inFolder": false,
@@ -680,6 +767,103 @@
 		"metaFile": false,
 		"suffix": "lightningExperienceThemes",
 		"xmlName": "LightningExperienceTheme"
+	}, {
+		"directoryName": "EmbeddedServiceFieldService",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "EmbeddedServiceFieldService",
+		"xmlName": "EmbeddedServiceFieldService"
+	},
+	{
+		"directoryName": "ChatterExtensions",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "ChatterExtension",
+		"xmlName": "ChatterExtension"
+	},
+	{
+		"directoryName": "platformEventChannels",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "platformEventChannel",
+		"xmlName": "PlatformEventChannel"
+	},
+	{
+		"directoryName": "callCenters",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "callCenter",
+		"xmlName": "CallCenter"
+	},
+	{
+		"directoryName": "networkBranding",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "networkBranding",
+		"xmlName": "NetworkBranding"
+	},
+	{
+		"directoryName": "brandingSets",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "brandingSet",
+		"xmlName": "BrandingSet"
+	},
+	{
+		"directoryName": "flowCategories",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "flowCategory",
+		"xmlName": "FlowCategory"
+	},
+	{
+		"directoryName": "lightningBolts",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "lightningBolt",
+		"xmlName": "LightningBolt"
+	},
+	{
+		"directoryName": "lightningExperienceThemes",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "lightningExperienceTheme",
+		"xmlName": "LightningExperienceTheme"
+	},
+	{
+		"directoryName": "customHelpMenuSections",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "customHelpMenuSection",
+		"xmlName": "CustomHelpMenuSection"
+	},
+	{
+		"directoryName": "LeadConvertSettings",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "LeadConvertSetting",
+		"xmlName": "LeadConvertSettings"
+	},
+	{
+		"directoryName": "topicsForObjects",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "topicsForObjects",
+		"xmlName": "TopicsForObjects"
+	},
+	{
+		"directoryName": "emailservices",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "xml",
+		"xmlName": "EmailServicesFunction"
+	},
+	{
+		"directoryName": "recordActionDeployments",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "deployment",
+		"xmlName": "RecordActionDeployment"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
