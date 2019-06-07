@@ -38,12 +38,12 @@ describe('MetadataFile', function() {
 			assert.deepEqual(f.parentDirname(), 'aura');
 
 			f = new MetadataFile({
-				path: path.join('lwc', 'TestApplwc', 'TestApp.html')
+				path: path.join('lwc', 'TestApplwc', 'TestApplwc.html')
 			});
-			assert.deepEqual(f.path, path.join('lwc', 'TestApplwc', 'TestApp.html'));
+			assert.deepEqual(f.path, path.join('lwc', 'TestApplwc', 'TestApplwc.html'));
 			assert.deepEqual(f.extnameWithoutDot(), 'html');
 			assert.deepEqual(f.filename(), 'TestApplwc');
-			assert.deepEqual(f.basename, 'TestApp.html');
+			assert.deepEqual(f.basename, 'TestApplwc.html');
 			assert.deepEqual(f.basenameDirname(), 'TestApplwc');
 			assert.deepEqual(f.parentDirname(), 'lwc');
 
@@ -85,6 +85,24 @@ describe('MetadataFile', function() {
 			assert.deepEqual(component.fileName, path.join('aura', 'TestApp'));
 			assert.deepEqual(component.fullName, 'TestApp');
 			assert.deepEqual(component.toString(), 'AuraDefinitionBundle/TestApp');
+		});
+		it('should return a component for an LightningComponentBundle', function() {
+			var component = new MetadataFile({
+				path: path.join('lwc', 'TestApplwc')
+			}).getComponent();
+			assert.deepEqual(component.type, 'LightningComponentBundle');
+			assert.deepEqual(component.fileName, path.join('lwc', 'TestApplwc'));
+			assert.deepEqual(component.fullName, 'TestApplwc');
+			assert.deepEqual(component.toString(), 'LightningComponentBundle/TestApplwc');
+		});
+		it('should return a component for a file belonging to an LightningComponentBundle', function() {
+			var component = new MetadataFile({
+				path: path.join('lwc', 'TestApplwc', 'TestApplwc.html')
+			}).getComponent();
+			assert.deepEqual(component.type, 'LightningComponentBundle');
+			assert.deepEqual(component.fileName, path.join('lwc', 'TestApplwc'));
+			assert.deepEqual(component.fullName, 'TestApplwc');
+			assert.deepEqual(component.toString(), 'LightningComponentBundle/TestApplwc');
 		});
 		it('should return a component for a folder', function() {
 			var component = new MetadataFile({
