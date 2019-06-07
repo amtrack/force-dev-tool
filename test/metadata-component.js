@@ -70,6 +70,13 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fileName, path.join('aura', 'TestApp'));
 			assert.deepEqual(metadataComponent.toString(), 'AuraDefinitionBundle/TestApp');
 		});
+		it('should return a metadata component for a LightningComponentBundle', function() {
+			var metadataComponent = new MetadataComponent('LightningComponentBundle/TestApplwc');
+			assert.deepEqual(metadataComponent.type, 'LightningComponentBundle');
+			assert.deepEqual(metadataComponent.fullName, 'TestApplwc');
+			assert.deepEqual(metadataComponent.fileName, path.join('lwc', 'TestApplwc'));
+			assert.deepEqual(metadataComponent.toString(), 'LightningComponentBundle/TestApplwc');
+		});
 		it('should return a metadata component for an Einstein Analytics Dashboard', function() {
 			var metadataComponent = new MetadataComponent('WaveDashboard/About_Wave_for_Sales');
 			assert.deepEqual(metadataComponent.type, 'WaveDashboard');
