@@ -44,7 +44,7 @@ describe('MetadataFile', function() {
 			assert.deepEqual(f.extnameWithoutDot(), 'html');
 			assert.deepEqual(f.filename(), 'TestApplwc');
 			assert.deepEqual(f.basename, 'TestApp.html');
-			assert.deepEqual(f.basenameDirname(), 'TestApplwx');
+			assert.deepEqual(f.basenameDirname(), 'TestApplwc');
 			assert.deepEqual(f.parentDirname(), 'lwc');
 
 			f = new MetadataFile({
