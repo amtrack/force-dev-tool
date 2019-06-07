@@ -38,6 +38,16 @@ describe('MetadataFile', function() {
 			assert.deepEqual(f.parentDirname(), 'aura');
 
 			f = new MetadataFile({
+				path: path.join('lwc', 'TestApplwc', 'TestApp.html')
+			});
+			assert.deepEqual(f.path, path.join('lwc', 'TestApplwc', 'TestApp.html'));
+			assert.deepEqual(f.extnameWithoutDot(), 'html');
+			assert.deepEqual(f.filename(), 'TestApplwc');
+			assert.deepEqual(f.basename, 'TestApp.html');
+			assert.deepEqual(f.basenameDirname(), 'TestApplwx');
+			assert.deepEqual(f.parentDirname(), 'lwc');
+
+			f = new MetadataFile({
 				path: path.join('documents', 'unfiled$public', 'foo.png')
 			});
 			assert.deepEqual(f.path, path.join('documents', 'unfiled$public', 'foo.png'));

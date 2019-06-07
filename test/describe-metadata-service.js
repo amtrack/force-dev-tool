@@ -42,6 +42,10 @@ describe('Metadata', function() {
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.cmp')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.js')).xmlName, 'AuraDefinitionBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('aura', 'TestApp', 'TestApp.css')).xmlName, 'AuraDefinitionBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('lwc', 'TestApplwc')).xmlName, 'LightningComponentBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('lwc', 'TestApplwc', 'TestApplwc.html')).xmlName, 'LightningComponentBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('lwc', 'TestApplwc', 'TestApplwc.js')).xmlName, 'LightningComponentBundle');
+			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('lwc', 'TestApplwc', 'TestApplwc.js-meta.xml')).xmlName, 'LightningComponentBundle');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wapp')).xmlName, 'WaveApplication');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdash')).xmlName, 'WaveDashboard');
 			assert.deepEqual(describeMetadataService.getTypeForFilepath(path.join('wave', 'Test.wdash-meta.xml')).xmlName, 'WaveDashboard');
