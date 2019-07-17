@@ -44,7 +44,7 @@ describe('Remote', function() {
 			);
 			var r = new Remote('default', 'default@example.com', 'fooInvalid');
 			r.connect(function(connErr, conn) {
-				assert.deepEqual(connErr, /INVALID_LOGIN/);
+				assert(/INVALID_LOGIN/.test(connErr));
 				assert(!conn);
 				done();
 			});
