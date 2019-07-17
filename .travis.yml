@@ -1,8 +1,8 @@
 language: node_js
 node_js:
+  - "12"
   - "10"
   - "8"
-  - "6"
 script:
   - npm test
   - npm run fmt
@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: release
       if: branch = master
-      node_js: "10"
+      node_js: "12"
       script:
         - npm install --global semantic-release@15
         - semantic-release
