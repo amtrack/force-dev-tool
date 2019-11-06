@@ -317,6 +317,21 @@ module.exports = {
 			"type": "Flow"
 		}
 	},
+	FlowDefinition: {
+		UnversionedFlow: {
+			"createdById": "005w0000003zTZPAA2",
+			"createdByName": "John Doe",
+			"createdDate": "1970-01-01T00:00:00.000Z",
+			"fileName": "flowDefinitions/UnversionedFlow.flowDefinition",
+			"fullName": "UnversionedFlow",
+			"id": "3001100000027muAAA",
+			"lastModifiedById": "005w0000003zTZPAA2",
+			"lastModifiedByName": "John Doe",
+			"lastModifiedDate": "1970-01-01T00:00:00.000Z",
+			"manageableState": "unmanaged",
+			"type": "FlowDefinition"
+		}
+	},
 	InstalledPackage: {
 		al: {
 			"createdById": "005w0000003zTZPAA2",

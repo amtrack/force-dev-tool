@@ -62,6 +62,11 @@
 		"suffix": "dataSource",
 		"xmlName": "ExternalDataSource"
 	}, {
+		"directoryName": "lwc",
+		"inFolder": false,
+		"metaFile": false,
+		"xmlName": "LightningComponentBundle"
+	},{
 		"directoryName": "namedCredentials",
 		"inFolder": false,
 		"metaFile": false,
@@ -622,12 +627,71 @@
 		"suffix": "settings",
 		"xmlName": "Settings"
 	}, {
+		"directoryName": "brandingSets",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "brandingSets",
+		"xmlName": "BrandingSet"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "wapp",
+		"xmlName": "WaveApplication"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "wdash",
+		"xmlName": "WaveDashboard"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "wdf",
+		"xmlName": "WaveDataflow"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "wds",
+		"xmlName": "WaveDataset"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "wlens",
+		"xmlName": "WaveLens"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": true,
+		"suffix": "wdpr",
+		"xmlName": "WaveRecipe"
+	}, {
+		"directoryName": "waveTemplates",
+		"inFolder": false,
+		"metaFile": false,
+		"xmlName": "WaveTemplateBundle"
+	}, {
+		"directoryName": "wave",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "xmd",
+		"xmlName": "WaveXmd"
+	}, {
+		"directoryName": "lightningExperienceThemes",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "lightningExperienceThemes",
+		"xmlName": "LightningExperienceTheme"
+	}, {
 		"directoryName": "notificationtypes",
 		"inFolder": false,
 		"metaFile": false,
 		"suffix": "notificationtypes",
 		"xmlName": "CustomNotificationType"
-	}],
+  }],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
 	"testRequired": false
