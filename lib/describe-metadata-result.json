@@ -621,6 +621,12 @@
 		"metaFile": false,
 		"suffix": "settings",
 		"xmlName": "Settings"
+	}, {
+		"directoryName": "notificationtypes",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "notificationtypes",
+		"xmlName": "CustomNotificationType"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
