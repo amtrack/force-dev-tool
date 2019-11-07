@@ -70,6 +70,27 @@ describe('MetadataComponent', function() {
 			assert.deepEqual(metadataComponent.fileName, path.join('aura', 'TestApp'));
 			assert.deepEqual(metadataComponent.toString(), 'AuraDefinitionBundle/TestApp');
 		});
+		it('should return a metadata component for a LightningComponentBundle', function() {
+			var metadataComponent = new MetadataComponent('LightningComponentBundle/TestApplwc');
+			assert.deepEqual(metadataComponent.type, 'LightningComponentBundle');
+			assert.deepEqual(metadataComponent.fullName, 'TestApplwc');
+			assert.deepEqual(metadataComponent.fileName, path.join('lwc', 'TestApplwc'));
+			assert.deepEqual(metadataComponent.toString(), 'LightningComponentBundle/TestApplwc');
+		});
+		it('should return a metadata component for an Einstein Analytics Dashboard', function() {
+			var metadataComponent = new MetadataComponent('WaveDashboard/About_Wave_for_Sales');
+			assert.deepEqual(metadataComponent.type, 'WaveDashboard');
+			assert.deepEqual(metadataComponent.fullName, 'About_Wave_for_Sales');
+			assert.deepEqual(metadataComponent.fileName, path.join('wave', 'About_Wave_for_Sales.wdash'));
+			assert.deepEqual(metadataComponent.toString(), 'WaveDashboard/About_Wave_for_Sales');
+		});
+		it('should return a metadata component for an Einstein Analytics Template Bundle', function() {
+			var metadataComponent = new MetadataComponent('WaveTemplateBundle/Service_Analytics_Flex/dashboards/Service_Backlog');
+			assert.deepEqual(metadataComponent.type, 'WaveTemplateBundle');
+			assert.deepEqual(metadataComponent.fullName, 'Service_Analytics_Flex');
+			assert.deepEqual(metadataComponent.fileName, path.join('waveTemplates', 'Service_Analytics_Flex'));
+			assert.deepEqual(metadataComponent.toString(), 'WaveTemplateBundle/Service_Analytics_Flex');
+		});
 		it('should return a metadata component for a Document', function() {
 			var metadataComponent = new MetadataComponent('Document/unfiled$public/Test.pdf');
 			assert.deepEqual(metadataComponent.type, 'Document');

@@ -63,7 +63,24 @@ describe('FetchResultParser', function() {
 			assert.deepEqual(fetchResult.fileProperties.length, 1);
 			assert.deepEqual(new MetadataComponent(fetchResult.fileProperties[0]).toString(), 'Document/various');
 		});
-		it('should transform a non-versioned Flow to a versioned Flow', function() {
+		it('should transform a non-versioned Flow to a versioned Flow with API Version 43.0', function() {
+			var config = new(require('../lib/config'))();
+			var oldApiVersion = config.get('defaultApiVersion');
+			config.set('defaultApiVersion', '43.0');
+			var fetchResult = new FetchResultParser({
+				describeMetadataResult: describeMetadataResult,
+				fileProperties: [
+					fileProperties.Flow.UnversionedFlow
+				],
+				flowDefinitions: soqlResponses.flowDefinitions
+			});
+			fetchResult.transform();
+			// reset api version
+			config.set('defaultApiVersion', oldApiVersion);
+			assert.deepEqual(fetchResult.fileProperties.length, 1);
+			assert.deepEqual(new MetadataComponent(fetchResult.fileProperties[0]).toString(), 'Flow/UnversionedFlow-1');
+		});
+		it('should not transform a non-versioned Flow to a versioned Flow', function() {
 			var fetchResult = new FetchResultParser({
 				describeMetadataResult: describeMetadataResult,
 				fileProperties: [
@@ -73,7 +90,7 @@ describe('FetchResultParser', function() {
 			});
 			fetchResult.transform();
 			assert.deepEqual(fetchResult.fileProperties.length, 1);
-			assert.deepEqual(new MetadataComponent(fetchResult.fileProperties[0]).toString(), 'Flow/UnversionedFlow-1');
+			assert.deepEqual(new MetadataComponent(fetchResult.fileProperties[0]).toString(), 'Flow/UnversionedFlow');
 		});
 		it('should transform an Account RecordType to a PersonAccount RecordType using SOQL', function() {
 			var fetchResult = new FetchResultParser({
@@ -113,11 +130,27 @@ describe('FetchResultParser', function() {
 			assert.deepEqual(fetchResult.fileProperties.length, 0);
 			assert.deepEqual(fetchResult.getWarnings().length, 1);
 		});
-		it('should filter non-versioned Flows', function() {
+		it('should filter non-versioned Flows with API version 43.0 or older', function() {
+			var config = new(require('../lib/config'))();
+			var oldApiVersion = config.get('defaultApiVersion');
+			config.set('defaultApiVersion', '43.0');
 			var fetchResult = new FetchResultParser({
 				describeMetadataResult: describeMetadataResult,
 				fileProperties: [
 					fileProperties.Flow.UnversionedFlow
+				]
+			});
+			fetchResult.filterInvalid();
+			// reset api version
+			config.set('defaultApiVersion', oldApiVersion);
+			assert.deepEqual(fetchResult.fileProperties.length, 0);
+			assert.deepEqual(fetchResult.getWarnings().length, 1);
+		});
+		it('should filter unnecessary FlowDefinitions', function() {
+			var fetchResult = new FetchResultParser({
+				describeMetadataResult: describeMetadataResult,
+				fileProperties: [
+					fileProperties.FlowDefinition.UnversionedFlow
 				]
 			});
 			fetchResult.filterInvalid();

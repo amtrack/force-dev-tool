@@ -58,8 +58,7 @@ var tests = [{
 		a: "HEAD^{/v0:}",
 		b: "HEAD",
 		unpackaged_path: "src",
-		expected: path.join("config", "deployments", "expected"),
-		skip: true
+		expected: path.join("config", "deployments", "expected")
 	}
 ];
 
