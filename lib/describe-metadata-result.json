@@ -685,6 +685,12 @@
 		"metaFile": false,
 		"suffix": "lightningExperienceThemes",
 		"xmlName": "LightningExperienceTheme"
+	}, {
+		"directoryName": "notificationtypes",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "notiftype",
+		"xmlName": "CustomNotificationType"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
