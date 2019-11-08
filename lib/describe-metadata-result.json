@@ -630,7 +630,7 @@
 		"directoryName": "brandingSets",
 		"inFolder": false,
 		"metaFile": false,
-		"suffix": "brandingSets",
+		"suffix": "brandingSet",
 		"xmlName": "BrandingSet"
 	}, {
 		"directoryName": "wave",
@@ -683,7 +683,7 @@
 		"directoryName": "lightningExperienceThemes",
 		"inFolder": false,
 		"metaFile": false,
-		"suffix": "lightningExperienceThemes",
+		"suffix": "lightningExperienceTheme",
 		"xmlName": "LightningExperienceTheme"
 	}, {
 		"directoryName": "notificationtypes",
