@@ -691,6 +691,12 @@
 		"metaFile": false,
 		"suffix": "notiftype",
 		"xmlName": "CustomNotificationType"
+	}, {
+		"directoryName": "messageChannels",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "messageChannel",
+		"xmlName": "LightningMessageChannel"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,
