@@ -114,6 +114,13 @@
 			"ListView",
 			"FieldSet"
 		],
+		"childXmlRequired": [
+			"deploymentStatus",
+			"label",
+			"nameField",
+			"pluralLabel",
+			"sharingModel"
+		],
 		"directoryName": "objects",
 		"inFolder": false,
 		"metaFile": false,
