@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>CustomObjectTest__c.Record_Type_Test</members>
+        <name>RecordType</name>
+    </types>
+    <version>46.0</version>
+</Package>
