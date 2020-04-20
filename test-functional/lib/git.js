@@ -20,7 +20,7 @@ class Repository {
   }
 
   add(testFolder, pathspec = '.') {
-    child.spawnSync('cp', ['-r', path.join(this._data, testFolder, 'src'),  this._cwd]);
+    child.spawnSync('cp', ['-r', path.join(this._data, testFolder),  path.join(this._cwd, 'src')]);
     return this._execute('git', ['add', pathspec]);
   }
 

@@ -92,8 +92,8 @@ class Cli {
 
     return {
       expected: this._expectedFolder ? path.join(this._expectedFolder, 'expected') : '',
-      v0folder: this._expectedFolder ? path.join(this._expectedFolder, 'v0/src') : '',
-      v1folder: this._expectedFolder ? path.join(this._expectedFolder, 'v0/src') : '',
+      v0folder: this._expectedFolder ? path.join(this._expectedFolder, 'v0') : '',
+      v1folder: this._expectedFolder ? path.join(this._expectedFolder, 'v0') : '',
       changeSet: changeSetPath,
       packageXml: path.join(changeSetPath, 'package.xml'),
       forceDevTool: path.resolve(__dirname, '../../bin/cli'),
