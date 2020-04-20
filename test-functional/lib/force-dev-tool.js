@@ -8,12 +8,12 @@ class Cli {
   }
 
   setCwd(cwd) {
-    this._cwd = cwd
+    this._cwd = cwd;
     return this;
   }
 
   setExpectedFolder(expectedFolder) {
-    this._expectedFolder = expectedFolder
+    this._expectedFolder = expectedFolder;
     return this;
   }
 
@@ -29,7 +29,7 @@ class Cli {
         env: Object.assign(process.env, {
           NODE_OPTIONS: process.debugPort ? '' : process.env.NODE_OPTIONS
         })
-    });
+      });
     return ret;
   }
 
@@ -41,7 +41,7 @@ class Cli {
         env: Object.assign(process.env, {
           NODE_OPTIONS: process.debugPort ? '' : process.env.NODE_OPTIONS
         })
-    });
+      });
     return ret;
   }
 
@@ -76,7 +76,7 @@ class Cli {
   sfdxDeploy(folder) {
     return child.spawnSync('sfdx', ['force:mdapi:deploy', '-d', '.', '-w', '10', '--json'], {
       cwd: folder
-    })
+    });
   }
 
   fdtDeploy(folder) {
@@ -84,7 +84,7 @@ class Cli {
       cwd: path.join(__dirname, '..'),
       env: Object.assign(process.env, {
         NODE_OPTIONS: process.debugPort ? '' : process.env.NODE_OPTIONS
-    })});
+      })});
   }
 
   getPathList() {
@@ -98,7 +98,7 @@ class Cli {
       packageXml: path.join(changeSetPath, 'package.xml'),
       forceDevTool: path.resolve(__dirname, '../../bin/cli'),
       destructiveXml: path.join(changeSetPath, 'destructiveChanges.xml')
-    }
+    };
   }
 }
 
