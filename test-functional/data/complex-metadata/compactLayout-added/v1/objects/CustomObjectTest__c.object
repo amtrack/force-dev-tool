@@ -145,7 +145,6 @@
     <compactLayouts>
         <fullName>compactLayoutTest</fullName>
         <fields>CreatedById</fields>
-        <fields>CurrencyIsoCode</fields>
         <fields>Name</fields>
         <fields>LastModifiedById</fields>
         <fields>OwnerId</fields>

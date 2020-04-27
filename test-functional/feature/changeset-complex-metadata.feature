@@ -10,7 +10,7 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
     @doing
     Examples:
       | parent       | child           | changeSetTag   | excludedTag    | data                                   |
-      | CustomObject | CustomField     | CustomField    | CustomObject   | complex-metadata/customField-added     |
+      | CustomObject | CompactLayout   | CompactLayout  | CustomObject   | complex-metadata/compactLayout-added   |
 
     Examples:
       | parent       | child           | changeSetTag   | excludedTag    | data                                   |
@@ -34,6 +34,11 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
      Then it will create a destructive change with the list of "<child>" metadata
       And excluding any "<parent>" metadata in the change set
       And the change set could be deployed correctly
+
+    @doing
+    Examples:
+      | parent       | child           | data                                     |
+      | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   |
 
     Examples:
       | parent       | child           | data                                     |
