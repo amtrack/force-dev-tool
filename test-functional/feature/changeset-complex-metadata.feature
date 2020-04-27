@@ -56,7 +56,6 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   | destructiveChanges.xml is not created  |
       | CustomObject | SharingReason   | complex-metadata/sharingReason-removed   | destructiveChanges.xml is not created  |
 
-  @doing @skipped
   Scenario Outline: Parent metadata are added, updated and/or removed
     Given a list of "<parent>" metadata in "<data>" folder which has been changed in a git repository
      When a user launches a change set with force-dev-tool
@@ -67,7 +66,7 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
     Examples:
       | parent       | child       | data                                   |
       | CustomObject | CustomField | complex-metadata/label-updated         |
-    # | CustomObject | CustomField | complex-metadata/compactLayout-added   |
+      | CustomObject | CustomField | complex-metadata/pluralLabel-updated   |
 
   @todo @skipped
   Scenario: Parent & child metadata are changed
