@@ -21,6 +21,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
     Examples:
       | simple        | data                                       |
       | PermissionSet | simple-metadata/permissionSet-list-changed |
+      | ApexClass     | simple-metadata/apex                       |
 
   Scenario Outline: Invalid metadata are added
     Given a list of "<simple>" metadata in "<data>" folder which has been changed in a git repository

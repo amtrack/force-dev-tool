@@ -7,11 +7,6 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       And excluding any "<excludedTag>" metadata in the change set
       And the change set could be deployed correctly
 
-    @doing
-    Examples:
-      | parent       | child           | changeSetTag   | excludedTag    | data                                   |
-      | CustomObject | CompactLayout   | CompactLayout  | CustomObject   | complex-metadata/compactLayout-added   |
-
     Examples:
       | parent       | child           | changeSetTag   | excludedTag    | data                                   |
       | CustomObject | CustomField     | CustomField    | CustomObject   | complex-metadata/customField-added     |
@@ -20,12 +15,12 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | WebLink         | WebLink        | CustomObject   | complex-metadata/weblink-added         |
       | CustomObject | ValidationRule  | ValidationRule | CustomObject   | complex-metadata/validationRule-added  |
       | CustomObject | FieldSet        | FieldSet       | CustomObject   | complex-metadata/fieldSet-added        |
+      | CustomObject | CompactLayout   | CompactLayout  | CustomObject   | complex-metadata/compactLayout-added   |
 
     @notWorking @skipped
     Examples:
       | parent       | child           | changeSetTag   | excludedTag    | data                                   |
       | CustomObject | ListView        | ListView       | CustomObject   | complex-metadata/listView-added        |
-      | CustomObject | CompactLayout   | CustomObject   | CompactLayout  | complex-metadata/compactLayout-added   |
       | CustomObject | SharingReason   | CustomObject   | SharingReason  | complex-metadata/sharingReason-added   |
 
   Scenario Outline: Child metadata are removed
@@ -35,11 +30,6 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       And excluding any "<parent>" metadata in the change set
       And the change set could be deployed correctly
 
-    @doing
-    Examples:
-      | parent       | child           | data                                     |
-      | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   |
-
     Examples:
       | parent       | child           | data                                     |
       | CustomObject | CustomField     | complex-metadata/customField-removed     |
@@ -47,13 +37,13 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | ValidationRule  | complex-metadata/validationRule-removed  |
       | CustomObject | FieldSet        | complex-metadata/fieldSet-removed        |
       | CustomObject | ListView        | complex-metadata/listView-removed        |
+      | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   |
 
     @notWorking @skipped
     Examples:
       | parent       | child           | data                                     | error                                  |
       | CustomObject | BusinessProcess | complex-metadata/businessProcess-removed | destructiveChanges.xml is not created  |
       | CustomObject | RecordType      | complex-metadata/recordType-removed      | Cannot delete record type through API: https://developer.salesforce.com/forums/#!/feedtype=SINGLE_QUESTION_DETAIL&dc=Developer_Forums&criteria=ALLQUESTIONS&id=906F0000000AeeVIAS |
-      | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   | destructiveChanges.xml is not created  |
       | CustomObject | SharingReason   | complex-metadata/sharingReason-removed   | destructiveChanges.xml is not created  |
 
   Scenario Outline: Parent metadata are added, updated and/or removed
