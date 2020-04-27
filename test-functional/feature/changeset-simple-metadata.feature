@@ -23,6 +23,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
       | simple        | data                                       |
       | PermissionSet | simple-metadata/permissionSet-list-changed |
       | ApexClass     | simple-metadata/apex                       |
+      | Report        | simple-metadata/reports                    |
 
   Scenario Outline: Invalid metadata are added
     Given a list of "<simple>" metadata in "<data>" folder which has been changed in a git repository
