@@ -10,6 +10,7 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
     Examples:
       | parent       | child           | data                                   |
       | CustomObject | CustomField     | complex-metadata/customField-added     |
+      | CustomObject | CustomField     | complex-metadata/customField-updated   |
       | CustomObject | RecordType      | complex-metadata/recordType-added      |
       | CustomObject | WebLink         | complex-metadata/weblink-added         |
       | CustomObject | ValidationRule  | complex-metadata/validationRule-added  |
@@ -56,17 +57,24 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | SearchLayouts | complex-metadata/SearchLayout-account-changed |
       | CustomObject | SearchLayouts | complex-metadata/SearchLayout-custom-added    |
 
-  @todo @skipped
-  Scenario: Parent & child metadata are changed
-    Given a list of parent properties that doesn't belong to an independent child has been added/modified/removed in a git repository
-      And a list of child metadata has been added/modified in a git repository
-     When a user launches this change set with force-dev-tool
-     Then it will create a change set with the list of independent component and with all parent metadata
+  Scenario Outline: Parent & child metadata are changed
+    Given a list of "<parent & child>" metadata in "<data>" folder which has been changed in a git repository
+     When a user launches a change set with force-dev-tool
+     Then it will create a change set with all "<parent & child>" metadata
+      And the change set could be deployed correctly
 
-  @todo @skipped
-  Scenario: Parent are changed & child metadata are removed
-    Given a list of parent properties that doesn't belong to an independent child has been added/modified/removed in a git repository
-      And a list of independent child has been removed in a git repository
-     When a user launches this change set with force-dev-tool
-     Then it will create a destructive change with the list of independent component
-      And it will create a change set with all parent metadata
+    Examples:
+      | parent & child       | data                                            |
+      | CustomObject         | complex-metadata/label-and-customField-updated  |
+
+  Scenario Outline: Parent are changed & child metadata are removed
+    Given a list of "<parent & child>" metadata in "<data>" folder which has been changed in a git repository
+     When a user launches a change set with force-dev-tool
+     Then it will create a change set with all "<parent & child>" metadata
+      And it will create a destructive change with the list of "<child>" metadata
+      And excluding any "<child>" metadata in the change set
+      And the change set could be deployed correctly
+
+    Examples:
+      | parent & child       | child       | data                                                    |
+      | CustomObject         | CustomField | complex-metadata/label-updated-and-customField-removed  |
