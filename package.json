@@ -30,12 +30,17 @@
     "yazl": "^2.4.3"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-fs": "^2.0.0",
+    "cucumber": "^6.0.5",
+    "cucumber-pretty": "^6.0.0",
     "eslint": "^5.0.1",
     "glob-all": "^3.1.0",
     "istanbul": "^0.4.4",
     "js-beautify": "^1.7.5",
     "mocha": "^7.0.0",
-    "sinon": "^6.0.1"
+    "sinon": "^6.0.1",
+    "tmp": "^0.1.0"
   },
   "keywords": [
     "cli",
@@ -61,6 +66,9 @@
     "mocha": "mocha test/ --recursive",
     "test": "npm run lint && npm run istanbul",
     "test:integration": "mocha test-integration --recursive",
+    "test:functional": "cd test-functional && cucumber-js feature/*.feature --tags 'not @skipped' --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty",
+    "test:functional:doing": "cd test-functional && cucumber-js feature/*.feature --tags '@doing' --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty",
+    "test:functional:debug": "cd test-functional && NODE_OPTIONS=--inspect-brk cucumber-js feature/*.feature --tags '@doing' --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty",
     "fmt": "glob-all 'lib/**/*.{js,json}' 'test/**/*.{js,json}' 'test-integration/**/*.{js,json}' 'bin/cli' | xargs js-beautify -r"
   }
 }
