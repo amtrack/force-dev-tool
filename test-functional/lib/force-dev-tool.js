@@ -54,7 +54,7 @@ class Cli {
   }
 
   deploy(folder) {
-    return process.env.TEST_DEPLOY_SKIP ? true : process.env.TEST_DEPLOY_FDT ? this.fdtDeploy(folder) : this.sfdxDeploy(folder);
+    return process.env.TEST_DEPLOY ? process.env.TEST_DEPLOY_FDT ? this.fdtDeploy(folder) : this.sfdxDeploy(folder) : 'skipped';
   }
 
   checkDeployFail(spawnRet) {
@@ -62,16 +62,18 @@ class Cli {
   }
 
   checkDeploy(spawnRet, fail = false) {
-    if (process.env.TEST_DEPLOY_SKIP) {
-      return true;
-    } else if (process.env.TEST_DEPLOY_FDT) {
-      expect(spawnRet.status, spawnRet).to.equal(fail ? 1 : 0);
-      expect(spawnRet.stdout.toString()).to.include('Running Validation of directory');
-      return spawnRet;
+    if (process.env.TEST_DEPLOY) {
+      if (process.env.TEST_DEPLOY_FDT) {
+        expect(spawnRet.status, spawnRet).to.equal(fail ? 1 : 0);
+        expect(spawnRet.stdout.toString()).to.include('Running Validation of directory');
+        return spawnRet;
+      } else {
+        let out = JSON.parse(spawnRet.stdout);
+        expect(out.status, JSON.stringify(out.result.details)).to.equal(fail ? 1 : 0);
+        return out;
+      }
     } else {
-      let out = JSON.parse(spawnRet.stdout);
-      expect(out.status, JSON.stringify(out.result.details)).to.equal(fail ? 1 : 0);
-      return out;
+      return 'skipped';
     }
   }
 

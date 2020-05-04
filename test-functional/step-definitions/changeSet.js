@@ -58,16 +58,16 @@ Then('it will create a destructive change with the list of removed {string} meta
 
 Then('the change set could be deployed correctly', function() {
   forceDevTool.checkDeploy(forceDevTool.deployFirstCommit());
-  forceDevTool.checkDeploy(forceDevTool.deployChangeSet());
+  return forceDevTool.checkDeploy(forceDevTool.deployChangeSet());
 });
 
 Then('the change set must fail when it is deployed', function() {
   forceDevTool.checkDeploy(forceDevTool.deployFirstCommit());
-  forceDevTool.checkDeployFail(forceDevTool.deployChangeSet());
+  return forceDevTool.checkDeployFail(forceDevTool.deployChangeSet());
 });
 
 After(function(scenario) {
-  if (scenario.result.status !== 'passed' || scenario.pickle.tags.some(t => t.name === '@doing')) {
+  if (scenario.result.status === 'failed' || scenario.pickle.tags.some(t => t.name === '@doing')) {
     console.log(`\n    Temporal folder with git is '${git.getRepoPath()}'`);
   }
 });
