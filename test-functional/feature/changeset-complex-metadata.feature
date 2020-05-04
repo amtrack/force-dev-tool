@@ -3,25 +3,21 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
   Scenario Outline: Child metadata are added and/or updated
     Given a list of "<child>" metadata in "<data>" folder which has been added and updated in a git repository
      When a user launches a change set with force-dev-tool
-     Then it will create a change set with the list of "<changeSetTag>" metadata
-      And excluding any "<excludedTag>" metadata in the change set
+     Then it will create a change set with the list of "<child>" metadata
+      And excluding any "<parent>" metadata in the change set
       And the change set could be deployed correctly
 
     Examples:
-      | parent       | child           | changeSetTag    | excludedTag    | data                                   |
-      | CustomObject | CustomField     | CustomField     | CustomObject   | complex-metadata/customField-added     |
-      | CustomObject | RecordType      | RecordType      | CustomObject   | complex-metadata/recordType-added      |
-      | CustomObject | WebLink         | WebLink         | CustomObject   | complex-metadata/weblink-added         |
-      | CustomObject | ValidationRule  | ValidationRule  | CustomObject   | complex-metadata/validationRule-added  |
-      | CustomObject | FieldSet        | FieldSet        | CustomObject   | complex-metadata/fieldSet-added        |
-      | CustomObject | CompactLayout   | CompactLayout   | CustomObject   | complex-metadata/compactLayout-added   |
-      | CustomObject | BusinessProcess | BusinessProcess | CustomObject   | complex-metadata/businessProcess-added |
-      | CustomObject | SharingReason   | SharingReason   | CustomObject   | complex-metadata/sharingReason-added   |
-
-    @notWorking @skipped
-    Examples:
-      | parent       | child           | changeSetTag   | excludedTag    | data                                   |
-      | CustomObject | ListView        | ListView       | CustomObject   | complex-metadata/listView-added        |
+      | parent       | child           | data                                   |
+      | CustomObject | CustomField     | complex-metadata/customField-added     |
+      | CustomObject | RecordType      | complex-metadata/recordType-added      |
+      | CustomObject | WebLink         | complex-metadata/weblink-added         |
+      | CustomObject | ValidationRule  | complex-metadata/validationRule-added  |
+      | CustomObject | FieldSet        | complex-metadata/fieldSet-added        |
+      | CustomObject | ListView        | complex-metadata/listView-added        |
+      | CustomObject | CompactLayout   | complex-metadata/compactLayout-added   |
+      | CustomObject | BusinessProcess | complex-metadata/businessProcess-added |
+      | CustomObject | SharingReason   | complex-metadata/sharingReason-added   |
 
   Scenario Outline: Child metadata are removed
     Given a list of "<child>" metadata in "<data>" folder which has been removed in a git repository
