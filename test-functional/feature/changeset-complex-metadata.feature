@@ -16,12 +16,12 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | FieldSet        | FieldSet        | CustomObject   | complex-metadata/fieldSet-added        |
       | CustomObject | CompactLayout   | CompactLayout   | CustomObject   | complex-metadata/compactLayout-added   |
       | CustomObject | BusinessProcess | BusinessProcess | CustomObject   | complex-metadata/businessProcess-added |
+      | CustomObject | SharingReason   | SharingReason   | CustomObject   | complex-metadata/sharingReason-added   |
 
     @notWorking @skipped
     Examples:
       | parent       | child           | changeSetTag   | excludedTag    | data                                   |
       | CustomObject | ListView        | ListView       | CustomObject   | complex-metadata/listView-added        |
-      | CustomObject | SharingReason   | CustomObject   | SharingReason  | complex-metadata/sharingReason-added   |
 
   Scenario Outline: Child metadata are removed
     Given a list of "<child>" metadata in "<data>" folder which has been removed in a git repository
@@ -39,12 +39,12 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | ListView        | complex-metadata/listView-removed        |
       | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   |
       | CustomObject | BusinessProcess | complex-metadata/businessProcess-removed |
+      | CustomObject | SharingReason   | complex-metadata/sharingReason-removed   |
 
     @notWorking @skipped
     Examples:
       | parent       | child           | data                                     | error                                  |
       | CustomObject | RecordType      | complex-metadata/recordType-removed      | Cannot delete record type through API: https://developer.salesforce.com/forums/#!/feedtype=SINGLE_QUESTION_DETAIL&dc=Developer_Forums&criteria=ALLQUESTIONS&id=906F0000000AeeVIAS |
-      | CustomObject | SharingReason   | complex-metadata/sharingReason-removed   | destructiveChanges.xml is not created  |
 
   Scenario Outline: Parent metadata are added, updated and/or removed
     Given a list of "<parent>" metadata in "<data>" folder which has been changed in a git repository
