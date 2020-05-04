@@ -8,14 +8,15 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       And the change set could be deployed correctly
 
     Examples:
-      | parent       | child           | changeSetTag   | excludedTag    | data                                   |
-      | CustomObject | CustomField     | CustomField    | CustomObject   | complex-metadata/customField-added     |
-      | CustomObject | BusinessProcess | CustomObject   | BusinessObject | complex-metadata/businessProcess-added |
-      | CustomObject | RecordType      | RecordType     | CustomObject   | complex-metadata/recordType-added      |
-      | CustomObject | WebLink         | WebLink        | CustomObject   | complex-metadata/weblink-added         |
-      | CustomObject | ValidationRule  | ValidationRule | CustomObject   | complex-metadata/validationRule-added  |
-      | CustomObject | FieldSet        | FieldSet       | CustomObject   | complex-metadata/fieldSet-added        |
-      | CustomObject | CompactLayout   | CompactLayout  | CustomObject   | complex-metadata/compactLayout-added   |
+      | parent       | child           | changeSetTag    | excludedTag    | data                                   |
+      | CustomObject | CustomField     | CustomField     | CustomObject   | complex-metadata/customField-added     |
+      | CustomObject | BusinessProcess | CustomObject    | BusinessObject | complex-metadata/businessProcess-added |
+      | CustomObject | RecordType      | RecordType      | CustomObject   | complex-metadata/recordType-added      |
+      | CustomObject | WebLink         | WebLink         | CustomObject   | complex-metadata/weblink-added         |
+      | CustomObject | ValidationRule  | ValidationRule  | CustomObject   | complex-metadata/validationRule-added  |
+      | CustomObject | FieldSet        | FieldSet        | CustomObject   | complex-metadata/fieldSet-added        |
+      | CustomObject | CompactLayout   | CompactLayout   | CustomObject   | complex-metadata/compactLayout-added   |
+      | CustomObject | BusinessProcess | BusinessProcess | CustomObject   | complex-metadata/businessProcess-added |
 
     @notWorking @skipped
     Examples:
@@ -38,11 +39,11 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | FieldSet        | complex-metadata/fieldSet-removed        |
       | CustomObject | ListView        | complex-metadata/listView-removed        |
       | CustomObject | CompactLayout   | complex-metadata/compactLayout-removed   |
+      | CustomObject | BusinessProcess | complex-metadata/businessProcess-removed |
 
     @notWorking @skipped
     Examples:
       | parent       | child           | data                                     | error                                  |
-      | CustomObject | BusinessProcess | complex-metadata/businessProcess-removed | destructiveChanges.xml is not created  |
       | CustomObject | RecordType      | complex-metadata/recordType-removed      | Cannot delete record type through API: https://developer.salesforce.com/forums/#!/feedtype=SINGLE_QUESTION_DETAIL&dc=Developer_Forums&criteria=ALLQUESTIONS&id=906F0000000AeeVIAS |
       | CustomObject | SharingReason   | complex-metadata/sharingReason-removed   | destructiveChanges.xml is not created  |
 
