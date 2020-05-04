@@ -10,7 +10,6 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
     Examples:
       | parent       | child           | changeSetTag    | excludedTag    | data                                   |
       | CustomObject | CustomField     | CustomField     | CustomObject   | complex-metadata/customField-added     |
-      | CustomObject | BusinessProcess | CustomObject    | BusinessObject | complex-metadata/businessProcess-added |
       | CustomObject | RecordType      | RecordType      | CustomObject   | complex-metadata/recordType-added      |
       | CustomObject | WebLink         | WebLink         | CustomObject   | complex-metadata/weblink-added         |
       | CustomObject | ValidationRule  | ValidationRule  | CustomObject   | complex-metadata/validationRule-added  |
