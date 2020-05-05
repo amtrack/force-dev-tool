@@ -54,8 +54,8 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | parent       | child         | data                                          |
       | CustomObject | CustomField   | complex-metadata/label-updated                |
       | CustomObject | CustomField   | complex-metadata/pluralLabel-updated          |
-      | CustomObject | SearchLayouts | complex-metadata/SearchLayout-account-changed |
-      | CustomObject | SearchLayouts | complex-metadata/SearchLayout-custom-added    |
+      | CustomObject | SearchLayouts | complex-metadata/searchLayout-account-changed |
+      | CustomObject | SearchLayouts | complex-metadata/searchLayout-custom-added    |
 
   Scenario Outline: Parent & child metadata are changed
     Given a list of "<parent & child>" metadata in "<data>" folder which has been changed in a git repository
