@@ -39,8 +39,7 @@
     "istanbul": "^0.4.4",
     "js-beautify": "^1.7.5",
     "mocha": "^7.0.0",
-    "sinon": "^6.0.1",
-    "tmp": "^0.1.0"
+    "sinon": "^6.0.1"
   },
   "keywords": [
     "cli",
