@@ -64,7 +64,7 @@
     "istanbul": "istanbul test ./node_modules/.bin/_mocha -- test/ --recursive",
     "lint": "eslint --ignore-path .gitignore .",
     "mocha": "mocha test/ --recursive",
-    "test": "npm run lint && npm run istanbul",
+    "test": "npm run lint && npm run istanbul && npm run test:functional",
     "test:integration": "mocha test-integration --recursive",
     "test:functional": "cd test-functional && cucumber-js feature/*.feature --tags 'not @skipped' --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty",
     "test:functional:doing": "cd test-functional && cucumber-js feature/*.feature --tags '@doing' --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty",
