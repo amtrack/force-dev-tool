@@ -46,7 +46,7 @@ The last step prints `the change set could be deployed` and it is skipped, there
 1. From a new scratch org
 
    ```sh
-   sfdx force:org:create --definitionfile project-scratch-def.json -a functional-tests --setdefaultusername
+   sfdx force:org:create --definitionfile test-functional/project-scratch-def.json -a functional-tests --setdefaultusername
    ```
 
 1. Registering a previously created [Developer Edition](https://developer.salesforce.com/signup) Org
@@ -55,31 +55,28 @@ The last step prints `the change set could be deployed` and it is skipped, there
    sfdx force:auth:web:login -r https://login.salesforce.com -a functional-tests --setdefaultusername
    ```
 
-In both cases, it is importante to set as default dev hub org with `--setdefaultusername`, because the step will deploy to the default dev hub org.
+In both cases, it is important to set as default org with `--setdefaultusername`, because the step will deploy to the default org.
 
-Once the environment is created then you must set an environment variable to don't skip the step:
+Once the org is set as default you must set an environment variable to run the deploy step:
 
 ```sh
 export TEST_DEPLOY=true
+npm run test:functional
+# or just for a single run
+TEST_DEPLOY=true npm run test:functional
 ```
 
 ### Run a specific feature
 
-Once you are on the `test-functional` folder:
+If you want to launch a specific `feature` called `test-functional/feature/changeset-complex-metadata-types.feature` you can ask it with the command line:
 
 ```sh
-cd test-functional
-```
-
-If you want to launch a specific `feature` called `feature/complex-metadata-types.feature` you can ask it with the command line:
-
-```sh
-../node_modules/.bin/cucumber-js feature/complex-metadata-types.feature --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty"
+npx cucumber-js test-functional/feature/changeset-complex-metadata-types.feature --require test-functional/step-definitions/changeSet.js --format ./node_modules/cucumber-pretty"
 ```
 
 ### Run a specific test example
 
-But if you want to test a specific test example you can tag the for example the `feature/changeset-simple-metadata.feature` file with a `@doing` tag like:
+If you want to test a specific test example you can tag for example the `feature/changeset-simple-metadata.feature` file with a `@doing` tag like:
 
 ```gherkin
 Feature: Change Set: Handle Properties of Simple Metadata Types
@@ -110,7 +107,7 @@ This will print a message like:
 
 ```gherkin
 > force-dev-tool@0.0.0-development test:functional:doing /Users/feliperoucheriglesias/salesforce/labs/force-dev-tool
-> cd test-functional && cucumber-js feature/*.feature --tags '@doing' --require step-definitions/changeSet.js --format ../node_modules/cucumber-pretty
+> cucumber-js test-functional/feature/*.feature --tags 'not @skipped' --require test-functional/step-definitions/changeSet.js --format ./node_modules/cucumber-pretty "--tags" "@doing"
 
 Feature: Change Set: Handle Properties of Simple Metadata Types
 
@@ -132,7 +129,7 @@ Note the line `Temporal folder with git is '/var/...'` is just for debug purpose
 
 ```sh
 cd /var/folders/jw/x34nq5_j03zbyj33v7wwplr00000gn/T/tmp-3837OsD51M2PfRsl
-git diff --no-renames HEAD~ HEAD
+git show --no-renames
 ```
 
 You will watch the following differences:
@@ -154,7 +151,7 @@ index 2b6a92b..0ebd002 100644
 And you will able to execute force-dev-tool changeset command:
 
 ```sh
-git diff --no-renames HEAD~ HEAD | force-dev-tool changeset create test -f
+git show --no-renames | force-dev-tool changeset create test -f
 ```
 
 It prints:
@@ -176,9 +173,9 @@ exported metadata container to config/deployments/test
 Or even debug force-dev-tool changeset command:
 
 ```sh
-git diff --no-renames HEAD~ HEAD | NODE_OPTIONS=--inspect-brk force-dev-tool changeset create test -f
+git show --no-renames | NODE_OPTIONS=--inspect-brk force-dev-tool changeset create test -f
 Debugger listening on ws://127.0.0.1:9229/c829fbe7-ff63-492f-99c2-32037e737d26
 For help, see: https://nodejs.org/en/docs/inspector
 ```
 
-And Attach node.js to the debug process, [vscode documentation](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) could help you.
+And "Debug: Attach to Node Process" [vscode documentation](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) could help you.

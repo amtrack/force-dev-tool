@@ -10,7 +10,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
       | simple        | data                                     |
       | PermissionSet | simple-metadata/permissionSet-changed    |
       | PermissionSet | simple-metadata/permissionSet-added-desc |
-      | Profile       | profile-layout-assignaments              |
+      | Profile       | profile-layout-assignments               |
 
   Scenario Outline: Simple metadata are added, updated and removed
     Given a list of "<simple>" metadata in "<data>" folder which has been changed in a git repository
