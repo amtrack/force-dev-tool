@@ -6,6 +6,12 @@ The test definition are stored inside of `feature` folder, and the implementatio
 
 The `data` folder contains examples of metadata change set for testing.
 
+The tests are grouped into three features:
+
+- **simple**: standalone file (e.g. `CustomTab`)
+- **compound**: requires an additional file (`-meta.xml`) (e.g. `ApexClass`)
+- **complex**: contains multiple components (e.g. `CustomObject`)
+
 ## Launch tests
 
 There's a specific npm scripts in the npm `package.json` file.
