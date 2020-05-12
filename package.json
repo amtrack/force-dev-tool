@@ -20,7 +20,7 @@
     "multimatch": "^2.1.0",
     "parse-diff": "^0.4.2",
     "split2": "^3.0.0",
-    "tmp": "0.0.33",
+    "tmp": "0.2.1",
     "underscore": "^1.8.3",
     "vinyl": "^1.2.0",
     "vinyl-fs": "^2.4.3",
