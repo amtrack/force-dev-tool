@@ -4,3 +4,5 @@ doc
 coverage
 npm-debug.log
 .vagrant
+.orgs.json
+.sfdx

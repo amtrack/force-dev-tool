@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <validationRules>
+        <fullName>Validation_Rule_Test</fullName>
+        <active>true</active>
+        <description>A test for change set</description>
+        <errorConditionFormula>ABS(1) = 1</errorConditionFormula>
+        <errorMessage>Absolute 1 is 1</errorMessage>
+    </validationRules>
+</CustomObject>

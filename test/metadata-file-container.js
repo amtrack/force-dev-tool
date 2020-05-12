@@ -301,4 +301,15 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(mfUnsorted.toString(), mfSorted.toString());
 		});
 	});
+	describe('#contentsWithoutChilds', function() {
+		it('should strip off children from a CustomObject', function() {
+			var objectWithAttributeAndField = [TestObject.header, TestObject.attribute, TestObject.fields.textField1, TestObject.footer].join("\n");
+			var mf = new MetadataFileContainer({
+				path: path.join('objects', 'Account.object'),
+				contents: Buffer.from(objectWithAttributeAndField)
+			});
+			var content = mf.contentsWithoutChilds();
+			assert.deepEqual(content, objectWithoutFields);
+		});
+	});
 });

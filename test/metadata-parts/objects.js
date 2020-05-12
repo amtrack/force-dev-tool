@@ -6,8 +6,8 @@ var header = ['<?xml version="1.0" encoding="UTF-8"?>',
 
 var footer = '</CustomObject>\n';
 
-var attribute = '<enableHistory>false</enableHistory>';
-var attributeModified = '<enableHistory>true</enableHistory>';
+var attribute = '    <enableHistory>false</enableHistory>';
+var attributeModified = '    <enableHistory>true</enableHistory>';
 
 var textField = [
 	'    <fields>',
@@ -42,13 +42,13 @@ var searchLayouts1Modified = [
 ].join("\n");
 
 var validationRule1 = [
-	'<validationRules>',
-	'    <fullName>Test_10</fullName>',
-	'    <active>true</active>',
-	'    <errorConditionFormula>LEN(Test__c) != 10</errorConditionFormula>',
-	'    <errorDisplayField>Test__c</errorDisplayField>',
-	'    <errorMessage>Test__c should be exactly 10 characters long</errorMessage>',
-	'</validationRules>'
+	'    <validationRules>',
+	'        <fullName>Test_10</fullName>',
+	'        <active>true</active>',
+	'        <errorConditionFormula>LEN(Test__c) != 10</errorConditionFormula>',
+	'        <errorDisplayField>Test__c</errorDisplayField>',
+	'        <errorMessage>Test__c should be exactly 10 characters long</errorMessage>',
+	'    </validationRules>'
 ].join("\n");
 
 module.exports = {
