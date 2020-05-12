@@ -47,7 +47,7 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
 
 ### Run the automatic changeset deployment
 
-The last step prints `the change set could be deployed` and it is skipped, there's two ways to deploy the changeset in a Org:
+The last step prints "`the change set could be deployed`" and it is skipped, there's two ways to deploy the changeset in a Org:
 
 1. From a new scratch org
 
@@ -103,7 +103,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
       ...
 ```
 
-And launch the following npm script:
+And launch the following `npm` script:
 
 ```sh
 npm run test:functional:doing
@@ -131,7 +131,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
 0m19.841s
 ```
 
-Note the line `Temporal folder with git is '/var/...'` is just for debug purpose, becaucse you can go in, and execute debug commands like `git diff` command:
+Note the line "`Temporal folder with git is '/var/...'`" is just for debug purpose, because you can go in, and execute debug commands like `git diff` o `git show`:
 
 ```sh
 cd /var/folders/jw/x34nq5_j03zbyj33v7wwplr00000gn/T/tmp-3837OsD51M2PfRsl
@@ -154,7 +154,7 @@ index 2b6a92b..0ebd002 100644
  </PermissionSet>
 ```
 
-And you will able to execute force-dev-tool changeset command:
+And you will able to execute `force-dev-tool changeset` command:
 
 ```sh
 git show --no-renames | force-dev-tool changeset create test -f
@@ -176,7 +176,7 @@ Manifest:
 exported metadata container to config/deployments/test
 ```
 
-Or even debug force-dev-tool changeset command:
+Or even debug `force-dev-tool changeset` command:
 
 ```sh
 git show --no-renames | NODE_OPTIONS=--inspect-brk force-dev-tool changeset create test -f
@@ -184,4 +184,4 @@ Debugger listening on ws://127.0.0.1:9229/c829fbe7-ff63-492f-99c2-32037e737d26
 For help, see: https://nodejs.org/en/docs/inspector
 ```
 
-And "Debug: Attach to Node Process" [vscode documentation](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) could help you.
+Note "Debug: Attach to Node Process" of [vscode](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) could help you.
