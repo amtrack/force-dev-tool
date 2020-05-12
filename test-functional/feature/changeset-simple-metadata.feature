@@ -11,6 +11,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
       | PermissionSet | simple-metadata/permissionSet-changed       |
       | PermissionSet | simple-metadata/permissionSet-added-desc    |
       | Profile       | simple-metadata/profile-layout-assignments  |
+      | Profile       | simple-metadata/profile-custom-settings     |
       | Profile       | simple-metadata/profile-description-changed |
 
   Scenario Outline: Simple metadata are added, updated and removed
