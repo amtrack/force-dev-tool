@@ -25,7 +25,8 @@ class Repository {
   }
 
   rm(folder = 'src') {
-    return this._execute('git', ['rm', '-r', folder]);
+    this._execute('git', ['rm', '-r', folder]);
+    return this._execute('rm', ['-r', '-f', folder]);
   }
 
   commit(message = 'no message') {
