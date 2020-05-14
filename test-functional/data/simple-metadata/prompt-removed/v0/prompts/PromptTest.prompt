@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Prompt Test</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Foo bar&lt;/p&gt;</body>
+        <customApplication>02u3N000000KcgF</customApplication>
+        <delayDays>1</delayDays>
+        <description>Just for testing</description>
+        <displayType>DockedComposer</displayType>
+        <header>This is a Prompt Test</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Prompt Test</masterLabel>
+        <publishedByUser>0053N000001wXqH</publishedByUser>
+        <publishedDate>2020-05-14</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2020-05-14</startDate>
+        <targetAppDeveloperName>Service</targetAppDeveloperName>
+        <targetAppNamespacePrefix>standard</targetAppNamespacePrefix>
+        <targetPageKey1>home</targetPageKey1>
+        <targetPageType>standard__namedPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Prompt Test</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

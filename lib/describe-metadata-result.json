@@ -697,6 +697,12 @@
 		"metaFile": false,
 		"suffix": "messageChannel",
 		"xmlName": "LightningMessageChannel"
+	}, {
+		"directoryName": "prompts",
+		"inFolder": false,
+		"metaFile": false,
+		"suffix": "prompt",
+		"xmlName": "Prompt"
 	}],
 	"organizationNamespace": "",
 	"partialSaveAllowed": true,

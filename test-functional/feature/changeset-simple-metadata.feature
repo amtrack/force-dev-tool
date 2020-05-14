@@ -13,6 +13,18 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
       | Profile       | simple-metadata/profile-layout-assignments  |
       | Profile       | simple-metadata/profile-custom-settings     |
       | Profile       | simple-metadata/profile-description-changed |
+      | Prompt        | simple-metadata/prompt-updated              |
+
+  Scenario Outline: Simple metadata are removed
+    Given a list of "<simple>" metadata in "<data>" folder which has been changed in a git repository
+     When a user launches a change set with force-dev-tool
+      And it will create a destructive change with the list of removed "<simple>" metadata
+      And the change set could be deployed correctly
+
+    Examples:
+      | simple        | data                                       |
+      | Prompt        | simple-metadata/prompt-removed             |
+
 
   Scenario Outline: Simple metadata are added, updated and removed
     Given a list of "<simple>" metadata in "<data>" folder which has been changed in a git repository
