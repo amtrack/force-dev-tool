@@ -54,6 +54,7 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
     Examples:
       | parent       | child         | data                                          |
       | CustomObject | CustomField   | complex-metadata/label-updated                |
+      | CustomObject | CustomField   | complex-metadata/long-label-updated           |
       | CustomObject | CustomField   | complex-metadata/pluralLabel-updated          |
       | CustomObject | SearchLayouts | complex-metadata/searchLayout-account-changed |
       | CustomObject | SearchLayouts | complex-metadata/searchLayout-custom-added    |
