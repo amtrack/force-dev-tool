@@ -8,18 +8,19 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       And the change set could be deployed correctly
 
     Examples:
-      | parent       | child           | data                                   |
-      | CustomObject | CustomField     | complex-metadata/customField-added     |
-      | CustomObject | CustomField     | complex-metadata/customField-updated   |
-      | CustomObject | RecordType      | complex-metadata/recordType-added      |
-      | CustomObject | WebLink         | complex-metadata/weblink-added         |
-      | CustomObject | ValidationRule  | complex-metadata/validationRule-added  |
-      | CustomObject | FieldSet        | complex-metadata/fieldSet-added        |
-      | CustomObject | ListView        | complex-metadata/listView-added        |
-      | CustomObject | CompactLayout   | complex-metadata/compactLayout-added   |
-      | CustomObject | BusinessProcess | complex-metadata/businessProcess-added |
-      | CustomObject | SharingReason   | complex-metadata/sharingReason-added   |
-      | CustomObject | QuickAction     | complex-metadata/quickAction-updated   |
+      | parent       | child           | data                                    |
+      | CustomObject | CustomField     | complex-metadata/customField-added      |
+      | CustomObject | CustomField     | complex-metadata/customField-updated    |
+      | CustomObject | RecordType      | complex-metadata/recordType-added       |
+      | CustomObject | WebLink         | complex-metadata/weblink-added          |
+      | CustomObject | WebLink         | complex-metadata/weblink-updated        |
+      | CustomObject | ValidationRule  | complex-metadata/validationRule-added   |
+      | CustomObject | FieldSet        | complex-metadata/fieldSet-added         |
+      | CustomObject | ListView        | complex-metadata/listView-added         |
+      | CustomObject | CompactLayout   | complex-metadata/compactLayout-added    |
+      | CustomObject | BusinessProcess | complex-metadata/businessProcess-added  |
+      | CustomObject | SharingReason   | complex-metadata/sharingReason-added    |
+      | CustomObject | QuickAction     | complex-metadata/quickAction-updated    |
 
   Scenario Outline: Child metadata are removed
     Given a list of "<child>" metadata in "<data>" folder which has been removed in a git repository
@@ -63,11 +64,13 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
     Given a list of "<parent & child>" metadata in "<data>" folder which has been changed in a git repository
      When a user launches a change set with force-dev-tool
      Then it will create a change set with all "<parent & child>" metadata
+      And it will create a change set with the list of "<child>" metadata
       And the change set could be deployed correctly
 
     Examples:
-      | parent & child       | data                                            |
-      | CustomObject         | complex-metadata/label-and-customField-updated  |
+      | parent & child      | child           | data                                              |
+      | CustomObject        | ValidationRule  | complex-metadata/label-and-validationRule-updated |
+      | CustomObject        | CustomField     | complex-metadata/label-and-customField-updated    |
 
   Scenario Outline: Parent are changed & child metadata are removed
     Given a list of "<parent & child>" metadata in "<data>" folder which has been changed in a git repository
