@@ -18,7 +18,7 @@
     "mississippi": "^3.0.0",
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
-    "parse-diff": "^0.4.2",
+    "parse-diff": "^0.7.0",
     "split2": "^3.0.0",
     "underscore": "^1.8.3",
     "vinyl": "^1.2.0",
