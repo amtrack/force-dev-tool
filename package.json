@@ -10,7 +10,7 @@
     "async": "^3.0.0",
     "chalk": "^4.0.0",
     "docopt": "^0.6.2",
-    "event-stream": "3.3.5",
+    "event-stream": "4.0.1",
     "find-up": "^3.0.0",
     "fs-extra": "^6.0.1",
     "glob": "^7.0.6",
