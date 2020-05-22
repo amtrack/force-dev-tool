@@ -15,7 +15,7 @@
     "fs-extra": "^6.0.1",
     "glob": "^7.0.6",
     "jsforce": "^1.7.0",
-    "mississippi": "^3.0.0",
+    "mississippi": "^4.0.0",
     "mkdirp": "^0.5.1",
     "multimatch": "^2.1.0",
     "parse-diff": "^0.7.0",
