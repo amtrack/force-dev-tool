@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "async": "^2.6.0",
-    "chalk": "^2.3.0",
+    "chalk": "^4.0.0",
     "docopt": "^0.6.2",
     "event-stream": "3.3.4",
     "find-up": "^3.0.0",
