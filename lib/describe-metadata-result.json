@@ -866,13 +866,6 @@
 		"xmlName": "RecordActionDeployment"
 	},
 	{
-		"directoryName": "LeadConvertSettings",
-		"inFolder": false,
-		"metaFile": false,
-		"suffix": "LeadConvertSettings",
-		"xmlName": "LeadConvertSettings"
-	},
-	{
 		"directoryName": "navigationMenus",
 		"inFolder": false,
 		"metaFile": true,
