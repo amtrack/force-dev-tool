@@ -1,7 +1,7 @@
 {
   "orgName": "me company",
-  "edition": "Developer",
-  "features": [],
+  "edition": "Enterprise",
+  "features": ["Communities", "Entitlements", "EventLogFile", "FieldService", "Knowledge", "LiveAgent", "DevelopmentWave"],
   "settings": {
     "lightningExperienceSettings": {
         "enableS1DesktopEnabled": true
@@ -11,8 +11,17 @@
             "enableSetPasswordInApi": true
         }
     },
+    "languageSettings": {
+        "enableTranslationWorkbench": true
+    },
     "mobileSettings": {
         "enableS1EncryptedStoragePref2": false
+    },
+    "liveAgentSettings": {
+        "enableLiveAgent": true
+    },
+    "communitiesSettings": {
+        "enableNetworksEnabled": true
     }
   }
 }

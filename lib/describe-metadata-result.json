@@ -14,6 +14,13 @@
 			"xmlName": "AnalyticSnapshot"
 		},
 		{
+			"directoryName": "animationRules",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "animationRule",
+			"xmlName": "AnimationRule"
+		},
+		{
 			"directoryName": "classes",
 			"inFolder": false,
 			"metaFile": true,
@@ -26,6 +33,13 @@
 			"metaFile": true,
 			"suffix": "component",
 			"xmlName": "ApexComponent"
+		},
+		{
+			"directoryName": "apexEmailNotifications",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "notifications",
+			"xmlName": "ApexEmailNotifications"
 		},
 		{
 			"directoryName": "pages",
@@ -73,6 +87,13 @@
 			"xmlName": "AssignmentRules"
 		},
 		{
+			"directoryName": "audience",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "audience",
+			"xmlName": "Audience"
+		},
+		{
 			"directoryName": "aura",
 			"inFolder": false,
 			"metaFile": false,
@@ -96,6 +117,13 @@
 			"xmlName": "AutoResponseRules"
 		},
 		{
+			"directoryName": "blacklistedConsumers",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "blacklistedConsumer",
+			"xmlName": "BlacklistedConsumer"
+		},
+		{
 			"directoryName": "brandingSets",
 			"inFolder": false,
 			"metaFile": false,
@@ -103,11 +131,39 @@
 			"xmlName": "BrandingSet"
 		},
 		{
+			"directoryName": "cmsConnectSource",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "cmsConnectSource",
+			"xmlName": "CMSConnectSource"
+		},
+		{
 			"directoryName": "callCenters",
 			"inFolder": false,
 			"metaFile": false,
 			"suffix": "callCenter",
 			"xmlName": "CallCenter"
+		},
+		{
+			"directoryName": "callCoachingMediaProviders",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "callCoachingMediaProvider",
+			"xmlName": "CallCoachingMediaProvider"
+		},
+		{
+			"directoryName": "Canvases",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "Canvas",
+			"xmlName": "CanvasMetadata"
+		},
+		{
+			"directoryName": "CaseSubjectParticles",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "CaseSubjectParticle",
+			"xmlName": "CaseSubjectParticle"
 		},
 		{
 			"directoryName": "certs",
@@ -122,6 +178,13 @@
 			"metaFile": false,
 			"suffix": "channelLayout",
 			"xmlName": "ChannelLayout"
+		},
+		{
+			"directoryName": "ChatterExtensions",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "ChatterExtension",
+			"xmlName": "ChatterExtension"
 		},
 		{
 			"directoryName": "cleanDataServices",
@@ -173,6 +236,13 @@
 			"xmlName": "CorsWhitelistOrigin"
 		},
 		{
+			"directoryName": "cspTrustedSites",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "cspTrustedSite",
+			"xmlName": "CspTrustedSite"
+		},
+		{
 			"directoryName": "applications",
 			"inFolder": false,
 			"metaFile": false,
@@ -192,6 +262,13 @@
 			"metaFile": false,
 			"suffix": "feedFilter",
 			"xmlName": "CustomFeedFilter"
+		},
+		{
+			"directoryName": "customHelpMenuSections",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "customHelpMenuSection",
+			"xmlName": "CustomHelpMenuSection"
 		},
 		{
 			"childXmlNames": [
@@ -220,9 +297,10 @@
 		{
 			"childXmlNames": [
 				"CustomField",
+				"Index",
 				"BusinessProcess",
-				"CompactLayout",
 				"RecordType",
+				"CompactLayout",
 				"WebLink",
 				"ValidationRule",
 				"SharingReason",
@@ -305,11 +383,32 @@
 			"xmlName": "DuplicateRule"
 		},
 		{
+			"directoryName": "eclair",
+			"inFolder": false,
+			"metaFile": true,
+			"suffix": "geodata",
+			"xmlName": "EclairGeoData"
+		},
+		{
+			"directoryName": "emailservices",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "xml",
+			"xmlName": "EmailServicesFunction"
+		},
+		{
 			"directoryName": "email",
 			"inFolder": true,
 			"metaFile": true,
 			"suffix": "email",
 			"xmlName": "EmailTemplate"
+		},
+		{
+			"directoryName": "EmbeddedServiceBranding",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "EmbeddedServiceBranding",
+			"xmlName": "EmbeddedServiceBranding"
 		},
 		{
 			"directoryName": "EmbeddedServiceConfig",
@@ -319,11 +418,25 @@
 			"xmlName": "EmbeddedServiceConfig"
 		},
 		{
+			"directoryName": "EmbeddedServiceFlowConfig",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "EmbeddedServiceFlowConfig",
+			"xmlName": "EmbeddedServiceFlowConfig"
+		},
+		{
 			"directoryName": "EmbeddedServiceLiveAgent",
 			"inFolder": false,
 			"metaFile": false,
 			"suffix": "EmbeddedServiceLiveAgent",
 			"xmlName": "EmbeddedServiceLiveAgent"
+		},
+		{
+			"directoryName": "EmbeddedServiceMenuSettings",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "EmbeddedServiceMenuSettings",
+			"xmlName": "EmbeddedServiceMenuSettings"
 		},
 		{
 			"directoryName": "entitlementProcesses",
@@ -357,6 +470,13 @@
 			"xmlName": "ExternalDataSource"
 		},
 		{
+			"directoryName": "externalServiceRegistrations",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "externalServiceRegistration",
+			"xmlName": "ExternalServiceRegistration"
+		},
+		{
 			"directoryName": "flexipages",
 			"inFolder": false,
 			"metaFile": false,
@@ -369,6 +489,13 @@
 			"metaFile": false,
 			"suffix": "flow",
 			"xmlName": "Flow"
+		},
+		{
+			"directoryName": "flowCategories",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "flowCategory",
+			"xmlName": "FlowCategory"
 		},
 		{
 			"directoryName": "flowDefinitions",
@@ -413,6 +540,20 @@
 			"xmlName": "HomePageLayout"
 		},
 		{
+			"directoryName": "iframeWhiteListUrlSettings",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "iframeWhiteListUrlSettings",
+			"xmlName": "IframeWhiteListUrlSettings"
+		},
+		{
+			"directoryName": "inboundNetworkConnections",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "inboundNetworkConnection",
+			"xmlName": "InboundNetworkConnection"
+		},
+		{
 			"directoryName": "installedPackages",
 			"inFolder": false,
 			"metaFile": false,
@@ -434,11 +575,25 @@
 			"xmlName": "Layout"
 		},
 		{
+			"directoryName": "LeadConvertSettings",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "LeadConvertSetting",
+			"xmlName": "LeadConvertSettings"
+		},
+		{
 			"directoryName": "letterhead",
 			"inFolder": false,
 			"metaFile": false,
 			"suffix": "letter",
 			"xmlName": "Letterhead"
+		},
+		{
+			"directoryName": "lightningBolts",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "lightningBolt",
+			"xmlName": "LightningBolt"
 		},
 		{
 			"directoryName": "lwc",
@@ -459,6 +614,13 @@
 			"metaFile": false,
 			"suffix": "messageChannel",
 			"xmlName": "LightningMessageChannel"
+		},
+		{
+			"directoryName": "lightningOnboardingConfigs",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "lightningOnboardingConfig",
+			"xmlName": "LightningOnboardingConfig"
 		},
 		{
 			"directoryName": "liveChatAgentConfigs",
@@ -489,6 +651,13 @@
 			"xmlName": "LiveChatSensitiveDataRule"
 		},
 		{
+			"directoryName": "managedContentTypes",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "managedContentType",
+			"xmlName": "ManagedContentType"
+		},
+		{
 			"childXmlNames": [
 				"ManagedTopic"
 			],
@@ -516,11 +685,32 @@
 			"xmlName": "MilestoneType"
 		},
 		{
+			"directoryName": "MobileApplicationDetails",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "MobileApplicationDetail",
+			"xmlName": "MobileApplicationDetail"
+		},
+		{
 			"directoryName": "moderation",
 			"inFolder": false,
 			"metaFile": false,
 			"suffix": "rule",
 			"xmlName": "ModerationRule"
+		},
+		{
+			"directoryName": "mutingpermissionsets",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "mutingpermissionset",
+			"xmlName": "MutingPermissionSet"
+		},
+		{
+			"directoryName": "myDomainDiscoverableLogins",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "myDomainDiscoverableLogin",
+			"xmlName": "MyDomainDiscoverableLogin"
 		},
 		{
 			"directoryName": "namedCredentials",
@@ -530,11 +720,46 @@
 			"xmlName": "NamedCredential"
 		},
 		{
+			"directoryName": "navigationMenus",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "navigationMenu",
+			"xmlName": "NavigationMenu"
+		},
+		{
 			"directoryName": "networks",
 			"inFolder": false,
 			"metaFile": false,
 			"suffix": "network",
 			"xmlName": "Network"
+		},
+		{
+			"directoryName": "networkBranding",
+			"inFolder": false,
+			"metaFile": true,
+			"suffix": "networkBranding",
+			"xmlName": "NetworkBranding"
+		},
+		{
+			"directoryName": "notificationTypeConfig",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "config",
+			"xmlName": "NotificationTypeConfig"
+		},
+		{
+			"directoryName": "oauthcustomscopes",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "oauthcustomscope",
+			"xmlName": "OauthCustomScope"
+		},
+		{
+			"directoryName": "outboundNetworkConnections",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "outboundNetworkConnection",
+			"xmlName": "OutboundNetworkConnection"
 		},
 		{
 			"directoryName": "pathAssistants",
@@ -551,11 +776,32 @@
 			"xmlName": "PermissionSet"
 		},
 		{
+			"directoryName": "permissionsetgroups",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "permissionsetgroup",
+			"xmlName": "PermissionSetGroup"
+		},
+		{
 			"directoryName": "cachePartitions",
 			"inFolder": false,
 			"metaFile": false,
 			"suffix": "cachePartition",
 			"xmlName": "PlatformCachePartition"
+		},
+		{
+			"directoryName": "platformEventChannels",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "platformEventChannel",
+			"xmlName": "PlatformEventChannel"
+		},
+		{
+			"directoryName": "platformEventChannelMembers",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "platformEventChannelMember",
+			"xmlName": "PlatformEventChannelMember"
 		},
 		{
 			"directoryName": "portals",
@@ -614,6 +860,27 @@
 			"xmlName": "QuickAction"
 		},
 		{
+			"directoryName": "recommendationStrategies",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "recommendationStrategy",
+			"xmlName": "RecommendationStrategy"
+		},
+		{
+			"directoryName": "recordActionDeployments",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "deployment",
+			"xmlName": "RecordActionDeployment"
+		},
+		{
+			"directoryName": "redirectWhitelistUrls",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "redirectWhitelistUrl",
+			"xmlName": "RedirectWhitelistUrl"
+		},
+		{
 			"directoryName": "remoteSiteSettings",
 			"inFolder": false,
 			"metaFile": false,
@@ -665,7 +932,8 @@
 		{
 			"childXmlNames": [
 				"SharingOwnerRule",
-				"SharingCriteriaRule"
+				"SharingCriteriaRule",
+				"SharingGuestRule"
 			],
 			"directoryName": "sharingRules",
 			"inFolder": false,
@@ -723,6 +991,13 @@
 			"xmlName": "SynonymDictionary"
 		},
 		{
+			"directoryName": "topicsForObjects",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "topicsForObjects",
+			"xmlName": "TopicsForObjects"
+		},
+		{
 			"directoryName": "transactionSecurityPolicies",
 			"inFolder": false,
 			"metaFile": false,
@@ -742,6 +1017,13 @@
 			"metaFile": false,
 			"suffix": "userCriteria",
 			"xmlName": "UserCriteria"
+		},
+		{
+			"directoryName": "userProvisioningConfigs",
+			"inFolder": false,
+			"metaFile": false,
+			"suffix": "userProvisioningConfig",
+			"xmlName": "UserProvisioningConfig"
 		},
 		{
 			"directoryName": "wave",
