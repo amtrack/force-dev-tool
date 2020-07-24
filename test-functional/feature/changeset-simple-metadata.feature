@@ -13,6 +13,7 @@ Feature: Change Set: Handle Properties of Simple Metadata Types
       | Profile       | simple-metadata/profile-layout-assignments  |
       | Profile       | simple-metadata/profile-custom-settings     |
       | Profile       | simple-metadata/profile-description-changed |
+      | QuickAction   | simple-metadata/quickAction-added           |
       | Prompt        | simple-metadata/prompt-updated              |
 
   Scenario Outline: Simple metadata are removed

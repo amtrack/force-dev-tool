@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-  <types>
-    <name>Layout</name>
-    <members>Account-Account %28Marketing%29 Layout</members>
-    <members>Account-Account %28Sales%29 Layout</members>
-    <members>Account-Account %28Support%29 Layout</members>
-    <members>Account-Account Layout</members>
-  </types>
-  <types>
-    <name>RecordType</name>
-    <members>Account.Customer</members>
-    <members>Account.Person</members>
-  </types>
-  <types>
-    <name>Profile</name>
-    <members>Admin</members>
-  </types>
-  <version>41.0</version>
+    <types>
+        <members>Account-Account %28Marketing%29 Layout</members>
+        <members>Account-Account %28Sales%29 Layout</members>
+        <members>Account-Account %28Support%29 Layout</members>
+        <members>Account-Account Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>Account.Customer</members>
+        <members>Account.Person</members>
+        <name>RecordType</name>
+    </types>
+    <version>41.0</version>
 </Package>
