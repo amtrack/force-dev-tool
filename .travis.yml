@@ -3,6 +3,9 @@ node_js:
   - "14"
   - "12"
   - "10"
+os:
+  - linux
+  - windows
 script:
   - npm test
   - npm run fmt
@@ -12,6 +15,12 @@ jobs:
     - stage: release
       if: branch = master
       node_js: "14"
+      os: linux
       script:
         - npm install --global semantic-release@15
         - semantic-release
+  exclude:
+    - os: windows
+      node_js: "14"
+    - os: windows
+      node_js: "10"
