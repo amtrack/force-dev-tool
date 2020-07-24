@@ -30,7 +30,7 @@ class Repository {
   }
 
   commit(message = 'no message') {
-    return this._execute('git', ['commit', '-m', message]);
+    return this._execute('git', ['-c', 'user.email="john@example.com"', '-c', 'user.name="John Doe"', 'commit', '-m', message]);
   }
 
   getRepoPath() {

@@ -26,7 +26,7 @@ describe("force-dev-tool changeset create ...", function() {
 			var tmpobj = tmp.dirSync();
 			var gitDir = tmpobj.name;
 			var gitCloneCmd = child.spawnSync(
-				"git", ["clone", test.gitCloneUrl, gitDir], {
+				"git", ["clone", "-c", "core.autocrlf=false", test.gitCloneUrl, gitDir], {
 					cwd: gitDir
 				}
 			);
