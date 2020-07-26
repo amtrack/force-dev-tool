@@ -2,9 +2,7 @@
 
 > Command line tool supporting the Force.com development lifecycle
 
-[![Build Status](https://travis-ci.com/amtrack/force-dev-tool.svg?branch=master)](https://travis-ci.com/amtrack/force-dev-tool) OS X / Linux
-
-[![Build Status Windows](https://ci.appveyor.com/api/projects/status/wmdv146qn3oi582u/branch/master?svg=true)](https://ci.appveyor.com/project/amtrack/force-dev-tool/branch/master) Windows
+[![Build Status](https://travis-ci.com/amtrack/force-dev-tool.svg?branch=master)](https://travis-ci.com/amtrack/force-dev-tool)
 
 ## Disclaimer
 
