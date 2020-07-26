@@ -20,7 +20,6 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       | CustomObject | CompactLayout   | complex-metadata/compactLayout-added    |
       | CustomObject | BusinessProcess | complex-metadata/businessProcess-added  |
       | CustomObject | SharingReason   | complex-metadata/sharingReason-added    |
-      | CustomObject | QuickAction     | complex-metadata/quickAction-updated    |
 
   Scenario Outline: Child metadata are removed
     Given a list of "<child>" metadata in "<data>" folder which has been removed in a git repository
