@@ -18,6 +18,21 @@ var objectWithTestAndATestField = [
 	TestObject.fields.textField1,
 	TestObject.footer
 ].join("\n");
+var largeCustomObject = [TestObject.header];
+var largeCustomObjectWithModifiedField = [TestObject.header];
+for (var i = 0; i < 10000; i++) {
+	var field = TestObject.fields.textField1.replace(
+		"Test",
+		"Test" + i.toString().padStart(4, "0"));
+	largeCustomObject.push(field);
+	if (i === 815) {
+		largeCustomObjectWithModifiedField.push(field.replace('</label>', ' Updated</label>'));
+	} else {
+		largeCustomObjectWithModifiedField.push(field);
+	}
+}
+largeCustomObject.push(TestObject.footer);
+largeCustomObjectWithModifiedField.push(TestObject.footer);
 var labelsObjectWithoutLabels = [TestLabels.header, TestLabels.footer].join("\n");
 var labelsObjectWithLabel = [TestLabels.header, TestLabels.labels.label1, TestLabels.footer].join("\n");
 var profileWithoutClassAccess = [TestProfile.header, TestProfile.footer].join("\n");
@@ -46,6 +61,20 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(
 				mfc.components[0].contents,
 				TestObject.fields.textField1
+			);
+		});
+		it('should return the components of a large metadata file', function() {
+			var mfc = new MetadataFileContainer({
+				path: path.join('objects', 'LargeCustomObjectTest__c.object'),
+				contents: Buffer.from(largeCustomObject.join("\n"))
+			});
+			assert.deepEqual(mfc.components.length, 10000);
+
+			assert.deepEqual(
+				mfc.components[6666].contents,
+				TestObject.fields.textField1.replace(
+					"Test",
+					"Test6666")
 			);
 		});
 		it('should return the ProfileApexClassAccess of a metadata file', function() {
@@ -344,12 +373,59 @@ describe('MetadataFileContainer', function() {
 		});
 	});
 	describe('#diffMaps', function() {
-		it('should handle large amounts of data', function() {
-			var a = {};
+		it('should detect no change', function() {
+			var a = {
+				CustomField: {
+					"Account.Foo__c": {
+						contents: "Foo"
+					}
+				}
+			};
+			var b = {
+				CustomField: {
+					"Account.Foo__c": {
+						contents: "Foo"
+					}
+				}
+			};
+			var diffResult = MetadataFileContainer.diffMaps(a, b);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+		});
+		it('should detect a modified component', function() {
+			var a = {
+				CustomField: {
+					"Account.Foo__c": {
+						contents: "Foo"
+					}
+				}
+			};
+			var b = {
+				CustomField: {
+					"Account.Foo__c": {
+						contents: "Foo2"
+					}
+				}
+			};
+			var diffResult = MetadataFileContainer.diffMaps(a, b);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 1);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+		});
+		it('should detect a deleted component', function() {
+			var a = {
+				CustomField: {
+					"Account.Foo__c": {
+						contents: "Foo"
+					}
+				}
+			};
 			var b = {};
 			var diffResult = MetadataFileContainer.diffMaps(a, b);
 			assert.deepEqual(diffResult.added.manifest().length, 0);
-			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 1);
 		});
 	});
 });
