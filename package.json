@@ -14,6 +14,7 @@
     "fs-extra": "^9.0.0",
     "glob": "^7.0.6",
     "jsforce": "^1.7.0",
+    "lodash": "^4.17.19",
     "merge-stream": "^2.0.0",
     "mississippi": "^4.0.0",
     "multimatch": "^4.0.0",
