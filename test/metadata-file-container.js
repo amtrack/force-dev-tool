@@ -229,6 +229,37 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(diffResult.deleted.manifest().length, 0);
 			assert.deepEqual(diffResult.modified.manifest()[0].toString(), 'CustomField/Account.Test__c');
 		});
+		it('should return modified custom field of a large custom object', function() {
+			this.timeout(10000);
+			var largeCustomObject = [TestObject.header];
+			var largeCustomObjectWithModifiedField = [TestObject.header];
+			for (var i = 0; i < 10000; i++) {
+				var field = TestObject.fields.textField1.replace(
+					"Test",
+					"Test" + i.toString().padStart(4, "0"));
+				largeCustomObject.push(field);
+				if (i === 3000) {
+					largeCustomObjectWithModifiedField.push(field.replace('</label>', ' Updated</label>'));
+				} else {
+					largeCustomObjectWithModifiedField.push(field);
+				}
+			}
+			largeCustomObject.push(TestObject.footer);
+			largeCustomObjectWithModifiedField.push(TestObject.footer);
+			var mf1 = new MetadataFileContainer({
+				path: path.join('objects', 'LargeCustomObjectTest__c.object'),
+				contents: Buffer.from(largeCustomObject.join("\n"))
+			});
+			var mf2 = new MetadataFileContainer({
+				path: path.join('objects', 'LargeCustomObjectTest__c.object'),
+				contents: Buffer.from(largeCustomObjectWithModifiedField.join("\n"))
+			});
+			var diffResult = mf1.diff(mf2);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest().length, 1);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+			assert.deepEqual(diffResult.modified.manifest()[0].toString(), 'CustomField/LargeCustomObjectTest__c.Test3000__c');
+		});
 		it('should return renamed custom field of custom object', function() {
 			var mf1 = new MetadataFileContainer({
 				path: path.join('objects', 'Account.object'),
