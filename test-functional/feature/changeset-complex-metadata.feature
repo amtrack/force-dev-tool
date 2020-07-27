@@ -8,18 +8,19 @@ Feature: Change Set: Handle Properties of Complex Metadata Types
       And the change set could be deployed correctly
 
     Examples:
-      | parent       | child           | data                                    |
-      | CustomObject | CustomField     | complex-metadata/customField-added      |
-      | CustomObject | CustomField     | complex-metadata/customField-updated    |
-      | CustomObject | RecordType      | complex-metadata/recordType-added       |
-      | CustomObject | WebLink         | complex-metadata/weblink-added          |
-      | CustomObject | WebLink         | complex-metadata/weblink-updated        |
-      | CustomObject | ValidationRule  | complex-metadata/validationRule-added   |
-      | CustomObject | FieldSet        | complex-metadata/fieldSet-added         |
-      | CustomObject | ListView        | complex-metadata/listView-added         |
-      | CustomObject | CompactLayout   | complex-metadata/compactLayout-added    |
-      | CustomObject | BusinessProcess | complex-metadata/businessProcess-added  |
-      | CustomObject | SharingReason   | complex-metadata/sharingReason-added    |
+      | parent       | child           | data                                              |
+      | CustomObject | CustomField     | complex-metadata/customField-added                |
+      | CustomObject | CustomField     | complex-metadata/customField-updated              |
+      | CustomObject | CustomField     | complex-metadata/customField-updated-large-object |
+      | CustomObject | RecordType      | complex-metadata/recordType-added                 |
+      | CustomObject | WebLink         | complex-metadata/weblink-added                    |
+      | CustomObject | WebLink         | complex-metadata/weblink-updated                  |
+      | CustomObject | ValidationRule  | complex-metadata/validationRule-added             |
+      | CustomObject | FieldSet        | complex-metadata/fieldSet-added                   |
+      | CustomObject | ListView        | complex-metadata/listView-added                   |
+      | CustomObject | CompactLayout   | complex-metadata/compactLayout-added              |
+      | CustomObject | BusinessProcess | complex-metadata/businessProcess-added            |
+      | CustomObject | SharingReason   | complex-metadata/sharingReason-added              |
 
   Scenario Outline: Child metadata are removed
     Given a list of "<child>" metadata in "<data>" folder which has been removed in a git repository
