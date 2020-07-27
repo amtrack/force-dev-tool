@@ -343,4 +343,13 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(content, objectWithoutFields);
 		});
 	});
+	describe('#diffMaps', function() {
+		it('should handle large amounts of data', function() {
+			var a = {};
+			var b = {};
+			var diffResult = MetadataFileContainer.diffMaps(a, b);
+			assert.deepEqual(diffResult.added.manifest().length, 0);
+			assert.deepEqual(diffResult.deleted.manifest().length, 0);
+		});
+	});
 });
