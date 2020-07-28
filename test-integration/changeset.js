@@ -30,11 +30,11 @@ describe("force-dev-tool changeset create ...", function() {
 					cwd: gitDir
 				}
 			);
-			assert.deepEqual(gitCloneCmd.status, 0, gitCloneCmd.stderr);
+			assert.deepEqual(gitCloneCmd.status, 0, gitCloneCmd.stderr.toString());
 			var gitCheckoutCmd = child.spawnSync("git", ["checkout", test.branch], {
 				cwd: gitDir
 			});
-			assert.deepEqual(gitCheckoutCmd.status, 0, gitCheckoutCmd.stderr);
+			assert.deepEqual(gitCheckoutCmd.status, 0, gitCheckoutCmd.stderr.toString());
 			var changesetArgs = [fdt, "changeset", "create", "test"];
 			[].push.apply(changesetArgs, test.patterns);
 			var changesetCreateCmd = child.spawnSync(
@@ -45,7 +45,7 @@ describe("force-dev-tool changeset create ...", function() {
 			assert.deepEqual(
 				changesetCreateCmd.status,
 				0,
-				changesetCreateCmd.stdout
+				changesetCreateCmd.stdout.toString()
 			);
 			var diffDirsCmd = child.spawnSync(
 				"diff", [
@@ -57,7 +57,7 @@ describe("force-dev-tool changeset create ...", function() {
 					cwd: gitDir
 				}
 			);
-			assert.deepEqual(diffDirsCmd.status, 0, diffDirsCmd.stdout);
+			assert.deepEqual(diffDirsCmd.status, 0, diffDirsCmd.stdout.toString());
 		});
 	});
 });

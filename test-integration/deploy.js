@@ -12,7 +12,7 @@ describe('force-dev-tool deploy', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var deployCmd = child.spawnSync("node", [fdt, 'deploy', '-c', '-f', path.resolve(__dirname, '..', 'test', 'data', 'unpackaged', 'layout-with-umlauts.zip')]);
-		assert.deepEqual(deployCmd.status, 0, deployCmd.stderr);
+		assert.deepEqual(deployCmd.status, 0, deployCmd.stderr.toString());
 		assert(/Running Validation of zip file/.test(deployCmd.stdout.toString()));
 		assert(/Visit https/.test(deployCmd.stdout.toString()));
 	});
@@ -27,7 +27,7 @@ describe('force-dev-tool deploy', function() {
 				return done(err);
 			}
 			var deployCmd = child.spawnSync("node", [fdt, 'deploy', '-c', '-d', unzipDir]);
-			assert.deepEqual(deployCmd.status, 0, deployCmd.stderr);
+			assert.deepEqual(deployCmd.status, 0, deployCmd.stderr.toString());
 			assert(/Running Validation of directory/.test(deployCmd.stdout.toString()));
 			assert(/Visit https/.test(deployCmd.stdout.toString()));
 			done();
@@ -37,7 +37,7 @@ describe('force-dev-tool deploy', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var deployCmd = child.spawnSync("node", [fdt, 'deploy', '-c', '-t', '-d', path.resolve(__dirname, '..', 'test', 'data', 'metadata', 'visualforce')]);
-		assert.deepEqual(deployCmd.status, 0, deployCmd.stderr);
+		assert.deepEqual(deployCmd.status, 0, deployCmd.stderr.toString());
 		assert(/Running Validation with test execution of directory/.test(deployCmd.stdout.toString()));
 		assert(/Visit https/.test(deployCmd.stdout.toString()));
 	});
@@ -45,7 +45,7 @@ describe('force-dev-tool deploy', function() {
 		this.timeout(1000 * 60 * 10);
 		this.slow(1000 * 60 * 5);
 		var deployCmd = child.spawnSync("node", [fdt, 'deploy', '-c', '-t', '-d', path.resolve(__dirname, '..', 'test', 'data', 'unpackaged', 'apex')]);
-		assert.deepEqual(deployCmd.status, 0, deployCmd.stderr);
+		assert.deepEqual(deployCmd.status, 0, deployCmd.stderr.toString());
 		assert(/Running Validation with test execution of directory/.test(deployCmd.stdout.toString()));
 		assert(/Visit https/.test(deployCmd.stdout.toString()));
 	});
