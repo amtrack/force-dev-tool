@@ -68,7 +68,7 @@ class Cli {
         expect(spawnRet.stdout.toString()).to.include('Running Validation of directory');
         return spawnRet;
       } else {
-        let out = JSON.parse(spawnRet.stdout);
+        let out = JSON.parse(spawnRet.stdout.toString());
         expect(out.status, JSON.stringify(out.result.details)).to.equal(fail ? 1 : 0);
         return out;
       }
