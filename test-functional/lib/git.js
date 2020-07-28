@@ -46,7 +46,7 @@ class Repository {
       cwd: this._cwd
     });
     if (result.status !== 0) {
-      throw result.stdout + '\n' + result.stderr;
+      throw result.stdout.toString() + '\n' + result.stderr.toString();
     }
     return result;
   }

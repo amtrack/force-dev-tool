@@ -23,7 +23,7 @@ describe('MetadataComponent', function() {
 				fileName: path.join('pages', 'Test.page'),
 				contents: 'hello'
 			});
-			assert.deepEqual(metadataComponentWithContents.contents, 'hello');
+			assert.deepEqual(metadataComponentWithContents.contents.toString(), 'hello');
 		});
 		it('should return a metadata component for an ApexPage', function() {
 			var metadataComponent = new MetadataComponent('ApexPage/Test');

@@ -14,7 +14,7 @@ describe('force-dev-tool login', function() {
 		var loginCmd = child.spawnSync("node", [fdt, 'login'], {
 			cwd: tmpobj.name
 		});
-		assert.deepEqual(loginCmd.status, 0, loginCmd.stderr);
+		assert.deepEqual(loginCmd.status, 0, loginCmd.stderr.toString());
 		assert(/Logged in successfully/.test(loginCmd.stdout.toString()));
 		assert(/https/.test(loginCmd.stdout.toString()));
 	});
