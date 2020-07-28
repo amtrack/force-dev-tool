@@ -59,7 +59,7 @@ describe('MetadataFileContainer', function() {
 			});
 			assert.deepEqual(mfc.components.length, 1);
 			assert.deepEqual(
-				mfc.components[0].contents,
+				mfc.components[0].contents.toString(),
 				TestObject.fields.textField1
 			);
 		});
@@ -71,7 +71,7 @@ describe('MetadataFileContainer', function() {
 			assert.deepEqual(mfc.components.length, 10000);
 
 			assert.deepEqual(
-				mfc.components[6666].contents,
+				mfc.components[6666].contents.toString(),
 				TestObject.fields.textField1.replace(
 					"Test",
 					"Test6666")
@@ -84,7 +84,7 @@ describe('MetadataFileContainer', function() {
 			});
 			assert.deepEqual(mfc.components.length, 1);
 			assert.deepEqual(
-				mfc.components[0].contents,
+				mfc.components[0].contents.toString(),
 				TestProfile.classAccesses.classAccess1
 			);
 		});
@@ -95,7 +95,7 @@ describe('MetadataFileContainer', function() {
 			});
 			assert.deepEqual(mfc.components.length, 1);
 			assert.deepEqual(
-				mfc.components[0].contents,
+				mfc.components[0].contents.toString(),
 				TestProfile.fieldPermissions.fieldPermission1
 			);
 		});

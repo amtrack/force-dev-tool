@@ -16,14 +16,14 @@ describe('MetadataComponent', function() {
 				fullName: 'Test',
 				fileName: path.join('pages', 'Test.page')
 			});
-			assert.deepEqual(metadataComponent.contents, undefined);
+			assert.deepEqual(metadataComponent.contents.toString(), undefined);
 			var metadataComponentWithContents = new MetadataComponent({
 				type: 'ApexPage',
 				fullName: 'Test',
 				fileName: path.join('pages', 'Test.page'),
 				contents: 'hello'
 			});
-			assert.deepEqual(metadataComponentWithContents.contents, 'hello');
+			assert.deepEqual(metadataComponentWithContents.contents.toString(), 'hello');
 		});
 		it('should return a metadata component for an ApexPage', function() {
 			var metadataComponent = new MetadataComponent('ApexPage/Test');
