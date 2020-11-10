@@ -18,7 +18,7 @@ describe('force-dev-tool login', function() {
 		assert(/Logged in successfully/.test(loginCmd.stdout.toString()));
 		assert(/https/.test(loginCmd.stdout.toString()));
 	});
-	it('should fail login using invalid credentials', function() {
+	it.skip('should fail login using invalid credentials', function() {
 		var env = JSON.parse(JSON.stringify(process.env));
 		env["SFDC_USERNAME"] = "invalidUsername";
 		env["SFDC_PASSWORD"] = "invalidPassword";
