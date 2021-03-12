@@ -17,7 +17,7 @@
     "merge-stream": "^2.0.0",
     "mississippi": "^4.0.0",
     "multimatch": "^4.0.0",
-    "parse-diff": "^0.7.0",
+    "parse-diff": "^0.8.0",
     "underscore": "^1.8.3",
     "vinyl": "^2.0.0",
     "vinyl-fs": "^3.0.0",
