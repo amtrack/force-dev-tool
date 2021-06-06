@@ -36,7 +36,7 @@
     "istanbul": "^0.4.4",
     "js-beautify": "^1.7.5",
     "mocha": "^8.0.0",
-    "sinon": "^9.0.0",
+    "sinon": "^11.0.0",
     "tmp": "^0.2.1"
   },
   "keywords": [
