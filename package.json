@@ -31,7 +31,7 @@
     "chai-fs": "^2.0.0",
     "cucumber": "^6.0.5",
     "cucumber-pretty": "^6.0.0",
-    "eslint": "^7.0.0",
+    "eslint": "^8.0.0",
     "glob-all": "^3.1.0",
     "istanbul": "^0.4.4",
     "js-beautify": "^1.7.5",
