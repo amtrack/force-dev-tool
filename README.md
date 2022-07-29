@@ -2,7 +2,7 @@
 
 > Command line tool supporting the Force.com development lifecycle
 
-[![Build Status](https://travis-ci.com/amtrack/force-dev-tool.svg?branch=master)](https://travis-ci.com/amtrack/force-dev-tool)
+[![Actions Status](https://github.com/amtrack/force-dev-tool/workflows/Test%20and%20Release/badge.svg)](https://github.com/amtrack/force-dev-tool/actions)
 
 ## Disclaimer
 
